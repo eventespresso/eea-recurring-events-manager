@@ -1,7 +1,7 @@
 <?php
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
-use EventEspresso\core\services\loaders\Loader;
+use EventEspresso\core\services\loaders\LoaderFactory;
 use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\RecurringEvents\domain\Domain;
 
@@ -150,7 +150,7 @@ Class  EE_Recurring_Events extends EE_Addon
     public static function loader()
     {
         if (! EE_Recurring_Events::$loader instanceof LoaderInterface) {
-            EE_Recurring_Events::$loader = new Loader;
+            EE_Recurring_Events::$loader = LoaderFactory::getLoader();
         }
         return EE_Recurring_Events::$loader;
     }
