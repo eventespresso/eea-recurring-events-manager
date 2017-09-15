@@ -1,18 +1,20 @@
-<?php use EventEspresso\NewAddon\domain\Domain;
+<?php
+
+use EventEspresso\RecurringEvents\domain\Domain;
 
 defined('EVENT_ESPRESSO_VERSION') || exit('NO direct script access allowed');
 
 
 /**
- * New_Addon_Admin_Page
- * This contains the logic for setting up the New_Addon Addon Admin related pages.
+ * Recurring_Events_Admin_Page
+ * This contains the logic for setting up the Recurring_Events Addon Admin related pages.
  * Any methods without PHP doc comments have inline docs with parent class.
  *
- * @package     New_Addon_Admin_Page (new_addon addon)
- * @subpackage  admin/New_Addon_Admin_Page.core.php
+ * @package     Recurring_Events_Admin_Page (new_addon addon)
+ * @subpackage  admin/Recurring_Events_Admin_Page.core.php
  * @author      Darren Ethier, Brent Christensen
  */
-class New_Addon_Admin_Page extends EE_Admin_Page
+class Recurring_Events_Admin_Page extends EE_Admin_Page
 {
 
 
@@ -192,7 +194,7 @@ class New_Addon_Admin_Page extends EE_Admin_Page
     protected function _settings_page($template)
     {
         $this->_template_args['new_addon_config'] =
-            EE_Config::instance()->get_config('addons', 'EED_Recurring_Events', 'EE_New_Addon_Config');
+            EE_Config::instance()->get_config('addons', 'EED_Recurring_Events', 'EE_Recurring_Events_Config');
         add_filter('FHEE__EEH_Form_Fields__label_html', '__return_empty_string');
         $this->_template_args['yes_no_values'] = array(
             EE_Question_Option::new_instance(
@@ -241,13 +243,13 @@ class New_Addon_Admin_Page extends EE_Admin_Page
     protected function _update_settings()
     {
         if (isset($_POST['reset_new_addon']) && (string)$_POST['reset_new_addon'] === '1') {
-            $config = new EE_New_Addon_Config();
+            $config = new EE_Recurring_Events_Config();
             $count = 1;
         } else {
             $config = EE_Config::instance()->get_config(
                 'addons',
                 'EED_Recurring_Events',
-                'EE_New_Addon_Config'
+                'EE_Recurring_Events_Config'
             );
             $count = 0;
             //otherwise we assume you want to allow full html
@@ -361,5 +363,5 @@ class New_Addon_Admin_Page extends EE_Admin_Page
 
 
 }
-// End of file New_Addon_Admin_Page.core.php
-// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/New_Addon_Admin_Page.core.php
+// End of file Recurring_Events_Admin_Page.core.php
+// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/Recurring_Events_Admin_Page.core.php

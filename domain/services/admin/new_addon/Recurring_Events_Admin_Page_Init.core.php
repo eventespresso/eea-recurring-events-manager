@@ -7,15 +7,15 @@ defined('EVENT_ESPRESSO_VERSION')|| exit('No direct script access allowed');
 
 
 /**
- * New_Addon_Admin_Page_Init class
+ * Recurring_Events_Admin_Page_Init class
  *
- * This is the init for the New_Addon Addon Admin Pages.  See EE_Admin_Page_Init for method inline docs.
+ * This is the init for the Recurring_Events Addon Admin Pages.  See EE_Admin_Page_Init for method inline docs.
  *
  * @package     Event Espresso (new_addon addon)
- * @subpackage  admin/New_Addon_Admin_Page_Init.core.php
+ * @subpackage  admin/Recurring_Events_Admin_Page_Init.core.php
  * @author      Darren Ethier
  */
-class New_Addon_Admin_Page_Init extends EE_Admin_Page_Init
+class Recurring_Events_Admin_Page_Init extends EE_Admin_Page_Init
 {
 
     /**
@@ -64,5 +64,5 @@ class New_Addon_Admin_Page_Init extends EE_Admin_Page_Init
 
 
 }
-// End of file New_Addon_Admin_Page_Init.core.php
-// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/New_Addon_Admin_Page_Init.core.php
+// End of file Recurring_Events_Admin_Page_Init.core.php
+// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/Recurring_Events_Admin_Page_Init.core.php

@@ -15,7 +15,7 @@
  */
  /**
  *
- * Class EE_New_Addon_Config
+ * Class EE_Recurring_Events_Config
  *
  * Description
  *
@@ -26,7 +26,7 @@
  *
  */
 
-class EE_New_Addon_Config extends EE_Config_Base {
+class EE_Recurring_Events_Config extends EE_Config_Base {
 
 
 
@@ -34,5 +34,5 @@ class EE_New_Addon_Config extends EE_Config_Base {
 
 
 
-// End of file EE_New_Addon_Config.php
-// Location: /wp-content/plugins/eea-new-addon/EE_New_Addon_Config.php
+// End of file EE_Recurring_Events_Config.php
+// Location: /wp-content/plugins/eea-new-addon/EE_Recurring_Events_Config.php

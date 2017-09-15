@@ -5,14 +5,14 @@ if (!defined('EVENT_ESPRESSO_VERSION'))
 
 /**
  *
- * EE_DMS_New_Addon_0_0_1
+ * EE_DMS_Recurring_Events_0_0_1
  *
  * @package			Event Espresso
  * @subpackage
  * @author				Mike Nelson
  *
  */
-class EE_DMS_New_Addon_1_0_0 extends EE_Data_Migration_Script_Base{
+class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base{
 
 	public function __construct() {
 		$this->_pretty_name = __("Data Migration to New Addon 0.0.2", "event_espresso");
@@ -85,4 +85,4 @@ class EE_DMS_New_Addon_1_0_0 extends EE_Data_Migration_Script_Base{
 	}
 }
 
-// End of file EE_DMS_New_Addon_0_0_1.dms.php
+// End of file EE_DMS_Recurring_Events_0_0_1.dms.php
