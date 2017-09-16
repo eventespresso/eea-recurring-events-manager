@@ -12,7 +12,7 @@ defined('EVENT_ESPRESSO_VERSION') || exit();
  * Class  EE_Recurring_Events
  *
  * @package     Event Espresso
- * @subpackage  eea-new-addon
+ * @subpackage  eea-recurring-events-manager
  * @author      Brent Christensen
  */
 Class  EE_Recurring_Events extends EE_Addon
@@ -100,7 +100,7 @@ Class  EE_Recurring_Events extends EE_Addon
             //     ),
             //     // if plugin update engine is being used for auto-updates. not needed if PUE is not being used.
             //     'pue_options'           => array(
-            //         'pue_plugin_slug' => 'eea-new-addon',
+            //         'pue_plugin_slug' => 'eea-recurring-events-manager',
             //         'plugin_basename' => Domain::pluginBasename(),
             //         'checkPeriod'     => '24',
             //         'use_wp_update'   => false,
@@ -174,4 +174,4 @@ Class  EE_Recurring_Events extends EE_Addon
 
 }
 // End of file RecurringEvents.class.php
-// Location: wp-content/plugins/eea-recurring-events/RecurringEvents.class.php
+// Location: wp-content/plugins/eea-recurring-events-manager/RecurringEvents.class.php

@@ -59,7 +59,7 @@ function espresso_recurring_events_plugin_activation_errors()
         }
     }
 }
-add_action('activate_eea-recurring-events/eea-recurring-events.php', 'espresso_recurring_events_plugin_activation_errors');
+add_action('activate_eea-recurring-events-manager/eea-recurring-events-manager.php', 'espresso_recurring_events_plugin_activation_errors');
 
 
 /**
@@ -138,5 +138,5 @@ function espresso_recurring_events_activation_error()
     <?php
 }
 
-// End of file eea-recurring-events.php
-// Location: wp-content/plugins/eea-recurring-events/eea-recurring-events.php
+// End of file eea-recurring-events-manager.php
+// Location: wp-content/plugins/eea-recurring-events-manager/eea-recurring-events-manager-manager.php

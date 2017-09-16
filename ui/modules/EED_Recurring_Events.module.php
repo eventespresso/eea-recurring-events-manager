@@ -17,7 +17,7 @@ if (! defined('EVENT_ESPRESSO_VERSION')) {
  * other classes in the mock addon)
  *
  * @package     Event Espresso
- * @subpackage  eea-recurring-events
+ * @subpackage  eea-recurring-events-manager
  * @author      Brent Christensen
  *
  * ------------------------------------------------------------------------
@@ -255,4 +255,4 @@ class EED_Recurring_Events extends EED_Module
 
 }
 // End of file EED_Recurring_Events.module.php
-// Location: /eea-recurring-events/ui/modules/EED_Recurring_Events.module.php
+// Location: /eea-recurring-events-manager/ui/modules/EED_Recurring_Events.module.php

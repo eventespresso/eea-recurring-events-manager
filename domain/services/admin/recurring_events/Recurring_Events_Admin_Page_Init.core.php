@@ -1,6 +1,6 @@
 <?php
 
-use EventEspresso\NewAddon\domain\Domain;
+use EventEspresso\RecurringEvents\domain\Domain;
 
 defined('EVENT_ESPRESSO_VERSION')|| exit('No direct script access allowed');
 
@@ -11,7 +11,7 @@ defined('EVENT_ESPRESSO_VERSION')|| exit('No direct script access allowed');
  *
  * This is the init for the Recurring_Events Addon Admin Pages.  See EE_Admin_Page_Init for method inline docs.
  *
- * @package     Event Espresso (new_addon addon)
+ * @package     Event Espresso (recurring_events addon)
  * @subpackage  admin/Recurring_Events_Admin_Page_Init.core.php
  * @author      Darren Ethier
  */
@@ -65,4 +65,4 @@ class Recurring_Events_Admin_Page_Init extends EE_Admin_Page_Init
 
 }
 // End of file Recurring_Events_Admin_Page_Init.core.php
-// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/Recurring_Events_Admin_Page_Init.core.php
+// Location: /wp-content/plugins/eea-recurring-events-manager/admin/recurring_events/Recurring_Events_Admin_Page_Init.core.php

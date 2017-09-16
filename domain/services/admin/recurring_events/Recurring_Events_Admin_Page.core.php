@@ -10,7 +10,7 @@ defined('EVENT_ESPRESSO_VERSION') || exit('NO direct script access allowed');
  * This contains the logic for setting up the Recurring_Events Addon Admin related pages.
  * Any methods without PHP doc comments have inline docs with parent class.
  *
- * @package     Recurring_Events_Admin_Page (new_addon addon)
+ * @package     Recurring_Events_Admin_Page (recurring_events addon)
  * @subpackage  admin/Recurring_Events_Admin_Page.core.php
  * @author      Darren Ethier, Brent Christensen
  */
@@ -89,7 +89,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
             ),
             'usage'   => array(
                 'nav'           => array(
-                    'label' => __('New Addon Usage', 'event_espresso'),
+                    'label' => __('Recurring Events Usage', 'event_espresso'),
                     'order' => 30,
                 ),
                 'require_nonce' => false,
@@ -133,13 +133,13 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
     public function load_scripts_styles()
     {
         wp_register_script(
-            'espresso_new_addon_admin',
-            Domain::adminAssetsUrl() . 'espresso_new_addon_admin.js',
+            'espresso_recurring_events_admin',
+            Domain::adminAssetsUrl() . 'espresso_recurring_events_admin.js',
             array('espresso_core'),
             Domain::version(),
             true
         );
-        wp_enqueue_script('espresso_new_addon_admin');
+        wp_enqueue_script('espresso_recurring_events_admin');
     }
 
 
@@ -150,7 +150,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
     public function admin_init()
     {
         EE_Registry::$i18n_js_strings['confirm_reset'] = __(
-            'Are you sure you want to reset ALL your Event Espresso New Addon Information? This cannot be undone.',
+            'Are you sure you want to reset ALL your Event Espresso Recurring Events Information? This cannot be undone.',
             'event_espresso'
         );
     }
@@ -181,7 +181,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
      */
     protected function _basic_settings()
     {
-        $this->_settings_page('new_addon_basic_settings.template.php');
+        $this->_settings_page('recurring_events_basic_settings.template.php');
     }
 
 
@@ -193,7 +193,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
      */
     protected function _settings_page($template)
     {
-        $this->_template_args['new_addon_config'] =
+        $this->_template_args['recurring_events_config'] =
             EE_Config::instance()->get_config('addons', 'EED_Recurring_Events', 'EE_Recurring_Events_Config');
         add_filter('FHEE__EEH_Form_Fields__label_html', '__return_empty_string');
         $this->_template_args['yes_no_values'] = array(
@@ -228,7 +228,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
     protected function _usage()
     {
         $this->_template_args['admin_page_content'] = EEH_Template::display_template(
-            Domain::adminTemplatePath() . 'new_addon_usage_info.template.php',
+            Domain::adminTemplatePath() . 'recurring_events_usage_info.template.php',
             array(),
             true
         );
@@ -242,7 +242,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
      */
     protected function _update_settings()
     {
-        if (isset($_POST['reset_new_addon']) && (string)$_POST['reset_new_addon'] === '1') {
+        if (isset($_POST['reset_recurring_events']) && (string)$_POST['reset_recurring_events'] === '1') {
             $config = new EE_Recurring_Events_Config();
             $count = 1;
         } else {
@@ -253,7 +253,7 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
             );
             $count = 0;
             //otherwise we assume you want to allow full html
-            foreach ($this->_req_data['new_addon'] as $top_level_key => $top_level_value) {
+            foreach ($this->_req_data['recurring_events'] as $top_level_key => $top_level_value) {
                 if (is_array($top_level_value)) {
                     foreach ($top_level_value as $second_level_key => $second_level_value) {
                         if (
@@ -307,9 +307,9 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
     {
         $sanitization_methods = array(
             'display' => array(
-                'enable_new_addon' => 'bool',
-//				'new_addon_height'=>'int',
-//				'enable_new_addon_filters'=>'bool',
+                'enable_recurring_events' => 'bool',
+//				'recurring_events_height'=>'int',
+//				'enable_recurring_events_filters'=>'bool',
 //				'enable_category_legend'=>'bool',
 //				'use_pickers'=>'bool',
 //				'event_background'=>'plaintext',
@@ -364,4 +364,4 @@ class Recurring_Events_Admin_Page extends EE_Admin_Page
 
 }
 // End of file Recurring_Events_Admin_Page.core.php
-// Location: /wp-content/plugins/eea-new-addon/admin/new_addon/Recurring_Events_Admin_Page.core.php
+// Location: /wp-content/plugins/eea-recurring-events-manager/admin/recurring_events/Recurring_Events_Admin_Page.core.php

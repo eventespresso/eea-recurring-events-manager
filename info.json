@@ -1,11 +1,11 @@
 {
-	"versionFile" : "eea-new-addon.php",
-	"slug" : "eea-new-addon",
-	"name" : "Event Espresso 4 New Addon",
+	"versionFile" : "eea-recurring-events-manager.php",
+	"slug" : "eea-recurring-events-manager",
+	"name" : "Event Espresso 4 Recurring Events Manager",
 	"archiveBaseUrl" : "http://build.eventespresso.com/",
 	"archiveBasePath" : "~/www/build/",
     "demoee" : false,
-    "srcBuildFolderName" : "eea-new-addon",
+    "srcBuildFolderName" : "eea-recurring-events-manager",
     "textDomain" : "event_espresso",
 	"releaseFilesRemove" : [
 		"src/tests/**",

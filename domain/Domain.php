@@ -10,10 +10,10 @@ defined('EVENT_ESPRESSO_VERSION') || exit;
 
 /**
  * Domain Class
- * A container for all domain data related to New Addon
+ * A container for all domain data related to Recurring Events
  *
  * @package     Event Espresso
- * @subpackage  New Addon
+ * @subpackage  Recurring Events
  * @author      Event Espresso
  */
 class Domain extends DomainBase
@@ -74,7 +74,7 @@ class Domain extends DomainBase
      */
     public static function adminPageLabel()
     {
-        return esc_html__('New Addon', 'event_espresso');
+        return esc_html__('Recurring Events', 'event_espresso');
     }
 
 
