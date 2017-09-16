@@ -57,8 +57,10 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     public function __construct()
     {
-        $this->date_format = get_option('date_format');
-        $this->time_format = get_option('time_format');
+        // $this->date_format = get_option('date_format');
+        // $this->time_format = get_option('time_format');
+        $this->date_format = 'Y-m-d';
+        $this->time_format = 'h:i a';
         $this->now         = date("{$this->date_format} {$this->time_format}");
         parent::__construct(
             $this->formOptions()
@@ -168,11 +170,14 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     private function recurrencePattern($pattern)
     {
+        $starts_label = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+            ? esc_html__('Recurrence', 'event_espresso')
+            : esc_html__('Exclusion', 'event_espresso');
         $frequencies = array(
             'DAILY'   => esc_html__('Daily', 'event_espresso'),
             'WEEKLY'  => esc_html__('Weekly', 'event_espresso'),
             'MONTHLY' => esc_html__('Monthly', 'event_espresso'),
-            'YEARLY'  => esc_html__('Yearly', 'event_espresso'),
+            // 'YEARLY'  => esc_html__('Yearly', 'event_espresso'),
         );
         if ($pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_EXCLUSION) {
             $frequencies = array('NONE' => esc_html__('None', 'event_espresso')) + $frequencies;
@@ -189,7 +194,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                 'subsections'     => array(
                     'dtstart' => new EE_Datepicker_Input(
                         array(
-                            'html_label_text' => esc_html__('Recurrence Starts', 'event_espresso'),
+                            'html_label_text' => $starts_label,
                             'html_id'         => $pattern . '-dtstart',
                             'html_class'      => 'regular-text rem-datepicker rem-input',
                             'default'         => $this->now,
@@ -209,7 +214,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                     'daily'   => $this->dailyFrequencySubsection($pattern),
                     'weekly'  => $this->weeklyFrequencySubsection($pattern),
                     'monthly' => $this->monthlyFrequencySubsection($pattern),
-                    'yearly'  => $this->yearlyFrequencySubsection($pattern),
+                    // 'yearly'  => $this->yearlyFrequencySubsection($pattern),
                     'until'   => $this->recurrenceEnds($pattern),
                 ),
             )
@@ -523,11 +528,11 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                             'html_label_text' => $ends_label,
                             'default'         => 'until',
                             'html_id'         => $pattern . '-ends-option-input',
-                            'html_class'      => 'recurrence-ends-option-input rem-input',
+                            'html_class'      => $pattern . '-ends-option-input rem-input',
                         )
                     ),
-                    'until' => $this->recurrenceEndsOnDateSubsection(),
-                    'count' => $this->recurrenceEndsAfterSubsection(),
+                    'until' => $this->recurrenceEndsOnDateSubsection($pattern),
+                    'count' => $this->recurrenceEndsAfterSubsection($pattern),
                     'rrule_string' => new EE_Form_Section_HTML(
                         EEH_HTML::tr(
                             EEH_HTML::th(
@@ -555,8 +560,14 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      * @return EE_Form_Section_Proper
      * @throws EE_Error
      */
-    private function recurrenceEndsOnDateSubsection()
+    private function recurrenceEndsOnDateSubsection($pattern)
     {
+        $end_date = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+            ? $this->now
+            : date(
+                "{$this->date_format} {$this->time_format}",
+                strtotime($this->now) + MONTH_IN_SECONDS
+            );
         return new EE_Form_Section_Proper(
             array(
                 'name'             => 'until',
@@ -568,7 +579,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                         'event_espresso'
                     ),
                     array(
-                        '<div id="recurrence-ends-option-until" class="recurrence-ends-options">',
+                        '<div id="' . $pattern . '-ends-option-until" class="' . $pattern . '-ends-options">',
                         '</div>',
                         '<br />',
                     )
@@ -577,9 +588,9 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                     'until' => new EE_Datepicker_Input(
                         array(
                             'html_label_text' => '',
-                            'html_id'         => 'recurrence-ends-until',
-                            'html_class'      => 'recurrence-ends-option regular-text rem-datepicker rem-input',
-                            'default'         => '',
+                            'html_id'         =>  $pattern . '-ends-until',
+                            'html_class'      =>  $pattern . '-ends-option regular-text rem-datepicker rem-input',
+                            'default'         => $end_date,
                         )
                     ),
                 ),
@@ -592,7 +603,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      * @return EE_Form_Section_Proper
      * @throws EE_Error
      */
-    private function recurrenceEndsAfterSubsection()
+    private function recurrenceEndsAfterSubsection($pattern)
     {
         return new EE_Form_Section_Proper(
             array(
@@ -605,7 +616,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                         'event_espresso'
                     ),
                     array(
-                        '<div id="recurrence-ends-option-count" class="recurrence-ends-options">',
+                        '<div id="' . $pattern . '-ends-option-count" class="' . $pattern . '-ends-options">',
                         '</div>',
                         '<br />',
                     )
@@ -617,8 +628,8 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                             'min_value'       => 1,
                             'max_value'       => 365,
                             'html_label_text' => '',
-                            'html_id'         => 'recurrence-ends-count',
-                            'html_class'      => 'recurrence-ends-option small-text rem-input',
+                            'html_id'         => $pattern . '-ends-count',
+                            'html_class'      => $pattern . '-ends-option small-text rem-input',
                         )
                     ),
                 ),
@@ -632,4 +643,4 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
 
 
 
-// Location: /eea-recurring-events/ui/admin/forms/EventEditorRecurringEventsForm.php
+// Location: /eea-recurring-events-manager/ui/admin/forms/EventEditorRecurringEventsForm.php
