@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------
- * Event Espresso New_Addon Stylesheet
+ * Event Espresso Recurring_Events Stylesheet
  * (c) 2014 Event Espresso
  * -------------------------------------------------------------------------*/
 
@@ -36,7 +36,8 @@ General Styles
 
 .recurrence_freq,
 .exclusion_freq,
-.recurrence-ends-options {
+.recurrence-ends-options,
+.exclusion-ends-options {
     display: none;
     padding: 0 10px 20px 210px;
 }
