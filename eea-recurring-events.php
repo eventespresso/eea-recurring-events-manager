@@ -41,6 +41,7 @@
 // define versions and this file
 define('EE_REM_VERSION', '1.0.0.dev.000');
 define('EE_REM_PLUGIN_FILE', __FILE__);
+define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
 
 
 /**
@@ -122,10 +123,10 @@ function espresso_recurring_events_activation_error()
     $error_message = load_espresso_recurring_events_domain()
         ? sprintf(
             esc_html__(
-                'Event Espresso Recurring Events addon could not be activated. Please ensure that Event Espresso version%1$s or higher is running',
+                'Event Espresso Recurring Events addon could not be activated. Please ensure that Event Espresso version %1$s or higher is running',
                 'event_espresso'
             ),
-            ' ' . EventEspresso\RecurringEvents\domain\Domain::CORE_VERSION_REQUIRED
+            EE_REM_CORE_VERSION_REQUIRED
         )
         : esc_html__(
             'Event Espresso Recurring Events addon could not be activated. Please ensure that the latest version of Event Espresso core is running',
