@@ -6,6 +6,7 @@ use EE_Admin_Two_Column_Layout;
 use EE_Checkbox_Multi_Input;
 use EE_Datepicker_Input;
 use EE_Error;
+use EE_Event;
 use EE_Form_Section_HTML;
 use EE_Form_Section_Proper;
 use EE_Integer_Input;
@@ -35,6 +36,11 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
     const PATTERN_TYPE_EXCLUSION  = 'exclusion';
 
     /**
+     * @var EE_Event $event
+     */
+    protected $event;
+
+    /**
      * @var string $date_format
      */
     protected $date_format;
@@ -53,12 +59,12 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
     /**
      * EventEditorRecurringEventsForm constructor.
      *
+     * @param EE_Event $event
      * @throws EE_Error
      */
-    public function __construct()
+    public function __construct(EE_Event $event)
     {
-        // $this->date_format = get_option('date_format');
-        // $this->time_format = get_option('time_format');
+        $this->event       = $event;
         $this->date_format = 'Y-m-d';
         $this->time_format = 'h:i a';
         $this->now         = date("{$this->date_format} {$this->time_format}");
@@ -443,60 +449,60 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      * @return EE_Form_Section_Proper
      * @throws EE_Error
      */
-    private function yearlyFrequencySubsection($pattern)
-    {
-        return new EE_Form_Section_Proper(
-            array(
-                'name'             => 'yearly_freq',
-                'html_id'          => 'yearly_freq',
-                'layout_strategy'  => new EE_No_Layout(array('use_break_tags' => false)),
-                'form_html_filter' => new VsprintfFilter(
-                    esc_html__('%1$sEvery %7$s %4$syear%5$s(s) on: %3$s%3$s%8$s%2$s', 'event_espresso'),
-                    array(
-                        '<div id="' . $pattern . '-freq-yearly-section" class="' . $pattern . '_freq"><div>',
-                        '</div></div>',
-                        '<br />',
-                        '<span class="' . $pattern . '-every-span">',
-                        '</span>',
-                    )
-                ),
-                'subsections'      => array(
-                    'interval' => new EE_Integer_Input(
-                        array(
-                            'default'         => 1,
-                            'min_value'       => 1,
-                            'max_value'       => 10,
-                            'html_label_text' => '',
-                            'html_id'         => $pattern . '-yearly-interval',
-                            'html_class'      => $pattern . '-interval small-text rem-input',
-                        )
-                    ),
-                    'by_month'  => new EE_Checkbox_Multi_Input(
-                        array(
-                            1  => esc_html__('January'),
-                            2  => esc_html__('February'),
-                            3  => esc_html__('March'),
-                            4  => esc_html__('April'),
-                            5  => esc_html__('May'),
-                            6  => esc_html__('June'),
-                            7  => esc_html__('July'),
-                            8  => esc_html__('August'),
-                            9  => esc_html__('September'),
-                            10 => esc_html__('October'),
-                            11 => esc_html__('November'),
-                            12 => esc_html__('December'),
-                        ),
-                        array(
-                            'default'         => '',
-                            'html_label_text' => '',
-                            'html_id'         => $pattern . '-yearly_freq-by-month',
-                            'html_class'      => 'rem-input',
-                        )
-                    ),
-                ),
-            )
-        );
-    }
+    // private function yearlyFrequencySubsection($pattern)
+    // {
+    //     return new EE_Form_Section_Proper(
+    //         array(
+    //             'name'             => 'yearly_freq',
+    //             'html_id'          => 'yearly_freq',
+    //             'layout_strategy'  => new EE_No_Layout(array('use_break_tags' => false)),
+    //             'form_html_filter' => new VsprintfFilter(
+    //                 esc_html__('%1$sEvery %7$s %4$syear%5$s(s) on: %3$s%3$s%8$s%2$s', 'event_espresso'),
+    //                 array(
+    //                     '<div id="' . $pattern . '-freq-yearly-section" class="' . $pattern . '_freq"><div>',
+    //                     '</div></div>',
+    //                     '<br />',
+    //                     '<span class="' . $pattern . '-every-span">',
+    //                     '</span>',
+    //                 )
+    //             ),
+    //             'subsections'      => array(
+    //                 'interval' => new EE_Integer_Input(
+    //                     array(
+    //                         'default'         => 1,
+    //                         'min_value'       => 1,
+    //                         'max_value'       => 10,
+    //                         'html_label_text' => '',
+    //                         'html_id'         => $pattern . '-yearly-interval',
+    //                         'html_class'      => $pattern . '-interval small-text rem-input',
+    //                     )
+    //                 ),
+    //                 'by_month'  => new EE_Checkbox_Multi_Input(
+    //                     array(
+    //                         1  => esc_html__('January'),
+    //                         2  => esc_html__('February'),
+    //                         3  => esc_html__('March'),
+    //                         4  => esc_html__('April'),
+    //                         5  => esc_html__('May'),
+    //                         6  => esc_html__('June'),
+    //                         7  => esc_html__('July'),
+    //                         8  => esc_html__('August'),
+    //                         9  => esc_html__('September'),
+    //                         10 => esc_html__('October'),
+    //                         11 => esc_html__('November'),
+    //                         12 => esc_html__('December'),
+    //                     ),
+    //                     array(
+    //                         'default'         => '',
+    //                         'html_label_text' => '',
+    //                         'html_id'         => $pattern . '-yearly_freq-by-month',
+    //                         'html_class'      => 'rem-input',
+    //                     )
+    //                 ),
+    //             ),
+    //         )
+    //     );
+    // }
 
 
     /**
@@ -557,6 +563,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
 
 
     /**
+     * @param string $pattern
      * @return EE_Form_Section_Proper
      * @throws EE_Error
      */
@@ -600,6 +607,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
 
 
     /**
+     * @param string $pattern
      * @return EE_Form_Section_Proper
      * @throws EE_Error
      */
