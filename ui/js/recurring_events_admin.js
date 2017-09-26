@@ -544,10 +544,10 @@ jQuery(document).ready(function($) {
       // console_log('EE_REM.RRULE_OPTIONS.bymonthday', EE_REM.RRULE_OPTIONS.bymonthday, false);
       // console_log('EE_REM.RRULE_OPTIONS.bymonth', EE_REM.RRULE_OPTIONS.bymonth, false);
     };
-
-
+    
 
   };
 
   EE_REM.initialize();
+
 });
