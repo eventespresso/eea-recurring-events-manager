@@ -1,8 +1,4 @@
 <?php
-use EventEspresso\core\exceptions\InvalidDataTypeException;
-use EventEspresso\core\exceptions\InvalidInterfaceException;
-use EventEspresso\core\services\loaders\LoaderFactory;
-use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\RecurringEvents\domain\Domain;
 
 defined('EVENT_ESPRESSO_VERSION') || exit();
