@@ -22,7 +22,7 @@ class Domain extends DomainBase
     /**
      * EE Core Version Required for Add-on
      */
-    const CORE_VERSION_REQUIRED = '4.9.44.rc.0000';
+    const CORE_VERSION_REQUIRED = EE_REM_CORE_VERSION_REQUIRED;
 
 
 
@@ -139,6 +139,17 @@ class Domain extends DomainBase
     public static function adminTemplateUrl()
     {
         return Domain::adminBaseUrl() . 'templates/';
+    }
+
+
+
+    /**
+     * @return string
+     * @throws DomainException
+     */
+    public static function adminUiPath()
+    {
+        return self::pluginPath() . 'ui/admin/';
     }
 
 
