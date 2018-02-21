@@ -9,6 +9,7 @@ use EE_Error;
 use EE_Event;
 use EE_Form_Section_HTML;
 use EE_Form_Section_Proper;
+use EE_Hidden_Input;
 use EE_Integer_Input;
 use EE_No_Layout;
 use EE_Radio_Button_Input;
@@ -28,7 +29,7 @@ defined('EVENT_ESPRESSO_VERSION') || exit;
  * @author  Brent Christensen
  * @since   $VID:$
  */
-class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
+class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
 {
 
     const PATTERN_TYPE_RECURRENCE = 'recurrence';
@@ -87,10 +88,10 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
             'layout_strategy' => new EE_Admin_Two_Column_Layout(),
             'subsections'     => array(
                 'recurrence' => $this->recurrenceDescription(
-                    EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+                    EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
                 ),
                 'exclusion'  => $this->recurrenceDescription(
-                    EventEditorRecurringEventsForm::PATTERN_TYPE_EXCLUSION
+                    EventEditorRecurrencePatternsForm::PATTERN_TYPE_EXCLUSION
                 ),
                 'datetimes' => new EE_Form_Section_HTML(
                     EEH_HTML::tr(
@@ -109,6 +110,11 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                         )
                     )
                 ),
+                'datetimes_json' => new EE_Hidden_Input(
+                    array(
+                        'html_id' => 'rem-generated-datetimes-json'
+                    )
+                ),
             ),
         );
     }
@@ -121,7 +127,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     private function recurrenceDescription($pattern)
     {
-        $html_label_text = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+        $html_label_text = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
             ? esc_html__('Repeats', 'event_espresso')
             : esc_html__('Exclusions', 'event_espresso');
         return new EE_Form_Section_Proper(
@@ -176,7 +182,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     private function recurrencePattern($pattern)
     {
-        $starts_label = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+        $starts_label = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
             ? esc_html__('Recurrence', 'event_espresso')
             : esc_html__('Exclusion', 'event_espresso');
         $frequencies = array(
@@ -185,10 +191,10 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
             'MONTHLY' => esc_html__('Monthly', 'event_espresso'),
             // 'YEARLY'  => esc_html__('Yearly', 'event_espresso'),
         );
-        if ($pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_EXCLUSION) {
+        if ($pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_EXCLUSION) {
             $frequencies = array('NONE' => esc_html__('None', 'event_espresso')) + $frequencies;
         }
-        $default = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+        $default = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
             ? 'DAILY'
             : 'NONE';
         return new EE_Form_Section_Proper(
@@ -512,7 +518,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     private function recurrenceEnds($pattern)
     {
-        if($pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE) {
+        if($pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE) {
             $ends_label = esc_html__('Recurrence Ends', 'event_espresso');
             $string_label = esc_html__('Recurrence String', 'event_espresso');
         } else {
@@ -539,7 +545,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                     ),
                     'until' => $this->recurrenceEndsOnDateSubsection($pattern),
                     'count' => $this->recurrenceEndsAfterSubsection($pattern),
-                    'rrule_string' => new EE_Form_Section_HTML(
+                    'rrule_string_display' => new EE_Form_Section_HTML(
                         EEH_HTML::tr(
                             EEH_HTML::th(
                                 $string_label,
@@ -551,9 +557,14 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
                             . EEH_HTML::td(
                                 EEH_HTML::div(
                                     '',
-                                    "rem-{$pattern}-string"
+                                    "rem-{$pattern}-string-display"
                                 )
                             )
+                        )
+                    ),
+                    'rrule_string' => new EE_Hidden_Input(
+                        array(
+                            'html_id' => "rem-{$pattern}-string"
                         )
                     ),
                 ),
@@ -569,7 +580,7 @@ class EventEditorRecurringEventsForm extends EE_Form_Section_Proper
      */
     private function recurrenceEndsOnDateSubsection($pattern)
     {
-        $end_date = $pattern === EventEditorRecurringEventsForm::PATTERN_TYPE_RECURRENCE
+        $end_date = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
             ? $this->now
             : date(
                 "{$this->date_format} {$this->time_format}",
