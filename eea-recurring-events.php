@@ -39,9 +39,6 @@
 
 
 // define versions and this file
-use EventEspresso\core\exceptions\InvalidDataTypeException;
-use EventEspresso\core\exceptions\InvalidInterfaceException;
-
 define('EE_REM_VERSION', '1.0.0.rc.000');
 define('EE_REM_PLUGIN_FILE', __FILE__);
 define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
@@ -73,7 +70,9 @@ add_action('activate_eea-recurring-events-manager/eea-recurring-events-manager.p
 function load_espresso_recurring_events()
 {
     if (
-        class_exists('EE_Addon')
+        defined('PHP_VERSION_ID')
+        && PHP_VERSION_ID > 50600
+        && class_exists('EE_Addon')
         && class_exists('EventEspresso\core\domain\DomainBase')
     ) {
         try {
@@ -133,17 +132,13 @@ function espresso_recurring_events_activation_error()
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
     deactivate_plugins(plugin_basename(__FILE__));
-    $error_message = load_espresso_recurring_events_domain()
-        ? sprintf(
+    $error_message = sprintf(
             esc_html__(
-                'Event Espresso Recurring Events addon could not be activated. Please ensure that Event Espresso version %1$s or higher is running',
+                'Event Espresso Recurring Events addon could not be activated. Please ensure that Event Espresso version %1$s or higher is activated and your server is running PHP version %2$s or greater.',
                 'event_espresso'
             ),
-            EE_REM_CORE_VERSION_REQUIRED
-        )
-        : esc_html__(
-            'Event Espresso Recurring Events addon could not be activated. Please ensure that the latest version of Event Espresso core is running',
-            'event_espresso'
+            EE_REM_CORE_VERSION_REQUIRED,
+            '5.6'
         );
     ?>
     <div class="error">
