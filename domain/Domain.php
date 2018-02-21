@@ -30,9 +30,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function entitiesPath()
+    public function entitiesPath()
     {
-        return self::pluginPath() . 'domain/entities/';
+        return $this->pluginPath() . 'domain/entities/';
     }
 
 
@@ -41,9 +41,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function servicesPath()
+    public function servicesPath()
     {
-        return self::pluginPath() . 'domain/services/';
+        return $this->pluginPath() . 'domain/services/';
     }
 
 
@@ -52,9 +52,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminPath()
+    public function adminPath()
     {
-        return self::pluginPath() . 'domain/services/admin/recurring_events/';
+        return $this->pluginPath() . 'domain/services/admin/recurring_events/';
     }
 
 
@@ -62,7 +62,7 @@ class Domain extends DomainBase
     /**
      * @return string
      */
-    public static function adminPageSlug()
+    public function adminPageSlug()
     {
         return 'espresso_recurring_events';
     }
@@ -72,7 +72,7 @@ class Domain extends DomainBase
     /**
      * @return string
      */
-    public static function adminPageLabel()
+    public function adminPageLabel()
     {
         return esc_html__('Recurring Events', 'event_espresso');
     }
@@ -82,9 +82,9 @@ class Domain extends DomainBase
     /**
      * @return string
      */
-    public static function adminPageUrl()
+    public function adminPageUrl()
     {
-        return admin_url('admin.php?page=' . Domain::adminPageSlug());
+        return admin_url('admin.php?page=' . $this->adminPageSlug());
     }
 
 
@@ -93,9 +93,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminAssetsPath()
+    public function adminAssetsPath()
     {
-        return Domain::adminPath() . 'assets/';
+        return $this->adminPath() . 'assets/';
     }
 
 
@@ -104,9 +104,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminTemplatePath()
+    public function adminTemplatePath()
     {
-        return Domain::adminPath() . 'templates/';
+        return $this->adminPath() . 'templates/';
     }
 
 
@@ -115,9 +115,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminBaseUrl()
+    public function adminBaseUrl()
     {
-        return Domain::pluginUrl() . 'admin/recurring_events/';
+        return $this->pluginUrl() . 'admin/recurring_events/';
     }
 
 
@@ -126,9 +126,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminAssetsUrl()
+    public function adminAssetsUrl()
     {
-        return Domain::adminBaseUrl() . 'assets/';
+        return $this->adminBaseUrl() . 'assets/';
     }
 
 
@@ -136,9 +136,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminTemplateUrl()
+    public function adminTemplateUrl()
     {
-        return Domain::adminBaseUrl() . 'templates/';
+        return $this->adminBaseUrl() . 'templates/';
     }
 
 
@@ -147,9 +147,9 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public static function adminUiPath()
+    public function adminUiPath()
     {
-        return self::pluginPath() . 'ui/admin/';
+        return $this->pluginPath() . 'ui/admin/';
     }
 
 
