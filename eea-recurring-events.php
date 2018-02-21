@@ -39,7 +39,10 @@
 
 
 // define versions and this file
-define('EE_REM_VERSION', '1.0.0.dev.000');
+use EventEspresso\core\exceptions\InvalidDataTypeException;
+use EventEspresso\core\exceptions\InvalidInterfaceException;
+
+define('EE_REM_VERSION', '1.0.0.rc.000');
 define('EE_REM_PLUGIN_FILE', __FILE__);
 define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
 
@@ -63,19 +66,6 @@ function espresso_recurring_events_plugin_activation_errors()
 add_action('activate_eea-recurring-events-manager/eea-recurring-events-manager.php', 'espresso_recurring_events_plugin_activation_errors');
 
 
-/**
- *    registers addon with EE core
- */
-function load_espresso_recurring_events_domain()
-{
-    if (class_exists('EventEspresso\core\domain\DomainBase')) {
-        EE_Psr4AutoloaderInit::psr4_loader()->addNamespace('EventEspresso\RecurringEvents',__DIR__);
-        EventEspresso\RecurringEvents\domain\Domain::init(EE_REM_PLUGIN_FILE, EE_REM_VERSION);
-        return true;
-    }
-    return false;
-}
-
 
 /**
  *    registers addon with EE core
@@ -84,13 +74,36 @@ function load_espresso_recurring_events()
 {
     if (
         class_exists('EE_Addon')
-        && load_espresso_recurring_events_domain()
+        && class_exists('EventEspresso\core\domain\DomainBase')
     ) {
-        espresso_load_required(
-            'EE_Recurring_Events',
-            EventEspresso\RecurringEvents\domain\Domain::pluginPath() . 'EE_Recurring_Events.class.php'
-        );
-        EE_Recurring_Events::register_addon();
+        try {
+            EE_Psr4AutoloaderInit::psr4_loader()->addNamespace('EventEspresso\RecurringEvents', __DIR__);
+            EE_Dependency_Map::register_dependencies(
+                'EventEspresso\RecurringEvents\domain\RecurringEventsManager',
+                array(
+                    'EE_Dependency_Map'                           => EE_Dependency_Map::load_from_cache,
+                    'EventEspresso\RecurringEvents\domain\Domain' => EE_Dependency_Map::load_from_cache,
+                )
+            );
+            EventEspresso\RecurringEvents\domain\RecurringEventsManager::registerAddon(
+                EventEspresso\core\domain\DomainFactory::getShared(
+                    new EventEspresso\core\domain\values\FullyQualifiedName(
+                        'EventEspresso\RecurringEvents\domain\Domain'
+                    ),
+                    array(
+                        new EventEspresso\core\domain\values\FilePath(EE_REM_PLUGIN_FILE),
+                        EventEspresso\core\domain\values\Version::fromString(EE_REM_VERSION),
+                    )
+                )
+            );
+        } catch (Exception $e) {
+            add_action(
+                    'admin_notices',
+                    function() use ($e) {
+                        echo '<div class="error"><p>' . $e->getMessage() . '</p></div>';
+                    }
+            );
+        }
     } else {
         add_action('admin_notices', 'espresso_recurring_events_activation_error');
     }
