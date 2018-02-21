@@ -4,6 +4,7 @@ use EventEspresso\core\exceptions\ExceptionStackTraceDisplay;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
 use EventEspresso\core\services\loaders\LoaderFactory;
+use EventEspresso\core\services\request\RequestInterface;
 
 if (! defined('EVENT_ESPRESSO_VERSION')) {
     exit('No direct script access allowed');
@@ -59,7 +60,7 @@ class EED_Recurring_Events extends EED_Module
     {
         add_action(
             'AHEE__EE_System__initialize',
-            array('EED_Recurring_Events', 'loadRecurringEventsAdmin')
+            array('EED_Recurring_Events', 'loadRecurringEventsAdminComponents')
         );
     }
 
@@ -103,24 +104,74 @@ class EED_Recurring_Events extends EED_Module
      * @throws InvalidArgumentException
      * @throws Exception
      */
-    public static function loadRecurringEventsAdmin()
+    public static function loadRecurringEventsAdminComponents()
     {
         try {
-            $request = LoaderFactory::getLoader()->getShared('EE_Request');
-            if (
-                $request instanceof EE_Request
-                && $request->get('page') === 'espresso_events'
-                && $request->get('action') === 'edit'
-            ) {
-                /** @var EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdmin $recurring_events_admin */
-                $recurring_events_admin = LoaderFactory::getLoader()->getShared(
-                    'EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdmin'
-                );
-                $recurring_events_admin->setHooks();
+            $request = LoaderFactory::getLoader()->getShared('EventEspresso\core\services\request\RequestInterface');
+            if ($request instanceof RequestInterface) {
+                $page   = $request->getRequestParam('page');
+                $action = $request->getRequestParam('action');
+                if ($page === 'espresso_events') {
+                    if ($action === 'create_new') {
+                        EED_Recurring_Events::AddNewEventModal();
+                    }
+                    if ($action === 'edit' || $action === 'create_new') {
+                        EED_Recurring_Events::loadRecurringEventsAdmin();
+                    }
+                } elseif ($page === null) {
+                    if ($action === 'editpost') {
+                        EED_Recurring_Events::processRecurringEventsAdmin();
+                    }
+                }
             }
         } catch (Exception $exception) {
             new ExceptionStackTraceDisplay($exception);
         }
+    }
+
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws InvalidDataTypeException
+     * @throws InvalidInterfaceException
+     */
+    private static function AddNewEventModal()
+    {
+        /** @var EventEspresso\RecurringEvents\ui\admin\AddNewEventModal $add_new_event_modal */
+        $add_new_event_modal = LoaderFactory::getLoader()->getShared(
+            'EventEspresso\RecurringEvents\ui\admin\AddNewEventModal'
+        );
+        $add_new_event_modal->setHooks();
+    }
+
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws InvalidDataTypeException
+     * @throws InvalidInterfaceException
+     */
+    private static function loadRecurringEventsAdmin()
+    {
+        /** @var EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdmin $recurring_events_admin */
+        $recurring_events_admin = LoaderFactory::getLoader()->getShared(
+            'EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdmin'
+        );
+        $recurring_events_admin->setHooks();
+    }
+
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws InvalidDataTypeException
+     * @throws InvalidInterfaceException
+     */
+    private static function processRecurringEventsAdmin()
+    {
+        /** @var EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdminUpdate $recurring_events_admin_update */
+        $recurring_events_admin_update = LoaderFactory::getLoader()->getShared(
+            'EventEspresso\RecurringEvents\ui\admin\RecurringEventsAdminUpdate'
+        );
+        $recurring_events_admin_update->setHooks();
     }
 
 }
