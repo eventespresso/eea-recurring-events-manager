@@ -3,15 +3,13 @@
 namespace EventEspresso\RecurringEvents\ui\admin;
 
 use DomainException;
-use EE_Error;
 use EventEspresso\core\exceptions\ExceptionStackTraceDisplay;
-use EventEspresso\core\exceptions\InvalidDataTypeException;
-use EventEspresso\core\exceptions\InvalidInterfaceException;
+use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\RecurringEvents\domain\Domain;
-use EventEspresso\RecurringEvents\ui\admin\forms\EventEditorRecurringEventsForm;
+use EventEspresso\RecurringEvents\ui\admin\forms\EventEditorRecurrencePatternsFormHandler;
+use EventEspresso\RecurringEvents\ui\admin\forms\EventEditorTicketsAndDatetimesForm;
 use Events_Admin_Page;
 use Exception;
-use InvalidArgumentException;
 
 defined('EVENT_ESPRESSO_VERSION') || exit('NO direct script access allowed');
 
@@ -34,26 +32,46 @@ class RecurringEventsAdmin
     public $admin_page;
 
     /**
-     * @var EventEditorRecurringEventsForm $event_editor_recurring_events_form
+     * @var Domain $domain
      */
-    public $event_editor_recurring_events_form;
+    private $domain;
+
+    /**
+     * @var EventEditorTicketsAndDatetimesForm $event_editor_tickets_and_datetimes_form
+     */
+    public $event_editor_tickets_and_datetimes_form;
+
+    /**
+     * @var EventEditorRecurrencePatternsFormHandler $recurrence_patterns_form_handler
+     */
+    public $recurrence_patterns_form_handler;
+
+    /**
+     * @var LoaderInterface $loader
+     */
+    public $loader;
 
 
     /**
      * RecurringEventsAdmin constructor.
+     *
+     * @param Domain          $domain
+     * @param LoaderInterface $loader
      */
-    public function __construct() {
+    public function __construct(Domain $domain, LoaderInterface $loader) {
+        $this->domain = $domain;
+        $this->loader = $loader;
     }
 
 
 
     public function setHooks() {
         add_action('admin_enqueue_scripts', array($this, 'addMetaboxes'));
-        // add_action(
-        //     'admin_enqueue_scripts',
-        //     array($this, 'removeMetaboxes'),
-        //     25
-        // );
+        add_action(
+            'admin_enqueue_scripts',
+            array($this, 'removeMetaboxes'),
+            25
+        );
         add_filter(
             'FHEE__Events_Admin_Page___insert_update_cpt_item__event_update_callbacks',
             array($this, 'eventUpdateCallbacks')
@@ -64,7 +82,7 @@ class RecurringEventsAdmin
             999,
             2
         );
-        add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
     }
 
 
@@ -80,9 +98,13 @@ class RecurringEventsAdmin
     public function setupPageConfig(array $page_config, Events_Admin_Page $admin_page)
     {
         try {
-            $this->admin_page                         = $admin_page;
-            $this->event_editor_recurring_events_form = new EventEditorRecurringEventsForm(
-                $this->admin_page->get_event_object()
+            $this->admin_page                              = $admin_page;
+            // $this->event_editor_tickets_and_datetimes_form = new EventEditorTicketsAndDatetimesForm(
+            //     $this->admin_page->get_event_object()
+            // );
+            $this->recurrence_patterns_form_handler = $this->loader->getShared(
+                'EventEspresso\RecurringEvents\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
+                array($this->admin_page->get_event_object())
             );
             return $page_config;
         } catch (Exception $exception) {
@@ -99,9 +121,17 @@ class RecurringEventsAdmin
     public function addMetaboxes()
     {
         add_meta_box(
-            'recurring-events-manager-metabox',
+            'recurrence-patterns-metabox',
             esc_html__('Recurring Events Manager', 'event_espresso'),
-            array($this, 'recurringEventsManagerMetaBox'),
+            array($this, 'recurrencePatternsMetaBox'),
+            EVENTS_PG_SLUG,
+            'normal', // normal    advanced    side
+            'high' // high    core    default    low
+        );
+        add_meta_box(
+            'tickets-and-datetimes-metabox',
+            esc_html__('Event Tickets & Datetimes', 'event_espresso'),
+            array($this, 'ticketsAndDatetimesMetaBox'),
             EVENTS_PG_SLUG,
             'normal', // normal    advanced    side
             'high' // high    core    default    low
@@ -115,11 +145,11 @@ class RecurringEventsAdmin
      */
     public function removeMetaboxes()
     {
-        remove_meta_box(
-            'espresso_events_Pricing_Hooks_pricing_metabox_metabox',
-            'espresso_events',
-            'normal'
-        );
+        // remove_meta_box(
+        //     'espresso_events_Pricing_Hooks_pricing_metabox_metabox',
+        //     'espresso_events',
+        //     'normal'
+        // );
     }
 
 
@@ -130,33 +160,33 @@ class RecurringEventsAdmin
      * @return void
      * @throws DomainException
      */
-    public function enqueue_scripts()
+    public function enqueueScripts()
     {
         wp_register_style(
             'recurring_events',
-            Domain::pluginUrl() . 'ui/css/recurring_events_admin.css',
+            $this->domain->pluginUrl() . 'ui/css/recurring_events_admin.css',
             array(),
-            Domain::version()
+            $this->domain->version()
         );
         wp_register_script(
             'nlp',
-            Domain::pluginUrl() . 'ui/js/nlp.js',
+            $this->domain->pluginUrl() . 'ui/js/nlp.js',
             array(),
             '2.2.0',
             true
         );
         wp_register_script(
             'rrule',
-            Domain::pluginUrl() . 'ui/js/rrule.js',
+            $this->domain->pluginUrl() . 'ui/js/rrule.js',
             array('nlp'),
             '2.2.0',
             true
         );
         wp_register_script(
             'recurring_events',
-            Domain::pluginUrl() . 'ui/js/recurring_events_admin.js',
+            $this->domain->pluginUrl() . 'ui/js/recurring_events_admin.js',
             array('jquery', 'ee-datepicker', 'rrule'),
-            Domain::version(),
+            $this->domain->version(),
             true
         );
         wp_enqueue_style('recurring_events');
@@ -166,41 +196,23 @@ class RecurringEventsAdmin
 
     /**
      * @return void
-     * @throws InvalidArgumentException
-     * @throws InvalidInterfaceException
-     * @throws InvalidDataTypeException
-     * @throws EE_Error
      */
-    public function recurringEventsManagerMetaBox()
+    public function ticketsAndDatetimesMetaBox()
     {
-        echo $this->event_editor_recurring_events_form->get_html();
+        // echo $this->event_editor_tickets_and_datetimes_form->get_html();
     }
-
-
-    /**
-     * @param array $event_update_callbacks
-     * @return array
-     */
-    public function eventUpdateCallbacks(array $event_update_callbacks)
-    {
-        foreach ($event_update_callbacks as $key => $callback) {
-            if ($callback[1] === 'datetime_and_tickets_caf_update') {
-                unset($event_update_callbacks[$key]);
-            }
-        }
-        $event_update_callbacks[] = array($this, 'remEditorUpdate');
-        return $event_update_callbacks;
-    }
-
 
 
     /**
      * @return void
+     * @throws \LogicException
+     * @throws \EE_Error
      */
-    // public function remEditorUpdate($event, $data)
-    // {
-    //     \EEH_Debug_Tools::printr(__FUNCTION__, __CLASS__, __FILE__, __LINE__, 2);
-    // }
+    public function recurrencePatternsMetaBox()
+    {
+        echo $this->recurrence_patterns_form_handler->display();
+    }
+
 
 
 }
