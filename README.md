@@ -9,6 +9,8 @@ New EE4 Add-on Starter Template
 
 This add-on adds some extra groovy features to [Event Espresso](https://eventespresso.com).
 
+> Note, this add-on is **unreleased** and in active development.  Use **at your own risk** and it likely won't work.
+
 > Note, there is **no usage support** provided here.  Please read the entire contents of this document before posting any issues.  If we encounter issues that give evidence of this document not having been read the issue _will be closed_.
 
 | **Some Links**|     |
