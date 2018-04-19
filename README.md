@@ -62,7 +62,7 @@ Here's how we deal with pull requests for our repo:
 You may find [our post on contributing to open source software](https://eventespresso.com/2017/02/5-tips-for-contributing-to-open-source-software-like-event-espresso/) helpful.
 
 
-###Add-on File Structure / Architecture
+### Add-on File Structure / Architecture
 
 
 Event Espresso is currently in the early stages of converting over to a "Domain Driven Design" / "Hexagonal Architecture" inspired approach to our application design and file structure, which organizes our code into several layers. We have refactored the file structure for our Add-on Starter Template to reflect this.
