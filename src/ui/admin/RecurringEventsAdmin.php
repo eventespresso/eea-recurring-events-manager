@@ -3,11 +3,13 @@
 namespace EventEspresso\RecurringEvents\src\ui\admin;
 
 use DomainException;
+use EE_Event;
+use EEM_Event;
 use EventEspresso\core\exceptions\ExceptionStackTraceDisplay;
 use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\RecurringEvents\src\domain\Domain;
 use EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler;
-// use EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorTicketsAndDatetimesForm;
+ use EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorTicketsAndDatetimesForm;
 use Events_Admin_Page;
 use Exception;
 
@@ -27,19 +29,19 @@ class RecurringEventsAdmin
 {
 
     /**
-     * @var Events_Admin_Page $admin_page
+     * @var EEM_Event $event_model
      */
-    public $admin_page;
+    public $event_model;
 
     /**
      * @var Domain $domain
      */
     private $domain;
 
-    // /**
-    //  * @var EventEditorTicketsAndDatetimesForm $event_editor_tickets_and_datetimes_form
-    //  */
-    // public $event_editor_tickets_and_datetimes_form;
+    /**
+     * @var EventEditorTicketsAndDatetimesForm $event_editor_tickets_and_datetimes_form
+     */
+    public $event_editor_tickets_and_datetimes_form;
 
     /**
      * @var EventEditorRecurrencePatternsFormHandler $recurrence_patterns_form_handler
@@ -55,30 +57,47 @@ class RecurringEventsAdmin
     /**
      * RecurringEventsAdmin constructor.
      *
+     * @param EEM_Event       $event_model
      * @param Domain          $domain
      * @param LoaderInterface $loader
      */
-    public function __construct(Domain $domain, LoaderInterface $loader) {
-        $this->domain = $domain;
-        $this->loader = $loader;
+    public function __construct(EEM_Event $event_model, Domain $domain, LoaderInterface $loader) {
+        $this->event_model = $event_model;
+        $this->domain      = $domain;
+        $this->loader      = $loader;
     }
 
 
 
     public function setHooks() {
-        add_action('admin_enqueue_scripts', array($this, 'addMetaboxes'));
         add_action(
-            'admin_enqueue_scripts',
-            array($this, 'removeMetaboxes'),
-            25
+            'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_datetime_edit_row__actions_column_last',
+            array($this, 'editDatetimeRecurrenceAction'),
+            10, 2
         );
-        add_filter(
-            'FHEE__Events_Admin_Page___insert_update_cpt_item__event_update_callbacks',
-            array($this, 'eventUpdateCallbacks')
+        add_action(
+            'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_metabox_main__metabox_bottom',
+            array($this, 'recurrencePatternsForm'), 10, 3
         );
+        // add_action('admin_enqueue_scripts', array($this, 'addMetaboxes'));
+        // add_action(
+        //     'admin_enqueue_scripts',
+        //     array($this, 'removeMetaboxes'),
+        //     25
+        // );
+        // add_filter(
+        //     'FHEE__Events_Admin_Page___insert_update_cpt_item__event_update_callbacks',
+        //     array($this, 'eventUpdateCallbacks')
+        // );
+        // add_filter(
+        //     'FHEE__Extend_Events_Admin_Page__page_setup__page_config',
+        //     array($this, 'setupPageConfig'),
+        //     999,
+        //     2
+        // );
         add_filter(
-            'FHEE__Extend_Events_Admin_Page__page_setup__page_config',
-            array($this, 'setupPageConfig'),
+            'FHEE__EE_Event_Editor_Tips___set_tips_array__qtipsa',
+            array($this, 'remQtips'),
             999,
             2
         );
@@ -87,30 +106,24 @@ class RecurringEventsAdmin
 
 
     /**
-     * callback for FHEE__Extend_Events_Admin_Page__page_setup__page_config
-     *
-     * @param array             $page_config current page config.
-     * @param Events_Admin_Page $admin_page
-     * @return array
+     * @param EE_Event $event
+     * @return EventEditorRecurrencePatternsFormHandler
      * @throws Exception
      * @since  1.0.0
      */
-    public function setupPageConfig(array $page_config, Events_Admin_Page $admin_page)
+    public function getRecurrencePatternsFormHandler(EE_Event $event)
     {
-        try {
-            $this->admin_page                              = $admin_page;
-            // $this->event_editor_tickets_and_datetimes_form = new EventEditorTicketsAndDatetimesForm(
-            //     $this->admin_page->get_event_object()
-            // );
-            $this->recurrence_patterns_form_handler = $this->loader->getShared(
-                'EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
-                array($this->admin_page->get_event_object())
-            );
-            return $page_config;
-        } catch (Exception $exception) {
-            new ExceptionStackTraceDisplay($exception);
+        if(! $this->recurrence_patterns_form_handler instanceof EventEditorRecurrencePatternsFormHandler){
+            try {
+                $this->recurrence_patterns_form_handler = $this->loader->getShared(
+                    'EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
+                    array($event)
+                );
+            } catch (Exception $exception) {
+                new ExceptionStackTraceDisplay($exception);
+            }
         }
-        return array();
+        return $this->recurrence_patterns_form_handler;
     }
 
 
@@ -120,22 +133,22 @@ class RecurringEventsAdmin
      */
     public function addMetaboxes()
     {
-        add_meta_box(
-            'recurrence-patterns-metabox',
-            esc_html__('Recurring Events Manager', 'event_espresso'),
-            array($this, 'recurrencePatternsMetaBox'),
-            EVENTS_PG_SLUG,
-            'normal', // normal    advanced    side
-            'high' // high    core    default    low
-        );
-        add_meta_box(
-            'tickets-and-datetimes-metabox',
-            esc_html__('Event Tickets & Datetimes', 'event_espresso'),
-            array($this, 'ticketsAndDatetimesMetaBox'),
-            EVENTS_PG_SLUG,
-            'normal', // normal    advanced    side
-            'high' // high    core    default    low
-        );
+        // add_meta_box(
+        //     'recurrence-patterns-metabox',
+        //     esc_html__('Recurring Events Manager', 'event_espresso'),
+        //     array($this, 'recurrencePatternsMetaBox'),
+        //     EVENTS_PG_SLUG,
+        //     'normal', // normal    advanced    side
+        //     'high' // high    core    default    low
+        // );
+        // add_meta_box(
+        //     'tickets-and-datetimes-metabox',
+        //     esc_html__('Event Tickets & Datetimes', 'event_espresso'),
+        //     array($this, 'ticketsAndDatetimesMetaBox'),
+        //     EVENTS_PG_SLUG,
+        //     'normal', // normal    advanced    side
+        //     'high' // high    core    default    low
+        // );
     }
 
 
@@ -208,9 +221,52 @@ class RecurringEventsAdmin
      * @throws \LogicException
      * @throws \EE_Error
      */
-    public function recurrencePatternsMetaBox()
+    public function editDatetimeRecurrenceAction($dtt_row = 0, $DTT_ID = 0)
     {
-        echo $this->recurrence_patterns_form_handler->display();
+        echo '
+        <span data-context="datetime" data-datetime-row="'. $dtt_row.'" data-datetime-id="'. $DTT_ID.'" 
+        class="dashicons dashicons-image-rotate clickable ee-edit-datetime-recurrence">
+        </span>';
+    }
+
+
+    /**
+     * @return void
+     * @throws \InvalidArgumentException
+     * @throws \EventEspresso\core\exceptions\InvalidInterfaceException
+     * @throws \EventEspresso\core\exceptions\InvalidDataTypeException
+     * @throws \LogicException
+     * @throws \EE_Error
+     * @throws Exception
+     */
+    public function recurrencePatternsForm(
+        $EVT_ID,
+        $existing_datetime_ids,
+        $existing_ticket_ids)
+    {
+        $recurrence_patterns_form_handler = $this->getRecurrencePatternsFormHandler(
+            $this->event_model->get_one_by_ID($EVT_ID)
+        );
+        echo \EEH_HTML::div(
+            $recurrence_patterns_form_handler->display(),
+            'event-datetime-recurrence-patterns-div', 'hidden','max-width:800px;'
+        );
+    }
+
+
+    /**
+     * @param array $qtips
+     * @return array
+     */
+    public function remQtips(array $qtips)
+    {
+        // ee-edit-datetime-recurrence
+        $qtips[] = array(
+            'content_id' => 'ee-edit-datetime-recurrence-help',
+            'target'     => '.ee-edit-datetime-recurrence',
+            'content'    => __('Edit Recurring Event Datetimes', 'event_espresso')
+        );
+        return $qtips;
     }
 
 
