@@ -58,7 +58,7 @@ Class  RecurringEventsManager extends EE_Addon
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
                 'main_file_path'   => $domain->pluginFile(),
                 'module_paths'     => array(
-                    $domain->pluginPath() . 'ui/modules/EED_Recurring_Events.module.php',
+                    $domain->pluginPath() . '/src/domain/services/modules/EED_Recurring_Events.module.php',
                 ),
             )
         );
