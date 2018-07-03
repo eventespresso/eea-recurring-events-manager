@@ -14,10 +14,6 @@ use EventEspresso\core\exceptions\InvalidInterfaceException;
 use InvalidArgumentException;
 use ReflectionException;
 
-defined('EVENT_ESPRESSO_VERSION') || exit();
-
-
-
 /**
  * Class  RecurringEventsManager
  *
@@ -58,7 +54,16 @@ Class  RecurringEventsManager extends EE_Addon
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
                 'main_file_path'   => $domain->pluginFile(),
                 'module_paths'     => array(
-                    $domain->pluginPath() . '/src/domain/services/modules/EED_Recurring_Events.module.php',
+                    $domain->pluginPath() . 'ui/modules/EED_Recurring_Events.module.php',
+                ),
+                'dms_paths' => array(
+                    __CLASS__ => $domain->pluginPath() . 'domain/services/data_migration_scripts' . DS
+                ),
+                'model_paths' => array(
+                    __CLASS__ => $domain->pluginPath() . 'domain/entities/db_models' . DS
+                ),
+                'class_paths' => array(
+                    __CLASS__ => $domain->pluginPath() . 'domain/entities/db_classes' . DS
                 ),
             )
         );
@@ -105,7 +110,8 @@ Class  RecurringEventsManager extends EE_Addon
         $this->dependencyMap()->registerDependencies(
             'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdmin',
             array(
-                'EventEspresso\RecurringEvents\src\domain\Domain'         => EE_Dependency_Map::load_from_cache,
+                'EEM_Event'                                           => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\RecurringEvents\domain\Domain'         => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
             )
         );

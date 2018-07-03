@@ -99,16 +99,15 @@ class RecurringEventsAdminUpdate
      */
     public function remEditorUpdate(EE_Event $event, array $form_data)
     {
-        \EEH_Debug_Tools::printr(__FUNCTION__, __CLASS__, __FILE__, __LINE__, 2);
         $this->recurrence_patterns_form_handler = $this->loader->getShared(
             'EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
             array($event)
         );
-        // try {
+         try {
             $this->recurrence_patterns_form_handler->process($form_data);
-        // } catch (InvalidFormSubmissionException $exception) {
-        //     new ExceptionStackTraceDisplay($exception);
-        // }
-        exit();
+         } catch (InvalidFormSubmissionException $exception) {
+             new ExceptionStackTraceDisplay($exception);
+         }
     }
 }
+

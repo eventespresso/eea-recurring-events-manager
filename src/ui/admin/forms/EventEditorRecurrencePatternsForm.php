@@ -12,14 +12,11 @@ use EE_Form_Section_Proper;
 use EE_Hidden_Input;
 use EE_Integer_Input;
 use EE_No_Layout;
+use EE_No_Validation_Strategy;
 use EE_Radio_Button_Input;
 use EE_Select_Input;
 use EEH_HTML;
 use EventEspresso\core\libraries\form_sections\strategies\filter\VsprintfFilter;
-
-defined('EVENT_ESPRESSO_VERSION') || exit;
-
-
 
 /**
  * Class EventEditorRecurringEventsForm
@@ -42,19 +39,14 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
     protected $event;
 
     /**
-     * @var string $date_format
+     * @var string $start
      */
-    protected $date_format;
+    protected $start;
 
     /**
-     * @var string $time_format
+     * @var string $end
      */
-    protected $time_format;
-
-    /**
-     * @var string $now
-     */
-    protected $now;
+    protected $end;
 
 
     /**
@@ -66,9 +58,18 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
     public function __construct(EE_Event $event)
     {
         $this->event       = $event;
-        $this->date_format = 'Y-m-d';
-        $this->time_format = 'h:i a';
-        $this->now         = date("{$this->date_format} {$this->time_format}");
+        $this->start       = date('Y-m-d 12:00 a');
+        $this->end         = date(
+            'Y-m-d h:i a',
+            mktime(
+                12,
+                0,
+                0,
+                date('m'),
+                date('d', strtotime('+6 days')),
+                date('Y')
+            )
+        );
         parent::__construct(
             $this->formOptions()
         );
@@ -87,6 +88,11 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
             'html_id'         => 'recurring_events',
             'layout_strategy' => new EE_Admin_Two_Column_Layout(),
             'subsections'     => array(
+                'recurring_events_patterns_header' => new EE_Form_Section_HTML(
+                    EEH_HTML::h1(
+                        esc_html__('Event Datetime Recurrence Pattern Editor', 'event_espresso')
+                    )
+                ),
                 'recurrence' => $this->recurrenceDescription(
                     EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
                 ),
@@ -111,6 +117,11 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
                     )
                 ),
                 'datetimes_json' => new EE_Hidden_Input(
+                    array(
+                        'html_id' => 'rem-generated-datetimes-json'
+                    )
+                ),
+                'cancel' => new EE_Hidden_Input(
                     array(
                         'html_id' => 'rem-generated-datetimes-json'
                     )
@@ -146,10 +157,11 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
                                 'scope="row"'
                             )
                             . EEH_HTML::td(
-                                EEH_HTML::span(
+                                EEH_HTML::h4(
                                     esc_html__('none', 'event_espresso'),
                                     "{$pattern}-desc",
-                                    'pattern-desc-span'
+                                    'pattern-desc-span',
+                                    'display:inline; padding-left:0;'
                                 )
                                 // . EEH_HTML::br()
                                 . EEH_HTML::span(
@@ -182,21 +194,22 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
      */
     private function recurrencePattern($pattern)
     {
-        $starts_label = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
-            ? esc_html__('Recurrence', 'event_espresso')
-            : esc_html__('Exclusion', 'event_espresso');
         $frequencies = array(
             'DAILY'   => esc_html__('Daily', 'event_espresso'),
             'WEEKLY'  => esc_html__('Weekly', 'event_espresso'),
             'MONTHLY' => esc_html__('Monthly', 'event_espresso'),
             // 'YEARLY'  => esc_html__('Yearly', 'event_espresso'),
         );
-        if ($pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_EXCLUSION) {
+        if($pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE) {
+            $starts_label = esc_html__('Recurrence Starts', 'event_espresso');
+            $pattern_label = esc_html__('Recurrence Pattern', 'event_espresso');
+            $default = 'DAILY';
+        } else {
+            $starts_label = esc_html__('Exclusion Starts', 'event_espresso');
+            $pattern_label = esc_html__('Exclusion Pattern', 'event_espresso');
+            $default =  'NONE';
             $frequencies = array('NONE' => esc_html__('None', 'event_espresso')) + $frequencies;
         }
-        $default = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
-            ? 'DAILY'
-            : 'NONE';
         return new EE_Form_Section_Proper(
             array(
                 'name'            => $pattern,
@@ -209,14 +222,24 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
                             'html_label_text' => $starts_label,
                             'html_id'         => $pattern . '-dtstart',
                             'html_class'      => 'regular-text rem-datepicker rem-input',
-                            'default'         => $this->now,
+                            'default'         => $this->start,
                             'required'        => true,
                         )
                     ),
-                    'freq'    => new EE_Checkbox_Multi_Input(
+                    // 'duration' => new EE_Integer_Input(
+                    //     array(
+                    //         'default'         => 1,
+                    //         'min_value'       => 1,
+                    //         'max_value'       => 24,
+                    //         'html_label_text' => esc_html__('Duration in Hours', 'event_espresso'),
+                    //         'html_id'         => $pattern . '-duration',
+                    //         'html_class'      => $pattern . '-duration small-text',
+                    //     )
+                    // ),
+                    'freq'    => new EE_Radio_Button_Input(
                         $frequencies,
                         array(
-                            'html_label_text'  => '',
+                            'html_label_text'  => $pattern_label,
                             'default'          => $default,
                             'html_id'          => $pattern . '-freq',
                             'html_class'       => "{$pattern}_freq_option rem-input",
@@ -381,23 +404,25 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
                     'monthly_frequency_option_0' => new EE_Radio_Button_Input(
                         array(0 => ' '),
                         array(
-                            'html_name'       => 'monthly_frequency_option',
+                            'html_name'       => $pattern . '_monthly_frequency_option',
                             'html_id'         => $pattern . '-monthly-frequency-option-0',
                             'html_class'      => 'monthly_frequency_option rem-input',
                             'html_label_text' => '',
                             'default'         => 0,
                             'clear_float'     => false,
+                            'validation_strategies' => array(new EE_No_Validation_Strategy()),
                         )
                     ),
                     'monthly_frequency_option_1' => new EE_Radio_Button_Input(
                         array(1 => ' '),
                         array(
-                            'html_name'       => 'monthly_frequency_option',
+                            'html_name'       => $pattern . '_monthly_frequency_option',
                             'html_id'         => $pattern . '-monthly-frequency-option-1',
                             'html_class'      => 'monthly_frequency_option rem-input',
                             'html_label_text' => '',
-                            'default'         => '',
+                            'default'         => 0,
                             'clear_float'     => false,
+                            'validation_strategies' => array(new EE_No_Validation_Strategy()),
                         )
                     ),
                     'by_month_day'               => new EE_Integer_Input(
@@ -580,12 +605,6 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
      */
     private function recurrenceEndsOnDateSubsection($pattern)
     {
-        $end_date = $pattern === EventEditorRecurrencePatternsForm::PATTERN_TYPE_RECURRENCE
-            ? $this->now
-            : date(
-                "{$this->date_format} {$this->time_format}",
-                strtotime($this->now) + MONTH_IN_SECONDS
-            );
         return new EE_Form_Section_Proper(
             array(
                 'name'             => 'until',
@@ -606,9 +625,9 @@ class EventEditorRecurrencePatternsForm extends EE_Form_Section_Proper
                     'until' => new EE_Datepicker_Input(
                         array(
                             'html_label_text' => '',
-                            'html_id'         =>  $pattern . '-ends-until',
-                            'html_class'      =>  $pattern . '-ends-option regular-text rem-datepicker rem-input',
-                            'default'         => $end_date,
+                            'html_id'         => $pattern . '-ends-until',
+                            'html_class'      => $pattern . '-ends-option regular-text rem-datepicker rem-input',
+                            'default'         => $this->end,
                         )
                     ),
                 ),
