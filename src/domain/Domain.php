@@ -30,28 +30,6 @@ class Domain extends DomainBase
      * @return string
      * @throws DomainException
      */
-    public function entitiesPath()
-    {
-        return $this->pluginPath() . 'domain/entities/';
-    }
-
-
-
-    /**
-     * @return string
-     * @throws DomainException
-     */
-    public function servicesPath()
-    {
-        return $this->pluginPath() . 'domain/services/';
-    }
-
-
-
-    /**
-     * @return string
-     * @throws DomainException
-     */
     public function adminPath()
     {
         return $this->pluginPath() . 'domain/services/admin/recurring_events/';
