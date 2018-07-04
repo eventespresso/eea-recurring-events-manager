@@ -54,16 +54,16 @@ Class  RecurringEventsManager extends EE_Addon
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
                 'main_file_path'   => $domain->pluginFile(),
                 'module_paths'     => array(
-                    $domain->pluginPath() . 'ui/modules/EED_Recurring_Events.module.php',
+                    $domain->pluginPath() . 'src/domain/services/modules/EED_Recurring_Events.module.php',
                 ),
                 'dms_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'domain/services/data_migration_scripts' . DS
+                    __CLASS__ => $domain->pluginPath() . 'src/domain/services/data_migration_scripts/',
                 ),
                 'model_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'domain/entities/db_models' . DS
+                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_models/',
                 ),
                 'class_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'domain/entities/db_classes' . DS
+                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_classes/',
                 ),
             )
         );
@@ -111,7 +111,7 @@ Class  RecurringEventsManager extends EE_Addon
             'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdmin',
             array(
                 'EEM_Event'                                           => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\RecurringEvents\domain\Domain'         => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\RecurringEvents\src\domain\Domain'         => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
             )
         );
