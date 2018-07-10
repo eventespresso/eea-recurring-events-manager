@@ -1,0 +1,53 @@
+{
+	"name": "eventespresso/eea-recurring-events-manager",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"description": "Event Espresso Recurring Events Manager Add-on",
+	"authors": [
+		{
+			"name": "Brent Christensen c/o Event Espresso tEEm",
+			"email": "developers@eventspresso.com",
+			"homepage": "http://developer.eventespresso.com"
+		}
+	],
+	"homepage": "https://eventespresso.com",
+	"keywords": [
+		"event-espresso",
+		"wordpress",
+		"events",
+		"event-management",
+		"event-tickets",
+		"event-registration",
+		"ticketing-system",
+		"recurring-events"
+	],
+	"support": {
+		"issues": "https://github.com/eventespresso/eea-recurring-events-manager/issues",
+		"forum": "https://eventespresso/support/forums",
+		"source": "https://github.com/eventespresso/eea-recurring-events-manager",
+		"docs": "https://github.com/eventespresso/eea-recurring-events-manager/tree/master/docs"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/eventespresso/ee-coding-standards"
+		}
+	],
+	"require-dev": {
+		"eventespresso/ee-coding-standards": "dev-master",
+		"roave/security-advisories": "dev-master"
+	},
+	"require": {
+		"composer/installers": "~1.0",
+		"php": ">=5.5"
+	},
+	"scripts": {
+		"config-eventespressocs": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/wimg/php-compatibility,../../../vendor/eventespresso/ee-coding-standards",
+			"\"vendor/bin/phpcs\" --config-set default_standard EventEspresso"
+		],
+		"lint": "vendor/bin/phpcs",
+		"lint:skip-warnings": "vendor/bin/phpcs -n",
+		"lint:fix": "vendor/bin/phpcbf"
+	}
+}

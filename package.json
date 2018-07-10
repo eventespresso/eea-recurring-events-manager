@@ -1,30 +1,97 @@
 {
-  "name": "eea-recurring-events-manager",
+  "name": "@eventespresso/eea-recurring-events-manager",
   "version": "1.0.0",
-  "description": "Event Espresso Recurring Events Manager Addon",
-  "main": "webpack.config.js",
+  "description": "Event Espresso Recurring Events Manager Add-on",
+  "main": "webpack.dev.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "build": "webpack"
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "watch-poll": "webpack --watch --watch-poll --config webpack.dev.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci": "concurrently \"npm run lint && npm run build\" \"npm run test-unit:coverage-ci\"",
+    "test": "npm run lint && npm run test-unit",
+    "test-php": "cd tests && phpunit",
+    "test-php:coverage-ci": "npm run test-php -- --coverage-clover=coverage.xml && codecov",
+    "lint-php": "composer run-script lint",
+    "lint-php:skip-warnings": "composer run-script lint:skip-warnings",
+    "lint-php:fix": "composer run-script lint-fix",
+    "test-unit": "wp-scripts test-unit-js --config tests/javascript-config/unit/jest.config.json",
+    "test-unit:coverage": "npm run test-unit -- --coverage",
+    "test-unit:coverage-ci": "npm run test-unit -- --coverage --maxWorkers 1 && codecov",
+    "test-unit:watch": "npm run test-unit -- --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git@codebasehq.com:events/event-espresso/eea-recurring-events-manager.git"
+    "url": "git+https://github.com/eventespresso/eea-recurring-events-manager.git"
   },
-  "author": "Brent Christensen c/o Event Espresso",
-  "license": "GPL-2.0",
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+  "author": "Brent Christensen c/o Event Espresso tEEm",
+  "license": "GPL-2.0-or-later",
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=6.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "webpack": "^4.1.1"
+    "@wordpress/babel-plugin-makepot": "^1.0.1",
+    "@wordpress/babel-preset-default": "^1.3.0",
+    "@wordpress/browserslist-config": "^2.1.4",
+    "@wordpress/scripts": "^1.1.6",
+    "autoprefixer": "^8.5.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "check-node-version": "^3.2.0",
+    "clean-webpack-plugin": "^0.1.18",
+    "codecov": "^3.0.2",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.5",
+    "css-loader": "^0.28.11",
+    "deep-freeze": "0.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-wordpress": "git://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress.git#1774343f6226052a46b081e01db3fca8793cc9f1",
+    "gutenberg": "wordpress/gutenberg#master",
+    "js-green-licenses": "^0.5.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "pegjs": "^0.10.0",
+    "pegjs-loader": "^0.5.4",
+    "postcss-loader": "^2.1.5",
+    "raw-loader": "^0.5.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-redux": "^5.0.6",
+    "react-test-renderer": "^16.3.1",
+    "recast": "^0.14.7",
+    "redux": "^3.7.2",
+    "webpack": "^4.8.3",
+    "webpack-assets-manifest": "^3.0.1",
+    "webpack-cli": "^3.0.1",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "@wordpress/dom-ready": "^1.0.2",
+    "@wordpress/i18n": "^1.1.1",
+    "@wordpress/is-shallow-equal": "^1.0.2",
+    "@wordpress/jest-preset-default": "^1.0.6",
+    "accessible-react-table": "^0.2.0",
+    "bootstrap": "^4.1.1",
+    "memize": "^1.0.5",
+    "querystringify": "^1.0.0",
+    "react-rrule-generator": "^1.0.2",
+    "react-select": "^2.0.0-beta.6",
+    "react-table": "^6.8.6",
+    "rrule": "^2.2.9"
   }
 }
