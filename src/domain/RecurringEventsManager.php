@@ -11,6 +11,9 @@ use EventEspresso\core\domain\DomainInterface;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidEntityException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
+use EventEspresso\core\services\assets\AssetCollection;
+use EventEspresso\core\services\assets\Registry;
+use EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager;
 use InvalidArgumentException;
 use ReflectionException;
 
@@ -49,11 +52,11 @@ Class  RecurringEventsManager extends EE_Addon
         EE_Register_Addon::register(
             'EventEspresso\RecurringEvents\src\domain\RecurringEventsManager',
             array(
-                'version'          => $domain->version(),
-                'plugin_slug'      => 'eea_recurring_events',
+                'version' => $domain->version(),
+                'plugin_slug' => 'eea_recurring_events',
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
-                'main_file_path'   => $domain->pluginFile(),
-                'module_paths'     => array(
+                'main_file_path' => $domain->pluginFile(),
+                'module_paths' => array(
                     $domain->pluginPath() . 'src/domain/services/modules/EED_Recurring_Events.module.php',
                 ),
                 'dms_paths' => array(
@@ -110,25 +113,33 @@ Class  RecurringEventsManager extends EE_Addon
         $this->dependencyMap()->registerDependencies(
             'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdmin',
             array(
-                'EEM_Event'                                           => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\RecurringEvents\src\domain\Domain'         => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager' => EE_Dependency_Map::load_from_cache,
+                'EEM_Event' => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
             )
         );
         $this->dependencyMap()->registerDependencies(
             'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate',
             array(
-                'EventEspresso\RecurringEvents\src\domain\Domain'          => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\core\services\request\RequestInterface' => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\core\services\loaders\LoaderInterface'  => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
             )
         );
+
+        $this->dependencyMap()->add_alias(
+            Domain::class,
+            DomainInterface::class,
+            RecurringEventsAssetManager::class
+        );
         $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
-            array(
-                null,
-                'EE_Registry' => EE_Dependency_Map::load_from_cache,
-            )
+            RecurringEventsAssetManager::class,
+            [
+                AssetCollection::class => EE_Dependency_Map::load_from_cache,
+                Domain::class => EE_Dependency_Map::load_from_cache,
+                Registry::class => EE_Dependency_Map::load_from_cache
+            ]
         );
     }
 }
