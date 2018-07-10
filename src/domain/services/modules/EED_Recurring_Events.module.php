@@ -118,11 +118,11 @@ class EED_Recurring_Events extends EED_Module
                     if ($action === 'edit' || $action === 'create_new') {
                         EED_Recurring_Events::loadRecurringEventsAdmin();
                     }
-                } elseif ($page === null) {
+                } /*elseif ($page === null) {
                     if ($action === 'editpost') {
                         EED_Recurring_Events::processRecurringEventsAdmin();
                     }
-                }
+                }*/
             }
         } catch (Exception $exception) {
             new ExceptionStackTraceDisplay($exception);
@@ -165,14 +165,14 @@ class EED_Recurring_Events extends EED_Module
      * @throws InvalidDataTypeException
      * @throws InvalidInterfaceException
      */
-    private static function processRecurringEventsAdmin()
-    {
-        /** @var EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate $recurring_events_admin_update */
-        $recurring_events_admin_update = LoaderFactory::getLoader()->getShared(
-            'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate'
-        );
-        $recurring_events_admin_update->setHooks();
-    }
+//    private static function processRecurringEventsAdmin()
+//    {
+//        /** @var EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate $recurring_events_admin_update */
+//        $recurring_events_admin_update = LoaderFactory::getLoader()->getShared(
+//            'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate'
+//        );
+//        $recurring_events_admin_update->setHooks();
+//    }
 
 }
 // End of file EED_Recurring_Events.module.php

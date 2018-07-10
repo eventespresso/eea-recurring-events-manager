@@ -4,16 +4,11 @@ namespace EventEspresso\RecurringEvents\src\ui\admin;
 
 use EE_Error;
 use EE_Event;
-use EventEspresso\core\exceptions\ExceptionStackTraceDisplay;
-use EventEspresso\core\exceptions\InvalidFormSubmissionException;
 use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\core\services\request\RequestInterface;
 use EventEspresso\RecurringEvents\src\domain\Domain;
-use EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler;
 use Exception;
 use LogicException;
-
-defined('EVENT_ESPRESSO_VERSION') || exit;
 
 
 
@@ -37,11 +32,6 @@ class RecurringEventsAdminUpdate
      * @var RequestInterface $request
      */
     private $request;
-
-    /**
-     * @var EventEditorRecurrencePatternsFormHandler $recurrence_patterns_form_handler
-     */
-    public $recurrence_patterns_form_handler;
 
     /**
      * @var LoaderInterface
@@ -99,15 +89,7 @@ class RecurringEventsAdminUpdate
      */
     public function remEditorUpdate(EE_Event $event, array $form_data)
     {
-        $this->recurrence_patterns_form_handler = $this->loader->getShared(
-            'EventEspresso\RecurringEvents\src\ui\admin\forms\EventEditorRecurrencePatternsFormHandler',
-            array($event)
-        );
-         try {
-            $this->recurrence_patterns_form_handler->process($form_data);
-         } catch (InvalidFormSubmissionException $exception) {
-             new ExceptionStackTraceDisplay($exception);
-         }
+
     }
 }
 
