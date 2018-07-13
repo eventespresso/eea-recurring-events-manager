@@ -5,11 +5,11 @@ import { Component } from 'react';
 import RRule from 'rrule';
 import RRuleGenerator from 'react-rrule-generator';
 import { __ } from '@eventespresso/i18n';
+import { SettingsPanel } from '@eventespresso/components';
 
 /**
  * Internal dependencies
  */
-import SettingsPanel from './../components/settings-panel';
 import { PATTERN_TYPE_RECURRENCE } from './constants';
 
 export class RRulePatternEditor extends Component {
