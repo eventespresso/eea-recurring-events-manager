@@ -105,8 +105,12 @@ class RecurringEventsAdmin
     public function editDatetimeRecurrenceAction($dtt_row = 0, $DTT_ID = 0)
     {
         echo '
-        <span data-context="datetime" data-datetime-row="'. $dtt_row.'" data-datetime-id="'. $DTT_ID.'" 
-        class="dashicons dashicons-image-rotate clickable ee-edit-datetime-recurrence">
+        <span
+            data-context="datetime"
+            data-datetime-row="'. $dtt_row.'"
+            data-datetime-id="'. $DTT_ID.'" 
+            class="ee-edit-datetime-recurrence dashicons dashicons-image-rotate clickable"
+        >
         </span>';
     }
 
