@@ -70,7 +70,7 @@ class RecurringEventsAssetManager extends AssetManager
             ),
             [
                 CoreAssetManager::JS_HANDLE_JQUERY,
-                CoreAssetManager::JS_HANDLE_EE_COMPONENTS,
+                CoreAssetManager::JS_HANDLE_EE_EDITOR,
                 'ee-datepicker',
                 self::JS_HANDLE_RRULE
             ]
