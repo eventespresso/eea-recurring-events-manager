@@ -9,31 +9,16 @@
 /*@import '~react-rrule-generator/build/styles.css';*/
 
 
-/* Media Query for screens smaller then 768px (iPad portrait)
- * -------------------------------------------------------------------------*/
-
-@media only screen and (max-width: 767px) {
-}
-
-@media only screen and (max-width: 600px) and (min-width: 481px) {
-}
-
-@media only screen and (max-width: 540px) and (min-width: 480px) {
-}
-
-@media only screen and (max-width: 480px) {
-}
-
 /* General Styles
  * -------------------------------------------------------------------------*/
 
 .recurring-events-manager {
-    max-width: 960px;
     margin: 0 0 2rem;
 }
 
 #rem-form-h1 {
     margin: 0 0 1rem;
+    line-height: 2rem;
 }
 
 .repeats-div-heading {
@@ -547,3 +532,19 @@
 .recurring-events-manager .rdtPicker td.rdtToday {
     position: relative;
 }
+
+/* Media Query for screens smaller then 768px (iPad portrait)
+ * -------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 600px) and (min-width: 481px) {
+}
+
+@media only screen and (max-width: 540px) and (min-width: 480px) {
+}
+
+@media only screen and (max-width: 480px) {
+}
+
