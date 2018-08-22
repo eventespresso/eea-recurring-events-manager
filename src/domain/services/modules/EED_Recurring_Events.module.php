@@ -106,6 +106,9 @@ class EED_Recurring_Events extends EED_Module
      */
     public static function loadRecurringEventsAdminComponents()
     {
+        if(! class_exists('EventEspresso\core\domain\services\assets\AdminRefactorAssetManager', false)) {
+            return;
+        }
         try {
             $request = LoaderFactory::getLoader()->getShared('EventEspresso\core\services\request\RequestInterface');
             if ($request instanceof RequestInterface) {
