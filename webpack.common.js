@@ -8,6 +8,7 @@ const externals = {
 	'@eventespresso/i18n': 'eejs.i18n',
 	'@eventespresso/components': 'eejs.components',
 	'@eventespresso/editor': 'eejs.editor',
+	'@wordpress/components': 'wp.components',
 	react: 'eejs.vendor.react',
 	'react-dom': 'eejs.vendor.reactDom',
 	'react-redux': 'eejs.vendor.reactRedux',
