@@ -1,5 +1,9 @@
 import { __ } from '@eventespresso/i18n';
 
+export const DATE_FORMAT = 'YYYY-MM-DD';
+export const TIME_FORMAT = 'hh:mm a';
+export const DATE_TIME_FORMAT = DATE_FORMAT + ' ' + TIME_FORMAT;
+
 export const PATTERN_TYPE_RECURRENCE = 'recurrence';
 
 export const PATTERN_TYPE_EXCLUSION = 'exclusion';
