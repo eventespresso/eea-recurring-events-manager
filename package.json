@@ -46,8 +46,8 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.2",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "check-node-version": "^3.2.0",
     "clean-webpack-plugin": "^0.1.18",
@@ -62,7 +62,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-wordpress": "git://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress.git#1774343f6226052a46b081e01db3fca8793cc9f1",
-    "gutenberg": "wordpress/gutenberg#master",
+    "gutenberg": "wordpress/gutenberg#v3.2.0",
     "js-green-licenses": "^0.5.0",
     "mini-css-extract-plugin": "^0.4.0",
     "pegjs": "^0.10.0",
@@ -82,16 +82,20 @@
   },
   "dependencies": {
     "@wordpress/dom-ready": "^1.0.2",
+    "@wordpress/hooks": "^1.1.8",
     "@wordpress/i18n": "^1.1.1",
     "@wordpress/is-shallow-equal": "^1.0.2",
     "@wordpress/jest-preset-default": "^1.0.6",
     "accessible-react-table": "^0.2.0",
     "bootstrap": "^4.1.1",
+    "jw-react-pagination": "^1.0.7",
     "memize": "^1.0.5",
     "querystringify": "^1.0.0",
+    "react-datetime": "^2.15.0",
+    "react-modal": "^3.5.1",
     "react-rrule-generator": "^1.0.2",
     "react-select": "^2.0.0-beta.6",
     "react-table": "^6.8.6",
-    "rrule": "^2.2.9"
+    "rrule": "^2.4.1"
   }
 }
