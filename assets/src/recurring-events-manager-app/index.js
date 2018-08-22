@@ -3,122 +3,94 @@
  */
 import ReactDOM from 'react-dom';
 import { Component } from 'react';
-import { RRule, RRuleSet } from 'rrule';
 import { __ } from '@eventespresso/i18n';
+import { hooks } from '@eventespresso/eejs';
+import { SidebarMenuItem } from '@eventespresso/editor';
 
 /**
  * Internal imports
  */
 import './style.css';
-import { RRulePatternEditor } from './rrule-pattern-editor';
-import { GeneratedDatetimes } from './generated-datetimes';
-import {
-	PATTERN_TYPE_RECURRENCE,
-	PATTERN_TYPE_EXCLUSION,
-} from './constants';
+import { EditDatetimeRecurrence } from './edit-datetime-recurrence';
 
 /**
  * RecurringEventsManagerApp
  *
  * @constructor
- * @param {string} recurrenceRRuleString 	RRule string that defines the recurrences
- * @param {string} exclusionRRuleString 	RRule string that defines the exclusions
  */
 class RecurringEventsManagerApp extends Component {
 	constructor( props ) {
 		super( props );
 		// console.log( '' );
-		// console.log( 'RecurringEventsManagerApp props: ' );
-		// console.log( props );
+		// console.log( 'RecurringEventsManagerApp props: ', props );
 		this.state = {
-			recurrenceRRuleString: props.recurrenceRRuleString,
-			exclusionRRuleString: props.exclusionRRuleString,
-			datetimes: this.generateDatetimes( props.recurrenceRRuleString, props.exclusionRRuleString ),
+			editorOpen: false,
+			eventDate: {},
 		};
+		const self = this;
+		hooks.addFilter(
+			'FHEE__EditorDates__EditorDateSidebar__SidebarMenuItems',
+			'RecurringEventsManagerApp',
+			function( sidebarLinks, eventDate ) {
+				sidebarLinks.push( self.sidebarMenuItem( eventDate, sidebarLinks.length ) );
+				return sidebarLinks;
+			}
+		);
 	}
 
-	onRecurrenceChange = ( recurrenceRRuleString ) => {
-		if (
-			recurrenceRRuleString &&
-			this.state.recurrenceRRuleString !== recurrenceRRuleString
-		) {
-			// console.log( '' );
-			// console.log( ' *** RecurringEventsManagerApp.onRecurrenceChange() *** ' );
-			this.setState(
-				{
-					recurrenceRRuleString: recurrenceRRuleString,
-					datetimes: this.generateDatetimes( recurrenceRRuleString, this.state.exclusionRRuleString ),
-				}
-			);
-		}
+	/**
+	 * @function
+	 * @param {Object} eventDate        JSON object defining the Event Date
+	 * @param {string} index
+	 * @return {string}        rendered sidebar menu item
+	 */
+	sidebarMenuItem = ( eventDate, index ) => {
+		const data = { eventDate };
+		return <SidebarMenuItem
+			index={ index }
+			title={ __( 'edit event date recurrence pattern', 'event_espresso' ) }
+			id={ 'edit-recurrence-' + eventDate.id }
+			htmlClass={ 'edit-recurrence' }
+			dashicon={ 'image-rotate' }
+			onClick={ ( event ) => this.editDatetimeRecurrence( event, data ) }
+		/>;
 	};
 
-	onExclusionChange = ( exclusionRRuleString ) => {
-		if (
-			exclusionRRuleString &&
-			this.state.exclusionRRuleString !== exclusionRRuleString
-		) {
-			// console.log( '' );
-			// console.log( ' *** RecurringEventsManagerApp.onExclusionChange() *** ' );
-			this.setState(
-				{
-					exclusionRRuleString: exclusionRRuleString,
-					datetimes: this.generateDatetimes( this.state.recurrenceRRuleString, exclusionRRuleString ),
-				}
-			);
-		}
+	/**
+	 * @function
+	 * @param {Object} event
+	 * @param {Object} data    JSON object defining the Event Date
+	 */
+	editDatetimeRecurrence = ( event, data ) => {
+		event.preventDefault();
+		this.setState( ( prevState ) => (
+			{
+				editorOpen: ! prevState.editorOpen,
+				eventDate: data.eventDate,
+			}
+		) );
 	};
 
-	generateDatetimes = ( recurrenceRRuleString, exclusionRRuleString ) => {
-		// console.log( ' *** RecurringEventsManagerApp.generateDatetimes() *** ' );
-		const rruleSet = new RRuleSet();
-		if ( recurrenceRRuleString ) {
-			// console.log( ' > recurrenceRRuleString: ' + recurrenceRRuleString );
-			rruleSet.rrule( RRule.fromString( recurrenceRRuleString ) );
-		}
-		if ( exclusionRRuleString ) {
-			// console.log( ' > exclusionRRuleString: ' + exclusionRRuleString );
-			rruleSet.exrule( RRule.fromString( exclusionRRuleString ) );
-		}
-		const datetimes = rruleSet.all( function( date, i ) {
-			// console.log( ' > rruleSet.all() ' + i + ') date: ' + date.toString() );
-			return i < 10;
-		} );
-		// console.log( ' > datetimes: ' );
-		// console.log( datetimes );
-		return datetimes;
+	/**
+	 * @function
+	 * @param {Object} event
+	 */
+	toggleEditor = event => {
+		event.preventDefault();
+		this.setState( prevState => ( { editorOpen: ! prevState.editorOpen } ) );
 	};
-
-	// addDatetime = ( datetime ) => {
-	// };
-
-	// deleteDatetime = ( datetime ) => {
-	// };
 
 	render() {
-		return (
-			<div id="recurring-events" className="recurring-events-manager">
-				<h1 id={ 'rem-form-h1' }>{ __( 'Event Datetime Recurrence Pattern Editor', 'event_espresso' ) }</h1>
-				<RRulePatternEditor
-					type={ PATTERN_TYPE_RECURRENCE }
-					rruleString={ this.state.recurrenceRRuleString }
-					onChange={ this.onRecurrenceChange }
-				/>
-				<RRulePatternEditor
-					type={ PATTERN_TYPE_EXCLUSION }
-					rruleString={ this.state.exclusionRRuleString }
-					onChange={ this.onExclusionChange }
-				/>
-				<GeneratedDatetimes datetimes={ this.state.datetimes } />
-			</div>
-		);
+		return <EditDatetimeRecurrence
+			editorOpen={ this.state.editorOpen }
+			eventDate={ this.state.eventDate }
+			toggleEditor={ this.toggleEditor }
+		/>;
 	}
 }
 
 ReactDOM.render(
-	<RecurringEventsManagerApp
-		recurrenceRRuleString={ 'FREQ=DAILY;INTERVAL=1;COUNT=10' }
-		exclusionRRuleString={ '' }
-	/>,
+	<RecurringEventsManagerApp />,
 	document.getElementById( 'eea-recurring-events-manager-app' )
 );
+
