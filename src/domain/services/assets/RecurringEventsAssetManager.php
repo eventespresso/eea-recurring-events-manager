@@ -3,7 +3,7 @@
 namespace EventEspresso\RecurringEvents\src\domain\services\assets;
 
 use DomainException;
-use EventEspresso\core\domain\services\assets\CoreAssetManager;
+use EventEspresso\core\domain\services\assets\AdminRefactorAssetManager;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidEntityException;
 use EventEspresso\core\services\assets\AssetManager;
@@ -23,8 +23,6 @@ class RecurringEventsAssetManager extends AssetManager
     const JS_HANDLE_REM_APP = 'eea-recurring-events-manager-app';
     const CSS_HANDLE_REM_APP = 'eea-recurring-events-manager-app';
     const ASSET_CHUNK_NAME = 'recurring-events-manager-app';
-    const JS_HANDLE_NLP = 'nlp';
-    const JS_HANDLE_RRULE = 'rrule';
 
     /**
      * @since 4.9.62.p
@@ -51,28 +49,14 @@ class RecurringEventsAssetManager extends AssetManager
     private function registerJavascript()
     {
         $this->addJavascript(
-            self::JS_HANDLE_NLP,
-            $this->domain->pluginUrl() . 'src/ui/js/nlp.js',
-            []
-        )
-            ->setVersion('2.2.0');
-        $this->addJavascript(
-            self::JS_HANDLE_RRULE,
-            $this->domain->pluginUrl() . 'src/ui/js/rrule.js',
-            [self::JS_HANDLE_NLP]
-        )
-            ->setVersion('2.2.0');
-        $this->addJavascript(
             self::JS_HANDLE_REM_APP,
             $this->registry->getJsUrl(
                 $this->domain->assetNamespace(),
                 self::ASSET_CHUNK_NAME
             ),
             [
-                CoreAssetManager::JS_HANDLE_JQUERY,
-                CoreAssetManager::JS_HANDLE_EE_EDITOR,
-                'ee-datepicker',
-                self::JS_HANDLE_RRULE
+                AdminRefactorAssetManager::JS_HANDLE_EDITOR,
+                // self::JS_HANDLE_RRULE
             ]
         )
             ->setRequiresTranslation()
@@ -95,7 +79,8 @@ class RecurringEventsAssetManager extends AssetManager
             $this->registry->getCssUrl(
                 $this->domain->assetNamespace(),
                 self::ASSET_CHUNK_NAME
-            )
+            ),
+            [ AdminRefactorAssetManager::CSS_HANDLE_EDITOR ]
         );
     }
 }
