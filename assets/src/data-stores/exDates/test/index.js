@@ -62,11 +62,13 @@ test( 'deleteExDate() throws TypeError when non-string passed', () => {
 	} ).toThrow( TypeError );
 } );
 
-test( 'deleteExDate() throws expected Date error when non-string passed', () => {
-	expect( () => {
-		deleteExDate( [] );
-	} ).toThrow( /The supplied value was expected to be a Date object./ );
-} );
+test( 'deleteExDate() throws expected Date error when non-string passed',
+	() => {
+		expect( () => {
+			deleteExDate( [] );
+		} ).toThrow( /The supplied value was expected to be a Date object./ );
+	}
+);
 
 test( 'exDatesReducer() works with addExDate() action and empty state', () => {
 	expect(
@@ -77,7 +79,9 @@ test( 'exDatesReducer() works with addExDate() action and empty state', () => {
 test( 'exDatesReducer() works with addExDate() action and valid initial state',
 	() => {
 		expect(
-			exDatesReducer( { exDates: [ TEST_DATE ] }, addExDate( TEST_DATE_2 ) )
+			exDatesReducer( { exDates: [ TEST_DATE ] },
+				addExDate( TEST_DATE_2 )
+			)
 		).toEqual( { exDates: [ TEST_DATE, TEST_DATE_2 ] } );
 	}
 );
@@ -108,10 +112,13 @@ test( 'exDatesReducer() and addExDate() does not add new Date with same value',
 	}
 );
 
-test( 'exDatesReducer() works with deleteExDate() action and valid initial state',
+test(
+	'exDatesReducer() works with deleteExDate() action and valid initial state',
 	() => {
 		expect(
-			exDatesReducer( { exDates: [ TEST_DATE ] }, deleteExDate( TEST_DATE ) )
+			exDatesReducer( { exDates: [ TEST_DATE ] },
+				deleteExDate( TEST_DATE )
+			)
 		).toEqual( { exDates: [] } );
 	}
 );
@@ -131,7 +138,9 @@ test(
 test( 'exDatesReducer() and deleteExDate() does not delete dates it should not',
 	() => {
 		expect(
-			exDatesReducer( { exDates: [ TEST_DATE ] }, deleteExDate( TEST_DATE_2 ) )
+			exDatesReducer( { exDates: [ TEST_DATE ] },
+				deleteExDate( TEST_DATE_2 )
+			)
 		).toEqual( { exDates: [ TEST_DATE ] } );
 	}
 );

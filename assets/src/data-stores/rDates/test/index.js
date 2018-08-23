@@ -131,7 +131,10 @@ test(
 test( 'rDatesReducer() and deleteRdate() does not delete dates it should not',
 	() => {
 		expect(
-			rDatesReducer( { rDates: [ TEST_DATE ] }, deleteRdate( TEST_DATE_2 ) )
+			rDatesReducer(
+				{ rDates: [ TEST_DATE ] },
+				deleteRdate( TEST_DATE_2 )
+			)
 		).toEqual( { rDates: [ TEST_DATE ] } );
 	}
 );

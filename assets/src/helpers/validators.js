@@ -26,7 +26,7 @@ export const datesStringsMatch = ( date1, date2 ) => {
  * @function
  * @param {Date} date
  * @return {boolean} returns true if supplied value is a Date object
- * 					 otherwise throws a TypeError
+ *                     otherwise throws a TypeError
  */
 export const assertIsDate = ( date ) => {
 	if ( date instanceof Date ) {
@@ -44,7 +44,7 @@ export const assertIsDate = ( date ) => {
  * @function
  * @param {string} string
  * @return {boolean} returns true if date is a string
- * 					 otherwise throws a TypeError
+ *                     otherwise throws a TypeError
  */
 export const assertIsString = ( string ) => {
 	if ( isString( string ) ) {

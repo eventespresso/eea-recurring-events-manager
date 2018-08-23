@@ -42,19 +42,23 @@ test( 'rRuleReducer() works with addRrule() action and empty state', () => {
 	).toEqual( { rRule: TEST_RRULE } );
 } );
 
-test( 'rRuleReducer() works with addRrule() action and valid initial state', () => {
-	expect(
-		rRuleReducer( { rRule: TEST_RRULE }, addRrule( TEST_RRULE_2 ) )
-	).toEqual( { rRule: TEST_RRULE_2 } );
-} );
+test( 'rRuleReducer() works with addRrule() action and valid initial state',
+	() => {
+		expect(
+			rRuleReducer( { rRule: TEST_RRULE }, addRrule( TEST_RRULE_2 ) )
+		).toEqual( { rRule: TEST_RRULE_2 } );
+	}
+);
 
-test( 'rRuleReducer() works with addRrule() action and full initial state', () => {
-	const NEW_STATE = TEST_STATE;
-	NEW_STATE.rRule = TEST_RRULE_2;
-	expect(
-		rRuleReducer( TEST_STATE, addRrule( TEST_RRULE_2 ) )
-	).toEqual( NEW_STATE );
-} );
+test( 'rRuleReducer() works with addRrule() action and full initial state',
+	() => {
+		const NEW_STATE = TEST_STATE;
+		NEW_STATE.rRule = TEST_RRULE_2;
+		expect(
+			rRuleReducer( TEST_STATE, addRrule( TEST_RRULE_2 ) )
+		).toEqual( NEW_STATE );
+	}
+);
 
 test( 'rRuleReducer() works with resetRrule() action and empty state', () => {
 	expect(
@@ -62,11 +66,13 @@ test( 'rRuleReducer() works with resetRrule() action and empty state', () => {
 	).toEqual( { rRule: null } );
 } );
 
-test( 'rRuleReducer() works with resetRrule() action and valid initial state', () => {
-	expect(
-		rRuleReducer( { rRule: TEST_RRULE }, resetRrule() )
-	).toEqual( { rRule: null } );
-} );
+test( 'rRuleReducer() works with resetRrule() action and valid initial state',
+	() => {
+		expect(
+			rRuleReducer( { rRule: TEST_RRULE }, resetRrule() )
+		).toEqual( { rRule: null } );
+	}
+);
 
 test( 'rRuleReducer() works with resetRrule() action and full initial state',
 	() => {
