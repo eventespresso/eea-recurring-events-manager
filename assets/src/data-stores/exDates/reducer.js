@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { filter, find } from 'lodash';
+import { reject, find } from 'lodash';
 
 /**
  * Internal dependencies
@@ -21,7 +21,7 @@ export const exDatesReducer = ( state = {}, action ) => {
 	switch ( action.type ) {
 		case ADD_EXDATE:
 			// check if date already exists in collection
-			if ( find( state.STORE_KEY_EXDATES, function( exDate ) {
+			if ( find( state.exDates, function( exDate ) {
 				return datesStringsMatch( exDate, action.date );
 			} ) ) {
 				return state;
@@ -29,16 +29,16 @@ export const exDatesReducer = ( state = {}, action ) => {
 			// if not than add it
 			return {
 				...state,
-				STORE_KEY_EXDATES: [ ...state.STORE_KEY_EXDATES, action.date ],
+				exDates: [ ...state.exDates, action.date ],
 			};
 		case DELETE_EXDATE:
-			const exDates = filter( state.STORE_KEY_EXDATES, function( exDate ) {
+			const exDates = reject( state.exDates, function( exDate ) {
 				// remove exDates that match the incoming date
 				return datesStringsMatch( exDate, action.date );
 			} );
 			return {
 				...state,
-				STORE_KEY_EXDATES: exDates,
+				exDates: exDates,
 			};
 		default:
 			return state;
