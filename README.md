@@ -1,4 +1,4 @@
-New EE4 Add-on Starter Template
+Event Espresso Recurring Events Manager
 =========
 
 [![Latest Release](https://img.shields.io/github/tag/eventespresso/eea-recurring-events-manager.svg?style=flat&label=Latest%20Release)](https://github.com/eventespresso/eea-recurring-events-manager/releases)
@@ -8,6 +8,8 @@ New EE4 Add-on Starter Template
 [![Minimum EE Core Version:](https://img.shields.io/badge/Minimum%20EE%20core%20ver-4.9.37.p-red.svg)](https://github.com/eventespresso/event-espresso-core/releases/tag/4.9.37.p)
 
 This add-on adds some extra groovy features to [Event Espresso](https://eventespresso.com).
+
+> Note, this add-on is **unreleased** and in active development.  Use **at your own risk** and it likely won't work.
 
 > Note, there is **no usage support** provided here.  Please read the entire contents of this document before posting any issues.  If we encounter issues that give evidence of this document not having been read the issue _will be closed_.
 
@@ -60,7 +62,7 @@ Here's how we deal with pull requests for our repo:
 You may find [our post on contributing to open source software](https://eventespresso.com/2017/02/5-tips-for-contributing-to-open-source-software-like-event-espresso/) helpful.
 
 
-###Add-on File Structure / Architecture
+### Add-on File Structure / Architecture
 
 
 Event Espresso is currently in the early stages of converting over to a "Domain Driven Design" / "Hexagonal Architecture" inspired approach to our application design and file structure, which organizes our code into several layers. We have refactored the file structure for our Add-on Starter Template to reflect this.
