@@ -14,9 +14,9 @@ export const STORE_KEY_EXRULE = 'exRule';
 export const exRuleReducer = ( state = {}, action ) => {
 	switch ( action.type ) {
 		case ADD_EXRULE:
-			return { ...state, STORE_KEY_EXRULE: action.rule };
+			return { ...state, exRule: action.rule };
 		case RESET_EXRULE:
-			return { ...state, STORE_KEY_EXRULE: null };
+			return { ...state, exRule: null };
 		default:
 			return state;
 	}

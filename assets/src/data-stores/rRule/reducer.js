@@ -14,9 +14,9 @@ export const STORE_KEY_RRULE = 'rRule';
 export const rRuleReducer = ( state = {}, action ) => {
 	switch ( action.type ) {
 		case ADD_RRULE:
-			return { ...state, STORE_KEY_RRULE: action.rule };
+			return { ...state, rRule: action.rule };
 		case RESET_RRULE:
-			return { ...state, STORE_KEY_RRULE: null };
+			return { ...state, rRule: null };
 		default:
 			return state;
 	}
