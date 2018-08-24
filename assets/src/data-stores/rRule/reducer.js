@@ -2,8 +2,7 @@
  * Internal dependencies
  */
 import { ADD_RRULE, RESET_RRULE } from './actions';
-
-export const STORE_KEY_RRULE = 'rRule';
+import { getNewState } from '../utils';
 
 /**
  * @function
@@ -11,13 +10,17 @@ export const STORE_KEY_RRULE = 'rRule';
  * @param {Object} action requested state mutation
  * @return {Object} new state
  */
-export const rRuleReducer = ( state = {}, action ) => {
+export const rRuleReducer = ( state = [], action ) => {
 	switch ( action.type ) {
 		case ADD_RRULE:
-			return { ...state, rRule: action.rule };
 		case RESET_RRULE:
-			return { ...state, rRule: null };
+			return getNewState(
+				state,
+				action.id,
+				{ id: action.id, rRule: action.rule }
+			);
 		default:
 			return state;
 	}
 };
+
