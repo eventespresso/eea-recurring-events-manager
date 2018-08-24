@@ -2,8 +2,7 @@
  * Internal dependencies
  */
 import { ADD_EXRULE, RESET_EXRULE } from './actions';
-
-export const STORE_KEY_EXRULE = 'exRule';
+import { getNewState } from '../utils';
 
 /**
  * @function
@@ -14,9 +13,12 @@ export const STORE_KEY_EXRULE = 'exRule';
 export const exRuleReducer = ( state = {}, action ) => {
 	switch ( action.type ) {
 		case ADD_EXRULE:
-			return { ...state, exRule: action.rule };
 		case RESET_EXRULE:
-			return { ...state, exRule: null };
+			return getNewState(
+				state,
+				action.id,
+				{ id: action.id, exRule: action.rule }
+			);
 		default:
 			return state;
 	}
