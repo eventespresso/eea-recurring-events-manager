@@ -78,21 +78,21 @@ export class GeneratedDatetimes extends Component {
 					'';
 				break;
 			case 'MONTHLY':
-				warning = count >= 36 ?
-					'The number of Event Dates has been capped at 36' +
-					' for MONTHLY recurrence patterns (3 years)' :
+				warning = count >= 24 ?
+					'The number of Event Dates has been capped at 24' +
+					' for MONTHLY recurrence patterns (2 years)' :
 					'';
 				break;
 			case 'WEEKLY':
-				warning = count >= 104 ?
-					'The number of Event Dates has been capped at 104' +
-					' for WEEKLY recurrence patterns (2 years)' :
+				warning = count >= 52 ?
+					'The number of Event Dates has been capped at 52' +
+					' for WEEKLY recurrence patterns (1 year)' :
 					'';
 				break;
 			case 'DAILY':
-				warning = count >= 183 ?
-					'The number of Event Dates has been capped at 183' +
-					' for DAILY recurrence patterns (~6 months)' :
+				warning = count >= 92 ?
+					'The number of Event Dates has been capped at 92' +
+					' for DAILY recurrence patterns (~3 months)' :
 					'';
 				break;
 		}
