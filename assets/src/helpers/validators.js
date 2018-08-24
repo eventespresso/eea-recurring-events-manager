@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { isString } from 'lodash';
+import { isString, isNumber } from 'lodash';
 import { __ } from '@eventespresso/i18n';
 
 /**
@@ -16,7 +16,7 @@ export const VALIDATION_ERROR = 'validation-error';
  * @return {boolean} returns true if supplied dates match
  *                     when converted to strings
  */
-export const datesStringsMatch = ( date1, date2 ) => {
+export const dateStringsMatch = ( date1, date2 ) => {
 	return assertIsDate( date1 ) &&
 		assertIsDate( date2 ) &&
 		date1.toString() === date2.toString();
@@ -56,4 +56,35 @@ export const assertIsString = ( string ) => {
 			'event_espresso'
 		)
 	);
+};
+
+/**
+ * @function
+ * @param {Object} object
+ * @return {boolean} returns true if eventDate has an "id" property
+ *                     that is either a string or number
+ *                     otherwise throws a TypeError
+ */
+export const assertObjectHasId = ( object ) => {
+	if ( typeof object !== 'undefined' &&
+		object.hasOwnProperty( 'id' ) &&
+		idIsStringOrNumber( object.id )
+	) {
+		return true;
+	}
+	throw new TypeError(
+		__(
+			'The supplied object was expected to have a valid "id" property.',
+			'event_espresso'
+		)
+	);
+};
+
+/**
+ * @function
+ * @param {string|number} id
+ * @return {boolean} returns true if id  is either a string or number
+ */
+export const idIsStringOrNumber = ( id ) => {
+	return isString( id ) || isNumber( id );
 };
