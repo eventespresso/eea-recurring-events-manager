@@ -1,15 +1,9 @@
-/**
- * External dependencies
- */
-import { reject, find } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import { ADD_RDATE, DELETE_RDATE } from './actions';
-import { datesStringsMatch } from '../../helpers/validators';
-
-export const STORE_KEY_RDATES = 'rDates';
+import { findStoreById, addDate, removeDate, getNewState } from '../utils';
 
 /**
  * @function
@@ -18,28 +12,29 @@ export const STORE_KEY_RDATES = 'rDates';
  * @return {Object} new state
  */
 export const rDatesReducer = ( state = {}, action ) => {
+	let store = {};
 	switch ( action.type ) {
 		case ADD_RDATE:
-			// check if incoming date already exists in collection
-			if ( find( state.rDates, function( rDate ) {
-				return datesStringsMatch( rDate, action.date );
-			} ) ) {
-				return state;
-			}
-			// if not than add it
-			return {
-				...state,
-				rDates: [ ...state.rDates, action.date ],
-			};
+			store = findStoreById( state, action.id );
+			return getNewState(
+				state,
+				action.id,
+				{
+					id: action.id,
+					rDates: addDate( store.rDates, action.date ),
+				}
+			);
 		case DELETE_RDATE:
-			// remove rDates that match the incoming date
-			const rDates = reject( state.rDates, function( rDate ) {
-				return datesStringsMatch( rDate, action.date );
-			} );
-			return {
-				...state,
-				rDates: rDates,
-			};
+			store = findStoreById( state, action.id );
+			// console.log( 'store', store );
+			return getNewState(
+				state,
+				action.id,
+				{
+					id: action.id,
+					rDates: removeDate( store.rDates, action.date ),
+				}
+			);
 		default:
 			return state;
 	}

@@ -1,7 +1,11 @@
 /**
  * Internal dependencies
  */
-import { assertIsDate, VALIDATION_ERROR } from '../../helpers/validators';
+import {
+	assertIsDate,
+	assertObjectHasId,
+	VALIDATION_ERROR,
+} from '../../helpers/validators';
 
 /**
  * action types
@@ -11,22 +15,24 @@ export const DELETE_RDATE = 'DELETE_RDATE';
 
 /**
  * @function
+ * @param {Object} eventDate
  * @param {Date} date
  * @return {Object} action
  */
-export const addRdate = ( date ) => {
-	return assertIsDate( date ) ?
-		{ type: ADD_RDATE, date: date } :
+export const addRdate = ( eventDate, date ) => {
+	return assertObjectHasId( eventDate ) && assertIsDate( date ) ?
+		{ type: ADD_RDATE, id: eventDate.id, date: date } :
 		{ type: VALIDATION_ERROR };
 };
 
 /**
  * @function
+ * @param {Object} eventDate
  * @param {Date} date
  * @return {Object} action
  */
-export const deleteRdate = ( date ) => {
-	return assertIsDate( date ) ?
-		{ type: DELETE_RDATE, date: date } :
+export const deleteRdate = ( eventDate, date ) => {
+	return assertObjectHasId( eventDate ) && assertIsDate( date ) ?
+		{ type: DELETE_RDATE, id: eventDate.id, date: date } :
 		{ type: VALIDATION_ERROR };
 };
