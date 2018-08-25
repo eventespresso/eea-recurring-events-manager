@@ -2,10 +2,15 @@
  * Internal dependencies
  */
 import { findStoreById } from '../utils';
-import { assertObjectHasId } from '../../helpers/validators';
 
+/**
+ * @function
+ * @param {Object} state
+ * @param {Object} eventDate
+ * @return {Array} exDates
+ */
 export const getExDates = ( state, eventDate ) => {
-	assertObjectHasId( eventDate );
+	state = state.hasOwnProperty( 'exDates' ) ? state.exDates : state;
 	const store = findStoreById( state, eventDate.id );
-	return store.exDates;
+	return store.hasOwnProperty( 'exDates' ) ? store.exDates : [];
 };
