@@ -1,14 +1,18 @@
 /**
- * External imports
+ * External dependencies
  */
 import { Component } from 'react';
 import { isEmpty, isArray } from 'lodash';
 import { __ } from '@eventespresso/i18n';
 import moment from 'moment';
 import { RRule, RRuleSet } from 'rrule';
-import { Modal } from '@wordpress/components';
 
-// const { Modal } = wp.components;
+/**
+ * WordPress dependencies
+ */
+import { Modal } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
 /**
  * Internal dependencies
@@ -17,6 +21,7 @@ import { RRulePatternEditor } from './rrule-pattern-editor';
 import ExtraDatetimes from './extra-datetimes';
 import { GeneratedDatetimes } from './generated-datetimes';
 import { RemEditorButtons } from './rem-editor-buttons';
+import { DATA_STORE_KEY_REM } from '../data-stores';
 import {
 	PATTERN_TYPE_RECURRENCE,
 	PATTERN_TYPE_EXCLUSION,
@@ -29,122 +34,14 @@ import './style.css';
  * @constructor
  * @param {Object} eventDate    JSON object defining the Event Date
  */
-export class EditDatetimeRecurrence extends Component {
+class EditDatetimeRecurrence extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
 			eventDate: {},
-			rRuleString: '',
-			exRuleString: '',
-			rDates: [],
-			exDates: [],
 			datetimes: [],
 		};
 	}
-
-	/**
-	 * @function
-	 * @param {string} rRuleString
-	 */
-	onRecurrenceChange = rRuleString => {
-		rRuleString = rRuleString.target ?
-			rRuleString.target.value :
-			rRuleString;
-		// console.log( '' );
-		// console.log( 'EditDatetimeRecurrence.onRecurrenceChange() rRuleString:', rRuleString );
-		if ( this.state.rRuleString !== rRuleString ) {
-			this.setState( ( prevState ) => (
-				{
-					rRuleString: rRuleString,
-					datetimes: this.generateDatetimes(
-						rRuleString,
-						prevState.exRuleString,
-						prevState.rDates,
-						prevState.exDates
-					),
-				}
-			) );
-		}
-		// console.log( ' > this.state:', this.state );
-	};
-
-	/**
-	 * @function
-	 * @param {string} exRuleString
-	 */
-	onExclusionChange = ( exRuleString ) => {
-		exRuleString = exRuleString.target ?
-			exRuleString.target.value :
-			exRuleString;
-		// console.log( '' );
-		// console.log( 'EditDatetimeRecurrence.onExclusionChange() exRuleString:', exRuleString );
-		if ( this.state.exRuleString !== exRuleString ) {
-			this.setState( ( prevState ) => (
-				{
-					exRuleString: exRuleString,
-					datetimes: this.generateDatetimes(
-						prevState.rRuleString,
-						exRuleString,
-						prevState.rDates,
-						prevState.exDates
-					),
-				}
-			) );
-		}
-		// console.log( ' > this.state:', this.state );
-	};
-
-	/**
-	 * @function
-	 * @param {Object} rDate
-	 */
-	onRDateChange = ( rDate ) => {
-		this.setState( ( prevState ) => {
-			console.log( 'onRDateChange()', rDate );
-			const rDates = isArray( prevState.rDates ) ?
-				prevState.rDates :
-				[ rDate ];
-			rDates.push( rDate );
-			console.log( 'onRDateChange() rDates', rDates );
-			return (
-				{
-					rDates: rDates,
-					datetimes: this.generateDatetimes(
-						prevState.rRuleString,
-						prevState.exRuleString,
-						rDates,
-						prevState.exDates
-					),
-				}
-			);
-		} );
-	};
-
-	/**
-	 * @function
-	 * @param {Object} exDate
-	 */
-	onExDateChange = ( exDate ) => {
-		this.setState( ( prevState ) => {
-			console.log( 'onExDateChange()', exDate );
-			const exDates = isArray( prevState.exDates ) ?
-				prevState.exDates :
-				[ exDate ];
-			exDates.push( exDate );
-			console.log( 'onExDateChange() exDates', exDates );
-			return (
-				{
-					exDates: exDates,
-					datetimes: this.generateDatetimes(
-						prevState.rRuleString,
-						prevState.exRuleString,
-						prevState.rDates,
-						exDates
-					),
-				}
-			);
-		} );
-	};
 
 	/**
 	 * @function
@@ -233,35 +130,6 @@ export class EditDatetimeRecurrence extends Component {
 
 	/**
 	 * @function
-	 * @param {Object} eventDate
-	 */
-	addDatetime = ( eventDate ) => {
-		console.log( ' >>> CLICK <<< ADD EVENT DATE' );
-		this.onRDateChange( this.parseDate( eventDate ) );
-	};
-
-	/**
-	 * @function
-	 * @param {Object} eventDate
-	 */
-	deleteDatetime = ( eventDate ) => {
-		console.log( ' >>> CLICK <<< DELETE EVENT DATE' );
-		this.onExDateChange( this.parseDate( eventDate ) );
-	};
-
-	/**
-	 * @function
-	 * @param {Object} eventDate
-	 * @return {Object} eventDate
-	 */
-	handleExtraDatetimeChange = ( eventDate ) => {
-		console.log( ' >>> CLICK <<< EXTRA EVENT DATE CHANGE' );
-		eventDate = this.parseDate( eventDate );
-		return eventDate;
-	};
-
-	/**
-	 * @function
 	 * @param {Object} data
 	 */
 	saveAllTheThings = ( data ) => {
@@ -287,8 +155,25 @@ export class EditDatetimeRecurrence extends Component {
 	};
 
 	render() {
-		const { editorOpen, eventDate, toggleEditor } = this.props;
-		return editorOpen && eventDate && eventDate.id ? (
+		const {
+			editorOpen,
+			eventDate,
+			toggleEditor,
+			rRule,
+			exRule,
+			rDates,
+			exDates,
+			onRecurrenceChange,
+			onExclusionChange,
+			addRdate,
+			deleteRdate,
+			addExDate,
+			deleteExDate,
+		} = this.props;
+
+		console.log( 'EditDatetimeRecurrence this.props', this.props );
+
+		return editorOpen && eventDate.hasOwnProperty( 'id' ) ? (
 			<Modal
 				title={ __( 'Event Date Recurrence Pattern Editor', 'event_espresso' ) }
 				className={ 'ee-edit-event-date-recurrence' }
@@ -298,41 +183,37 @@ export class EditDatetimeRecurrence extends Component {
 				<RRulePatternEditor
 					id={ eventDate.id }
 					type={ PATTERN_TYPE_RECURRENCE }
-					rruleString={ this.state.rRuleString }
-					onChange={ this.onRecurrenceChange }
+					rruleString={ rRule }
+					onChange={ onRecurrenceChange }
 					initialOpen={ true }
 				/>
 				<RRulePatternEditor
 					id={ eventDate.id }
 					type={ PATTERN_TYPE_EXCLUSION }
-					rruleString={ this.state.exRuleString }
-					onChange={ this.onExclusionChange }
+					rruleString={ exRule }
+					onChange={ onExclusionChange }
 				/>
 				<ExtraDatetimes
 					id={ eventDate.id }
 					type={ PATTERN_TYPE_RECURRENCE }
-					datetimes={ this.state.rDates }
-					addDatetime={ this.addDatetime }
-					deleteDatetime={ this.deleteDatetime }
-					handleChange={ this.handleExtraDatetimeChange }
+					datetimes={ rDates }
+					addDatetime={ addRdate }
+					deleteDatetime={ deleteRdate }
 				/>
 				<ExtraDatetimes
 					id={ eventDate.id }
 					type={ PATTERN_TYPE_EXCLUSION }
-					datetimes={ this.state.exDates }
-					addDatetime={ this.deleteDatetime }
-					deleteDatetime={ this.addDatetime }
-					handleChange={ this.handleExtraDatetimeChange }
+					datetimes={ exDates }
+					addDatetime={ addExDate }
+					deleteDatetime={ deleteExDate }
 				/>
 				<GeneratedDatetimes
 					id={ eventDate.id }
 					datetimes={ this.state.datetimes }
 					freq={
-						this.getRecurrenceFrequency(
-							this.state.rRuleString
-						)
+						this.getRecurrenceFrequency( rRule )
 					}
-					onClick={ this.deleteDatetime }
+					onClick={ addExDate }
 				/>
 				<RemEditorButtons
 					id={ eventDate.id }
@@ -345,11 +226,66 @@ export class EditDatetimeRecurrence extends Component {
 	}
 }
 
-/*
- id="recurring-events"
-* @param {string} modalOverlayParent		DOM element id where modal portal should be injected.
-* @param {string} openModalDashicon		What icon to use for the toggle button that opens the modal dialog.
-* @param {string} closeModalDashicon		What icon to use for the toggle button that closes the modal dialog.
-* @param {string} openHoverTextPosition	Hover text position for the toggle button that opens the modal dialog.
-* @param {string} closeHoverTextPosition	Hover text position for the toggle button that closes the modal dialog.
-*/
+export default compose(
+	withSelect( ( select, ownProps ) => {
+		const {
+			getRRule,
+			getExRule,
+			getRDates,
+			getExDates,
+		} = select( DATA_STORE_KEY_REM );
+		const { eventDate } = ownProps;
+		// console.log( 'EditDatetimeRecurrence withSelect() ownProps', ownProps );
+		return eventDate.hasOwnProperty( 'id' ) ?
+			{
+				rRule: getRRule( eventDate ),
+				exRule: getExRule( eventDate ),
+				rDates: getRDates( eventDate ),
+				exDates: getExDates( eventDate ),
+			} : {};
+	} ),
+	withDispatch( ( dispatch, ownProps ) => {
+		const {
+			addRrule,
+			resetRrule,
+			addExRule,
+			resetExRule,
+			addRdate,
+			deleteRdate,
+			addExDate,
+			deleteExDate,
+		} = dispatch( DATA_STORE_KEY_REM );
+		const { eventDate } = ownProps;
+		// console.log( 'EditDatetimeRecurrence withDispatch() ownProps', ownProps );
+		return {
+			onRecurrenceChange( rRuleString ) {
+				rRuleString = rRuleString.target ?
+					rRuleString.target.value :
+					rRuleString;
+				return rRuleString ?
+					addRrule( eventDate, rRuleString ) :
+					resetRrule( eventDate );
+			},
+			onExclusionChange( exRuleString ) {
+				exRuleString = exRuleString.target ?
+					exRuleString.target.value :
+					exRuleString;
+				return exRuleString ?
+					addExRule( eventDate, exRuleString ) :
+					resetExRule( eventDate );
+			},
+			addRdate( rDate ) {
+				return addRdate( eventDate, rDate );
+			},
+			deleteRdate( rDate ) {
+				return deleteRdate( eventDate, rDate );
+			},
+			addExDate( exDate ) {
+				return addExDate( eventDate, exDate );
+			},
+			deleteExDate( exDate ) {
+				return deleteExDate( eventDate, exDate );
+			},
+		};
+	} ),
+)( EditDatetimeRecurrence );
