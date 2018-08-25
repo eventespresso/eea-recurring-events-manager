@@ -1,5 +1,6 @@
 import { addRrule, resetRrule, ADD_RRULE, RESET_RRULE } from '../actions';
 import { rRuleReducer } from '../reducer';
+import { getRRule } from '../selectors';
 import {
 	TEST_RRULE_1,
 	TEST_RRULE_2,
@@ -204,5 +205,12 @@ test( 'rRuleReducer() works with resetRrule() action and full initial state',
 		);
 	}
 );
+
+// selectors getRRule
+test( 'getRRule() returns correct RRule', () => {
+	expect(
+		getRRule( TEST_STATE, TEST_EVENT_DATE_1 )
+	).toEqual( TEST_RRULE_1 );
+} );
 
 // location:  /assets/src/data-stores/rRule/test/index.js
