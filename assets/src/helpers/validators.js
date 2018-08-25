@@ -74,7 +74,8 @@ export const assertObjectHasId = ( object ) => {
 	}
 	throw new TypeError(
 		__(
-			'The supplied object was expected to have a valid "id" property.',
+			'The supplied object was expected to have a valid "id" property.' +
+			'\nObject received:\n' + JSON.stringify( object ),
 			'event_espresso'
 		)
 	);
