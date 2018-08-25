@@ -11,7 +11,7 @@ import { SidebarMenuItem } from '@eventespresso/editor';
  * Internal imports
  */
 import './style.css';
-import { EditDatetimeRecurrence } from './edit-datetime-recurrence';
+import { default as EditDatetimeRecurrence } from './edit-datetime-recurrence';
 
 /**
  * RecurringEventsManagerApp
