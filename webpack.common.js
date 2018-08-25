@@ -10,6 +10,7 @@ const externals = {
 	'@eventespresso/editor': 'eejs.editor',
 	'@wordpress/components': 'wp.components',
 	'@wordpress/data': 'wp.data',
+	'@wordpress/compose': 'wp.compose',
 	react: 'eejs.vendor.react',
 	'react-dom': 'eejs.vendor.reactDom',
 	'react-redux': 'eejs.vendor.reactRedux',
