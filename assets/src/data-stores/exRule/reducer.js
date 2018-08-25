@@ -10,7 +10,7 @@ import { getNewState } from '../utils';
  * @param {Object} action requested state mutation
  * @return {Object} new state
  */
-export const exRuleReducer = ( state = {}, action ) => {
+export const exRuleReducer = ( state = [], action ) => {
 	switch ( action.type ) {
 		case ADD_EXRULE:
 		case RESET_EXRULE:

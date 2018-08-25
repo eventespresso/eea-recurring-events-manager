@@ -10,7 +10,7 @@ import { findStoreById, addDate, removeDate, getNewState } from '../utils';
  * @param {Object} action requested state mutation
  * @return {Object} new state
  */
-export const exDatesReducer = ( state = {}, action ) => {
+export const exDatesReducer = ( state = [], action ) => {
 	let store = {};
 	switch ( action.type ) {
 		case ADD_EXDATE:
