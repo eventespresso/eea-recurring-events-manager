@@ -22,30 +22,36 @@ import { getExRule } from './exRule/selectors';
 import { getRDates } from './rDates/selectors';
 import { getExDates } from './exDates/selectors';
 
+export const DATA_STORE_KEY_REM = 'espressoRemStore';
+
 export const remStore = registerStore(
-	'espressoRemStore',
-	combineReducers( {
-		rRuleReducer,
-		exRuleReducer,
-		rDatesReducer,
-		exDatesReducer,
-	} ),
-	// actions
+	DATA_STORE_KEY_REM,
 	{
-		addRrule,
-		resetRrule,
-		addExRule,
-		resetExRule,
-		addRdate,
-		deleteRdate,
-		addExDate,
-		deleteExDate,
-	},
-	// selectors
-	{
-		getRRule,
-		getExRule,
-		getRDates,
-		getExDates,
+		reducer: combineReducers(
+			{
+				rRule: rRuleReducer,
+				exRule: exRuleReducer,
+				rDates: rDatesReducer,
+				exDates: exDatesReducer,
+			}
+		),
+		// actions
+		actions: {
+			addRrule,
+			resetRrule,
+			addExRule,
+			resetExRule,
+			addRdate,
+			deleteRdate,
+			addExDate,
+			deleteExDate,
+		},
+		// selectors
+		selectors: {
+			getRRule,
+			getExRule,
+			getRDates,
+			getExDates,
+		},
 	}
 );
