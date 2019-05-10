@@ -1,8 +1,5 @@
 <?php
 
-defined('EVENT_ESPRESSO_VERSION') || exit;
-
-
 
 /**
  * Class EEM_Recurrence
@@ -35,101 +32,44 @@ class EEM_Recurrence extends EEM_Base
                     'RCR_ID',
                     esc_html__('ID', 'event_espresso')
                 ),
-                'RCR_pattern_hash' => new EE_Plain_Text_Field(
-                    'RCR_pattern_hash',
-                    esc_html__('Recurrence/Exclusion Pattern Hash', 'event_espresso'),
+                'RCR_rRule' => new EE_Plain_Text_Field(
+                    'RCR_rRule',
+                    esc_html__('Recurrence Rule', 'event_espresso'),
                     false
                 ),
-                'RCR_recurrence_pattern' => new EE_Plain_Text_Field(
-                    'RCR_recurrence_pattern',
-                    esc_html__('Recurrence Pattern', 'event_espresso'),
-                    false
-                ),
-                'RCR_exclusion_pattern' => new EE_Plain_Text_Field(
-                    'RCR_exclusion_pattern',
-                    esc_html__('Exclusion Pattern', 'event_espresso'),
+                'RCR_exRule' => new EE_Plain_Text_Field(
+                    'RCR_exRule',
+                    esc_html__('Exclusion Rule', 'event_espresso'),
                     true,
                     null
                 ),
-                'RCR_dates' => new EE_Plain_Text_Field(
-                    'RCR_dates',
+                'RCR_rDates' => new EE_Plain_Text_Field(
+                    'RCR_rDates',
                     esc_html__('Recurrence Dates', 'event_espresso'),
+                    true,
+                    null
+                ),
+                'RCR_exDates' => new EE_Plain_Text_Field(
+                    'RCR_exDates',
+                    esc_html__('Exclusion Dates', 'event_espresso'),
+                    true,
+                    null
+                ),
+                'RCR_gDates' => new EE_Plain_Text_Field(
+                    'RCR_dates',
+                    esc_html__('Generated Dates', 'event_espresso'),
                     false
                 ),
             )
         );
-        $this->_model_relations = array(
-            'Datetime_Recurrence' => new EE_HABTM_Relation('Datetime_Recurrence')
-        );
+        $this->_model_relations = array('Datetime' => new EE_Has_Many_Relation());
         parent::__construct();
     }
 
 
     /**
-     * generates and returns something like: rph-8cc0ee69dcdebdac148ef760faec071d
-     *
-     * @param string $recurrence_pattern
-     * @param string $exclusion_pattern
-     * @return string
-     */
-    public function generatePatternHash($recurrence_pattern, $exclusion_pattern)
-    {
-        return 'rph-' . md5($recurrence_pattern . $exclusion_pattern);
-    }
-
-
-    /**
-     * @param string $recurrence_pattern
-     * @param string $exclusion_pattern
-     * @return EE_Recurrence|null
-     * @throws EE_Error
-     * @throws InvalidArgumentException
-     */
-    public function findRecurrenceByPatterns($recurrence_pattern, $exclusion_pattern)
-    {
-        return $this->findRecurrenceByPatternHash(
-            $this->generatePatternHash($recurrence_pattern, $exclusion_pattern)
-        );
-    }
-
-
-    /**
-     * @param string $pattern_hash
-     * @return EE_Recurrence|null
-     * @throws EE_Error
-     * @throws InvalidArgumentException
-     */
-    public function findRecurrenceByPatternHash($pattern_hash)
-    {
-        return $this->get_one(
-            array(
-                array(
-                    'RCR_pattern_hash' => $this->isValidRecurrencePatternHash($pattern_hash),
-                )
-            )
-        );
-    }
-
-
-    /**
-     * @param string $pattern_hash
-     * @return string
-     * @throws InvalidArgumentException
-     */
-    public function isValidRecurrencePatternHash($pattern_hash)
-    {
-        if (! is_string($pattern_hash) || strpos($pattern_hash, 'rph-') !== 0) {
-            throw new InvalidArgumentException(
-                esc_html__('Invalid Recurrence Pattern Hash', 'event_espresso')
-            );
-        }
-        return $pattern_hash;
-    }
-
-
-    /**
      * @param int[] $datetime_IDs
-     * @return EE_Base_Class[]|EE_Datetime_Recurrence[]
+     * @return EE_Base_Class[]|EE_Recurrence[]
      * @throws EE_Error
      * @throws InvalidArgumentException
      */
