@@ -68,6 +68,13 @@ Class  RecurringEventsManager extends EE_Addon
                 'class_paths' => array(
                     __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_classes/',
                 ),
+                // EE_Register_Model_Extensions
+                'model_extension_paths' => array(
+                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_model_extensions/',
+                ),
+                'class_extension_paths' => array(
+                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_class_extensions/',
+                ),
             )
         );
     }
