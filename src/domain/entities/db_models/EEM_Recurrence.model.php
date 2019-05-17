@@ -32,6 +32,11 @@ class EEM_Recurrence extends EEM_Base
                     'RCR_ID',
                     esc_html__('ID', 'event_espresso')
                 ),
+                'RCR_name' => new EE_Plain_Text_Field(
+                    'RCR_name',
+                    esc_html__('Recurrence Pattern Name', 'event_espresso'),
+                    false
+                ),
                 'RCR_rRule' => new EE_Plain_Text_Field(
                     'RCR_rRule',
                     esc_html__('Recurrence Rule', 'event_espresso'),
@@ -56,7 +61,7 @@ class EEM_Recurrence extends EEM_Base
                     null
                 ),
                 'RCR_gDates' => new EE_Plain_Text_Field(
-                    'RCR_dates',
+                    'RCR_gDates',
                     esc_html__('Generated Dates', 'event_espresso'),
                     false
                 ),
