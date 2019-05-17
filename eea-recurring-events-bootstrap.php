@@ -7,7 +7,10 @@
 add_action(
     'AHEE__EE_System__load_espresso_addons',
     function() {
-        if (class_exists('EE_Addon') && class_exists('EventEspresso\core\domain\DomainBase')) {
+        if (class_exists('EE_Addon')
+            && class_exists('EventEspresso\core\domain\DomainBase')
+            && class_exists('EventEspresso\core\domain\services\assets\EspressoEditorAssetManager')
+        ) {
             try {
                 EE_Psr4AutoloaderInit::psr4_loader()->addNamespace('EventEspresso\RecurringEvents', __DIR__);
                 EE_Dependency_Map::register_dependencies(
