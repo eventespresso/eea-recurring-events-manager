@@ -18,20 +18,18 @@ class EEME_Recurrence_Datetime extends EEME_Base
     public function __construct()
     {
         $this->_model_name_extended = 'Datetime';
-        $this->_extra_relations = array(
-            'Recurrence' => new EE_Belongs_To_Relation()
-        );
-        // $this->_extra_fields = array(
-        //     'Datetime' => array(
-        //         'RCR_ID' => new EE_Foreign_Key_Int_Field(
-        //             'RCR_ID',
-        //             esc_html__('Recurrence ID', 'event_espresso'),
-        //             true,
-        //             0,
-        //             'Recurrence'
-        //         )
-        //     )
-        // );
+        $this->_extra_relations = [ 'Recurrence' => new EE_Belongs_To_Relation() ];
+        $this->_extra_fields = [
+            'Datetime' => [
+                'RCR_ID' => new EE_Foreign_Key_Int_Field(
+                    'RCR_ID',
+                    esc_html__('Recurrence ID', 'event_espresso'),
+                    true,
+                    0,
+                    'Recurrence'
+                )
+            ]
+        ];
         parent::__construct();
     }
 
