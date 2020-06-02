@@ -129,6 +129,4 @@ class Domain extends DomainBase
     {
         return $this->pluginPath() . 'ui/admin/';
     }
-
-
 }
