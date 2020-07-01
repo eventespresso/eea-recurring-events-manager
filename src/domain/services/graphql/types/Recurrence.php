@@ -4,6 +4,11 @@ namespace EventEspresso\RecurringEvents\src\domain\services\graphql\types;
 
 use EEM_Recurrence;
 use EventEspresso\core\services\graphql\types\TypeBase;
+use EventEspresso\core\services\graphql\fields\GraphQLField;
+use EventEspresso\core\services\graphql\fields\GraphQLOutputField;
+use EventEspresso\RecurringEvents\src\domain\services\graphql\mutators\RecurrenceCreate;
+use EventEspresso\RecurringEvents\src\domain\services\graphql\mutators\RecurrenceDelete;
+use EventEspresso\RecurringEvents\src\domain\services\graphql\mutators\RecurrenceUpdate;
 
 /**
  * Class Recurrence
