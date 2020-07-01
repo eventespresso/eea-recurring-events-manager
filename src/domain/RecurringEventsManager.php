@@ -90,6 +90,7 @@ Class  RecurringEventsManager extends EE_Addon
     public function after_registration()
     {
         $this->registerDependencies();
+        $this->registerResources();
     }
 
 
@@ -128,6 +129,15 @@ Class  RecurringEventsManager extends EE_Addon
             )
         );
 
+        $this->dependencyMap()->registerDependencies(
+            'EventEspresso\RecurringEvents\src\domain\services\graphql\types\Recurrence',
+            ['EEM_Recurrence' => EE_Dependency_Map::load_from_cache]
+        );
+        $this->dependencyMap()->registerDependencies(
+            'EventEspresso\RecurringEvents\src\domain\services\graphql\connections\RootQueryRecurrencesConnection',
+            ['EEM_Recurrence' => EE_Dependency_Map::load_from_cache]
+        );
+
         $this->dependencyMap()->add_alias(
             Domain::class,
             DomainInterface::class,
@@ -141,6 +151,61 @@ Class  RecurringEventsManager extends EE_Addon
                 Registry::class => EE_Dependency_Map::load_from_cache
             ]
         );
+    }
+
+    /**
+     * @since $VID:$
+     */
+    public function registerResources()
+    {
+        add_filter(
+            'FHEE__EventEspresso_core_services_graphql_TypeCollection__loadCollection__collection_FQCNs',
+            [$this, 'registerTypes']
+        );
+        add_filter(
+            'FHEE__EventEspresso_core_services_graphql_ConnectionCollection__loadCollection__collection_FQCNs',
+            [$this, 'registerConnections']
+        );
+        add_filter(
+            'FHEE__EventEspresso_core_services_graphql_DataLoaderCollection__loadCollection__collection_FQCNs',
+            [$this, 'registerDataloaders']
+        );
+    }
+
+
+    /**
+     * @param array $collection_FQCNs
+     * @return array
+     * @since $VID:$
+     */
+    public function registerTypes(array $collection_FQCNs = [])
+    {
+        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\types';
+        return $collection_FQCNs;
+    }
+
+
+    /**
+     * @param array $collection_FQCNs
+     * @return array
+     * @since $VID:$
+     */
+    public function registerConnections(array $collection_FQCNs = [])
+    {
+        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\connections';
+        return $collection_FQCNs;
+    }
+
+
+    /**
+     * @param array $collection_FQCNs
+     * @return array
+     * @since $VID:$
+     */
+    public function registerDataloaders(array $collection_FQCNs = [])
+    {
+        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\data\domains';
+        return $collection_FQCNs;
     }
 }
 // End of file RecurringEvents.class.php
