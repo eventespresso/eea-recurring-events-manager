@@ -101,7 +101,7 @@ class Recurrence extends TypeBase
                 'salesEndOffset',
                 'String',
                 null,
-                esc_html__('Offset for sales start', 'event_espresso')
+                esc_html__('Offset for sales end', 'event_espresso')
             ),
         ];
     }
@@ -126,7 +126,7 @@ class Recurrence extends TypeBase
                         'resolve' => [$this, 'resolveFromPayload'],
                     ],
                 ],
-                'mutateAndGetPayload' => RecurrenceUpdate::mutateAndGetPayload($this->model, $this),
+                'mutateAndGetPayload' => RecurrenceUpdate::mutateAndGetPayload($this->model),
             ]
         );
         // Register mutation to delete an entity.
@@ -151,7 +151,7 @@ class Recurrence extends TypeBase
                         },
                     ],
                 ],
-                'mutateAndGetPayload' => RecurrenceDelete::mutateAndGetPayload($this->model, $this),
+                'mutateAndGetPayload' => RecurrenceDelete::mutateAndGetPayload($this->model),
             ]
         );
 
@@ -168,7 +168,7 @@ class Recurrence extends TypeBase
                         'resolve' => [$this, 'resolveFromPayload'],
                     ],
                 ],
-                'mutateAndGetPayload' => RecurrenceCreate::mutateAndGetPayload($this->model, $this),
+                'mutateAndGetPayload' => RecurrenceCreate::mutateAndGetPayload($this->model),
             ]
         );
     }

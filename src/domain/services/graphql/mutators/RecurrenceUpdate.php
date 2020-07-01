@@ -4,7 +4,6 @@ namespace EventEspresso\RecurringEvents\src\domain\services\graphql\mutators;
 
 use EE_Recurrence;
 use EEM_Recurrence;
-use EventEspresso\RecurringEvents\src\domain\services\graphql\types\Recurrence;
 use EventEspresso\RecurringEvents\src\domain\services\graphql\data\mutations\RecurrenceMutation;
 use EventEspresso\core\domain\services\graphql\mutators\EntityMutator;
 use Exception;
@@ -18,10 +17,9 @@ class RecurrenceUpdate extends EntityMutator
      * Defines the mutation data modification closure.
      *
      * @param EEM_Recurrence $model
-     * @param Recurrence     $type
      * @return callable
      */
-    public static function mutateAndGetPayload(EEM_Recurrence $model, Recurrence $type)
+    public static function mutateAndGetPayload(EEM_Recurrence $model)
     {
         /**
          * Updates an entity.
@@ -31,7 +29,7 @@ class RecurrenceUpdate extends EntityMutator
          * @param ResolveInfo $info    The ResolveInfo passed down to all resolvers
          * @return array
          */
-        return static function ($input, AppContext $context, ResolveInfo $info) use ($model, $type) {
+        return static function ($input, AppContext $context, ResolveInfo $info) use ($model) {
             try {
                 /** @var EE_Recurrence $entity */
                 $entity = EntityMutator::getEntityFromInputData($model, $input);
