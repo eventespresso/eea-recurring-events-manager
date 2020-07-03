@@ -79,11 +79,6 @@ class RecurringEventsAdmin
             'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_metabox_main__before_content',
             array($this, 'recurrencePatternsForm'), 10
         );
-        add_filter(
-            'FHEE__EE_Event_Editor_Tips___set_tips_array__qtipsa',
-            array($this, 'remQtips'),
-            999
-        );
         add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
     }
 
@@ -139,26 +134,4 @@ class RecurringEventsAdmin
             'eea-recurring-events-manager-app'
         );
     }
-
-
-    /**
-     * @param array $qtips
-     *
-     * @return array
-     */
-    public function remQtips(array $qtips)
-    {
-        // ee-edit-datetime-recurrence
-        $qtips[] = array(
-            'content_id' => 'ee-edit-datetime-recurrence-help',
-            'target'     => '.ee-edit-datetime-recurrence',
-            'content'    => __('Edit Recurring Event Datetimes', 'event_espresso')
-        );
-        return $qtips;
-    }
-
-
-
 }
-// End of file RecurringEventsAdmin.php
-// Location: /ui/admin/RecurringEventsAdmin.php
