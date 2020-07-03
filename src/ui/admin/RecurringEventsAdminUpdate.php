@@ -69,11 +69,6 @@ class RecurringEventsAdminUpdate
      */
     public function eventUpdateCallbacks(array $event_update_callbacks)
     {
-        // foreach ($event_update_callbacks as $key => $callback) {
-        //     if ($callback[1] === 'datetime_and_tickets_caf_update') {
-        //         // unset($event_update_callbacks[ $key ]);
-        //     }
-        // }
         $event_update_callbacks[] = array($this, 'remEditorUpdate');
         return $event_update_callbacks;
     }
@@ -84,7 +79,6 @@ class RecurringEventsAdminUpdate
      * @param array    $form_data
      * @return void
      * @throws LogicException
-     * @throws EE_Error
      * @throws Exception
      */
     public function remEditorUpdate(EE_Event $event, array $form_data)

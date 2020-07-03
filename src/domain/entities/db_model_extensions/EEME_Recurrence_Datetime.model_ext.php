@@ -3,6 +3,7 @@
 
 /**
  * Class EEM_Datetime_Recurrence
+ * Adds RCR_ID field and getRecurrence() method onto the EEM_Datetime model.
  *
  * @author  Brent Christensen
  * @since   $VID:$

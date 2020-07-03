@@ -9,7 +9,7 @@
   Copyright 2014 Event Espresso (email : support@eventespresso.com)
 
   This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License, version 2, as
+  it under the terms of the GNU General Public License, version 3, as
   published by the Free Software Foundation.
 
   This program is distributed in the hope that it will be useful,
@@ -49,7 +49,7 @@ if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 50600) {
 } else {
     add_action(
         'admin_notices',
-        function() {
+        static function() {
             unset($_GET['activate'], $_REQUEST['activate']);
             if (! function_exists('deactivate_plugins')) {
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -89,7 +89,7 @@ function eea_recurring_events_activation_error($error_message = '')
         );
     add_action(
         'admin_notices',
-        function() use ($error_message) {
+        static function() use ($error_message) {
             unset($_GET['activate'], $_REQUEST['activate']);
             if (! function_exists('deactivate_plugins')) {
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -103,6 +103,5 @@ function eea_recurring_events_activation_error($error_message = '')
         }
     );
 }
-
 // End of file eea-recurring-events-manager.php
 // Location: wp-content/plugins/eea-recurring-events-manager/eea-recurring-events-manager-manager.php

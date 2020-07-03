@@ -33,13 +33,13 @@ class EE_Recurrence extends EE_Base_Class
     {
         $has_object = parent::_check_for_object(
             $props_n_values,
-            __CLASS__,
+            EE_Recurrence::class,
             $timezone,
             $date_formats
         );
         return $has_object
             ? $has_object
-            : new self($props_n_values, false, $timezone, $date_formats);
+            : new EE_Recurrence($props_n_values, false, $timezone, $date_formats);
     }
 
 
@@ -56,7 +56,7 @@ class EE_Recurrence extends EE_Base_Class
      */
     public static function new_instance_from_db($props_n_values = array(), $timezone = null)
     {
-        return new self($props_n_values, true, $timezone);
+        return new EE_Recurrence($props_n_values, true, $timezone);
     }
 
 
