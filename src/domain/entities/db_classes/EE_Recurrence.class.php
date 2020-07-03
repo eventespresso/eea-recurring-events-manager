@@ -5,8 +5,6 @@ use EventEspresso\core\exceptions\InvalidInterfaceException;
 
 defined('EVENT_ESPRESSO_VERSION') || exit;
 
-
-
 /**
  * Class EE_Recurrence
  * Description
@@ -29,7 +27,7 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public static function new_instance($props_n_values = array(), $timezone = null, $date_formats = array())
+    public static function new_instance($props_n_values = [], $timezone = null, $date_formats = [])
     {
         $has_object = parent::_check_for_object(
             $props_n_values,
@@ -54,7 +52,7 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public static function new_instance_from_db($props_n_values = array(), $timezone = null)
+    public static function new_instance_from_db($props_n_values = [], $timezone = null)
     {
         return new EE_Recurrence($props_n_values, true, $timezone);
     }
@@ -153,7 +151,6 @@ class EE_Recurrence extends EE_Base_Class
     }
 
 
-
     /**
      * @return string
      * @throws ReflectionException
@@ -185,8 +182,6 @@ class EE_Recurrence extends EE_Base_Class
     }
 
 
-
-
     /**
      * @return string
      * @throws ReflectionException
@@ -216,8 +211,6 @@ class EE_Recurrence extends EE_Base_Class
         }
         $this->set('RCR_exDates', $exDates);
     }
-
-
 
 
     /**
@@ -277,11 +270,11 @@ class EE_Recurrence extends EE_Base_Class
      */
     public function setGeneratedDatesArray(array $dates)
     {
-        $timestamps = array();
+        $timestamps = [];
         foreach ($dates as $date) {
             if ($date instanceof EE_Datetime) {
                 $timestamps[] = $date->get_raw('DTT_EVT_start');
-            } else if (is_numeric($date) && preg_match(EE_Datetime_Field::unix_timestamp_regex, $date)) {
+            } elseif (is_numeric($date) && preg_match(EE_Datetime_Field::unix_timestamp_regex, $date)) {
                 $timestamps[] = $date;
             } else {
                 $timestamps[] = strtotime($date);
@@ -303,5 +296,75 @@ class EE_Recurrence extends EE_Base_Class
             throw new InvalidDataTypeException('Generated Recurrence Dates Json', $json, 'JSON string');
         }
         return $json;
+    }
+
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function salesStartOffset()
+    {
+        return $this->get('RCR_sales_start_offset');
+    }
+
+
+    /**
+     * @param string $sales_start_offset
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function setSalesStartOffset($sales_start_offset)
+    {
+        if (! is_string($sales_start_offset)) {
+            throw new InvalidDataTypeException(
+                'Ticket Sales Start Date Offset',
+                $sales_start_offset,
+                'string'
+            );
+        }
+        $this->set('RCR_sales_start_offset', $sales_start_offset);
+    }
+
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function salesEndOffset()
+    {
+        return $this->get('RCR_sales_end_offset');
+    }
+
+
+    /**
+     * @param string $sales_end_offset
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function setSalesEndOffset($sales_end_offset)
+    {
+        if (! is_string($sales_end_offset)) {
+            throw new InvalidDataTypeException(
+                'Ticket Sales End Date Offset',
+                $sales_end_offset,
+                'string'
+            );
+        }
+        $this->set('RCR_sales_end_offset', $sales_end_offset);
     }
 }
