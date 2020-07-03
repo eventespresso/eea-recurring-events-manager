@@ -65,6 +65,16 @@ class EEM_Recurrence extends EEM_Base
                     esc_html__('Generated Dates', 'event_espresso'),
                     false
                 ),
+                'RCR_sales_start_offset' => new EE_Plain_Text_Field(
+                    'RCR_sales_start_offset',
+                    esc_html__('Ticket Sales Start Date Offset', 'event_espresso'),
+                    true
+                ),
+                'RCR_sales_end_offset' => new EE_Plain_Text_Field(
+                    'RCR_sales_end_offset',
+                    esc_html__('Ticket Sales End Date Offset', 'event_espresso'),
+                    true
+                ),
             )
         );
         $this->_model_relations = array('Datetime' => new EE_Has_Many_Relation());
