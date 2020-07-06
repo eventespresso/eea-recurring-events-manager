@@ -27,24 +27,28 @@ class RecurrenceMutation
     {
         $args = [];
 
-        if (isset($input['patternHash'])) {
-            $args['RCR_pattern_hash'] = sanitize_text_field($input['patternHash']);
+        if (isset($input['name'])) {
+            $args['RCR_name'] = sanitize_text_field($input['name']);
         }
 
         if (isset($input['rRule'])) {
-            $args['RCR_recurrence_pattern'] = sanitize_text_field($input['rRule']);
+            $args['RCR_rRule'] = sanitize_text_field($input['rRule']);
         }
 
         if (isset($input['exRule'])) {
-            $args['RCR_exclusion_pattern'] = sanitize_text_field($input['exRule']);
+            $args['RCR_exRule'] = sanitize_text_field($input['exRule']);
         }
 
         if (isset($input['rDates'])) {
-            $args['RCR_dates'] = sanitize_text_field($input['rDates']);
+            $args['RCR_rDates'] = sanitize_text_field($input['rDates']);
         }
 
         if (isset($input['exDates'])) {
             $args['RCR_exDates'] = sanitize_text_field($input['exDates']);
+        }
+
+        if (isset($input['gDates'])) {
+            $args['RCR_gDates'] = sanitize_text_field($input['gDates']);
         }
 
         if (isset($input['salesStartOffset'])) {

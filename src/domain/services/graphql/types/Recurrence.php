@@ -62,45 +62,51 @@ class Recurrence extends TypeBase
                 esc_html__('The cache ID of the object.', 'event_espresso')
             ),
             new GraphQLField(
-                'patternHash',
+                'name',
                 'String',
-                'patternHash',
-                esc_html__('Recurrence/Exclusion Pattern Hash', 'event_espresso')
+                'name',
+                esc_html__('Recurrence Pattern Name', 'event_espresso')
             ),
             new GraphQLField(
                 'rRule',
                 'String',
-                'recurrencePattern',
+                'rRule',
                 esc_html__('Recurrence Pattern', 'event_espresso')
             ),
             new GraphQLField(
                 'exRule',
                 'String',
-                'exclusionPattern',
+                'exRule',
                 esc_html__('Exclusion Pattern', 'event_espresso')
             ),
             new GraphQLField(
                 'rDates',
                 'String',
-                'recurrenceDatesJson',
+                'rDates',
                 esc_html__('Recurrence dates', 'event_espresso')
             ),
             new GraphQLField(
                 'exDates',
                 'String',
-                null,
+                'exDates',
                 esc_html__('Excluded dates', 'event_espresso')
+            ),
+            new GraphQLField(
+                'gDates',
+                'String',
+                'generatedDatesJson',
+                esc_html__('Generated Dates', 'event_espresso')
             ),
             new GraphQLField(
                 'salesStartOffset',
                 'String',
-                null,
+                'salesStartOffset',
                 esc_html__('Offset for sales start', 'event_espresso')
             ),
             new GraphQLField(
                 'salesEndOffset',
                 'String',
-                null,
+                'salesEndOffset',
                 esc_html__('Offset for sales end', 'event_espresso')
             ),
         ];
