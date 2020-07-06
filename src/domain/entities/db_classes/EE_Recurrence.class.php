@@ -73,6 +73,20 @@ class EE_Recurrence extends EE_Base_Class
 
 
     /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function name()
+    {
+        return $this->get('RCR_name');
+    }
+
+
+    /**
      * @param mixed $ID
      * @throws ReflectionException
      * @throws InvalidArgumentException

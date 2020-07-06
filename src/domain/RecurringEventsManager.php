@@ -16,6 +16,7 @@ use EventEspresso\core\services\assets\Registry;
 use EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager;
 use InvalidArgumentException;
 use ReflectionException;
+use EventEspresso\RecurringEvents\src\domain\services\graphql\ExtendCore as ExtendCoreGQL;
 
 /**
  * Class  RecurringEventsManager
@@ -97,6 +98,9 @@ Class  RecurringEventsManager extends EE_Addon
     {
         $this->registerDependencies();
         $this->registerResources();
+
+        $extend = new ExtendCoreGQL();
+        $extend->hookUp();
     }
 
 
