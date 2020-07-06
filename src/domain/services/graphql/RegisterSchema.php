@@ -8,20 +8,20 @@ use EventEspresso\core\services\graphql\fields\GraphQLOutputField;
 use GraphQLRelay\Relay;
 
 /**
- * Class ExtendCore
+ * Class RegisterSchema
  * Description
  *
  * @package EventEspresso\RecurringEvents\src\domain\services\graphql
  * @author  Manzoor Wani
  * @since   $VID:$
  */
-class ExtendCore
+class RegisterSchema
 {
     /**
      * @return void
      * @since $VID:$
      */
-    public function hookUp()
+    public function addFilters()
     {
         add_filter(
             'FHEE__EventEspresso_core_domain_services_graphql_types__datetime_fields',
@@ -134,27 +134,29 @@ class ExtendCore
             'recurrenceIdIn' => 'RCR_ID',
         ];
         $id_fields = ['recurrence', 'recurrenceIn'];
-        foreach ($args['where'] as $arg => $value) {
-            if (! array_key_exists($arg, $arg_mapping)) {
-                continue;
+        if (! empty($args['where'])) {
+            foreach ($args['where'] as $arg => $value) {
+                if (! array_key_exists($arg, $arg_mapping)) {
+                    continue;
+                }
+    
+                if (is_array($value) && ! empty($value)) {
+                    $value = array_map(
+                        static function ($value) {
+                            if (is_string($value)) {
+                                $value = sanitize_text_field($value);
+                            }
+                            return $value;
+                        },
+                        $value
+                    );
+                } elseif (is_string($value)) {
+                    $value = sanitize_text_field($value);
+                }
+                $where_params[ $arg_mapping[ $arg ] ] = in_array($arg, $id_fields, true)
+                    ? $this->convertGlobalId($value)
+                    : $value;
             }
-
-            if (is_array($value) && ! empty($value)) {
-                $value = array_map(
-                    static function ($value) {
-                        if (is_string($value)) {
-                            $value = sanitize_text_field($value);
-                        }
-                        return $value;
-                    },
-                    $value
-                );
-            } elseif (is_string($value)) {
-                $value = sanitize_text_field($value);
-            }
-            $where_params[ $arg_mapping[ $arg ] ] = in_array($arg, $id_fields, true)
-                ? $this->convertGlobalId($value)
-                : $value;
         }
 
         // Use the proper operator.
