@@ -5,8 +5,6 @@ use EventEspresso\core\exceptions\InvalidInterfaceException;
 
 defined('EVENT_ESPRESSO_VERSION') || exit;
 
-
-
 /**
  * Class EE_Recurrence
  * Description
@@ -29,17 +27,17 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public static function new_instance($props_n_values = array(), $timezone = null, $date_formats = array())
+    public static function new_instance($props_n_values = [], $timezone = null, $date_formats = [])
     {
         $has_object = parent::_check_for_object(
             $props_n_values,
-            __CLASS__,
+            EE_Recurrence::class,
             $timezone,
             $date_formats
         );
         return $has_object
             ? $has_object
-            : new self($props_n_values, false, $timezone, $date_formats);
+            : new EE_Recurrence($props_n_values, false, $timezone, $date_formats);
     }
 
 
@@ -54,9 +52,9 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public static function new_instance_from_db($props_n_values = array(), $timezone = null)
+    public static function new_instance_from_db($props_n_values = [], $timezone = null)
     {
-        return new self($props_n_values, true, $timezone);
+        return new EE_Recurrence($props_n_values, true, $timezone);
     }
 
 
@@ -99,26 +97,26 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function recurrencePattern()
+    public function rRule()
     {
-        return $this->get('RCR_recurrence_pattern');
+        return $this->get('RCR_rRule');
     }
 
 
     /**
-     * @param string $recurrence_pattern
+     * @param string $rRule
      * @throws ReflectionException
      * @throws InvalidArgumentException
      * @throws InvalidInterfaceException
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function setRecurrencePattern($recurrence_pattern)
+    public function setRRule($rRule)
     {
-        if (! is_string($recurrence_pattern)) {
-            throw new InvalidDataTypeException('Recurrence Pattern', $recurrence_pattern, 'string');
+        if (! is_string($rRule)) {
+            throw new InvalidDataTypeException('Recurrence Rule', $rRule, 'string');
         }
-        $this->set('RCR_recurrence_pattern', $recurrence_pattern);
+        $this->set('RCR_rRule', $rRule);
     }
 
 
@@ -130,25 +128,26 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function patternHash()
+    public function exRule()
     {
-        return $this->get('RCR_pattern_hash');
+        return $this->get('RCR_exRule');
     }
 
 
     /**
-     * @param string $pattern_hash
+     * @param string $exRule
      * @throws ReflectionException
      * @throws InvalidArgumentException
      * @throws InvalidInterfaceException
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function setPatternHash($pattern_hash)
+    public function setExRule($exRule)
     {
-        if(EEM_Recurrence::instance()->isValidRecurrencePatternHash($pattern_hash)) {
-            $this->set('RCR_pattern_hash', $pattern_hash);
+        if (! is_string($exRule)) {
+            throw new InvalidDataTypeException('Exclusion Rule', $exRule, 'string');
         }
+        $this->set('RCR_exRule', $exRule);
     }
 
 
@@ -160,26 +159,26 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function exclusionPattern()
+    public function rDates()
     {
-        return $this->get('RCR_exclusion_pattern');
+        return $this->get('RCR_rDates');
     }
 
 
     /**
-     * @param string $exclusion_pattern
+     * @param string $rDates
      * @throws ReflectionException
      * @throws InvalidArgumentException
      * @throws InvalidInterfaceException
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function setExclusionPattern($exclusion_pattern)
+    public function setRDates($rDates)
     {
-        if (! is_string($exclusion_pattern)) {
-            throw new InvalidDataTypeException('Exclusion Pattern', $exclusion_pattern, 'string');
+        if (! is_string($rDates)) {
+            throw new InvalidDataTypeException('Recurrence Dates', $rDates, 'string');
         }
-        $this->set('RCR_exclusion_pattern', $exclusion_pattern);
+        $this->set('RCR_rDates', $rDates);
     }
 
 
@@ -191,9 +190,40 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function recurrenceDatesJson()
+    public function exDates()
     {
-        return $this->get('RCR_dates');
+        return $this->get('RCR_exDates');
+    }
+
+
+    /**
+     * @param string $exDates
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function setExDates($exDates)
+    {
+        if (! is_string($exDates)) {
+            throw new InvalidDataTypeException('Exclusion Dates', $exDates, 'string');
+        }
+        $this->set('RCR_exDates', $exDates);
+    }
+
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function generatedDatesJson()
+    {
+        return $this->get('RCR_gDates');
     }
 
 
@@ -205,9 +235,9 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function recurrenceDatesArray()
+    public function generatedDatesArray()
     {
-        return json_decode($this->recurrenceDatesJson(), true);
+        return json_decode($this->generatedDatesJson(), true);
     }
 
 
@@ -219,9 +249,9 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function setRecurrenceDatesJson($dates)
+    public function setGeneratedDatesJson($dates)
     {
-        $this->set('RCR_dates', $this->isValidDatesJson($dates));
+        $this->set('RCR_gDates', $this->isValidDatesJson($dates));
     }
 
 
@@ -238,19 +268,19 @@ class EE_Recurrence extends EE_Base_Class
      * @throws InvalidDataTypeException
      * @throws EE_Error
      */
-    public function setRecurrenceDatesArray(array $dates)
+    public function setGeneratedDatesArray(array $dates)
     {
-        $timestamps = array();
+        $timestamps = [];
         foreach ($dates as $date) {
             if ($date instanceof EE_Datetime) {
                 $timestamps[] = $date->get_raw('DTT_EVT_start');
-            } else if (is_numeric($date) && preg_match(EE_Datetime_Field::unix_timestamp_regex, $date)) {
+            } elseif (is_numeric($date) && preg_match(EE_Datetime_Field::unix_timestamp_regex, $date)) {
                 $timestamps[] = $date;
             } else {
                 $timestamps[] = strtotime($date);
             }
         }
-        $this->setRecurrenceDatesJson(wp_json_encode($timestamps));
+        $this->setGeneratedDatesJson(wp_json_encode($timestamps));
     }
 
 
@@ -261,10 +291,80 @@ class EE_Recurrence extends EE_Base_Class
      */
     private function isValidDatesJson($json)
     {
-        json_decode($json);
+        json_decode($json, false);
         if (json_last_error()) {
-            throw new InvalidDataTypeException('Recurrence Dates Json', $json, 'JSON string');
+            throw new InvalidDataTypeException('Generated Recurrence Dates Json', $json, 'JSON string');
         }
         return $json;
+    }
+
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function salesStartOffset()
+    {
+        return $this->get('RCR_sales_start_offset');
+    }
+
+
+    /**
+     * @param string $sales_start_offset
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function setSalesStartOffset($sales_start_offset)
+    {
+        if (! is_string($sales_start_offset)) {
+            throw new InvalidDataTypeException(
+                'Ticket Sales Start Date Offset',
+                $sales_start_offset,
+                'string'
+            );
+        }
+        $this->set('RCR_sales_start_offset', $sales_start_offset);
+    }
+
+
+    /**
+     * @return string
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function salesEndOffset()
+    {
+        return $this->get('RCR_sales_end_offset');
+    }
+
+
+    /**
+     * @param string $sales_end_offset
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws EE_Error
+     */
+    public function setSalesEndOffset($sales_end_offset)
+    {
+        if (! is_string($sales_end_offset)) {
+            throw new InvalidDataTypeException(
+                'Ticket Sales End Date Offset',
+                $sales_end_offset,
+                'string'
+            );
+        }
+        $this->set('RCR_sales_end_offset', $sales_end_offset);
     }
 }

@@ -3,12 +3,16 @@
 namespace EventEspresso\RecurringEvents\src\ui\admin;
 
 use DomainException;
+use EEH_HTML;
 use EEM_Event;
+use EventEspresso\core\exceptions\InvalidDataTypeException;
+use EventEspresso\core\exceptions\InvalidInterfaceException;
 use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\RecurringEvents\src\domain\Domain;
 use EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager;
 use Exception;
-
+use InvalidArgumentException;
+use LogicException;
 
 
 /**
@@ -73,12 +77,7 @@ class RecurringEventsAdmin
         );
         add_action(
             'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_metabox_main__before_content',
-            array($this, 'recurrencePatternsForm'), 10, 3
-        );
-        add_filter(
-            'FHEE__EE_Event_Editor_Tips___set_tips_array__qtipsa',
-            array($this, 'remQtips'),
-            999
+            array($this, 'recurrencePatternsForm'), 10
         );
         add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
     }
@@ -98,9 +97,9 @@ class RecurringEventsAdmin
 
 
     /**
+     * @param int $dtt_row
+     * @param int $DTT_ID
      * @return void
-     * @throws \LogicException
-     * @throws \EE_Error
      */
     public function editDatetimeRecurrenceAction($dtt_row = 0, $DTT_ID = 0)
     {
@@ -116,44 +115,23 @@ class RecurringEventsAdmin
 
 
     /**
+     * action hook callback has the following variables available to it:
+     *  - $EVT_ID
+     *  - $existing_datetime_ids
+     *  - $existing_ticket_ids
+     *
      * @return void
-     * @throws \InvalidArgumentException
-     * @throws \EventEspresso\core\exceptions\InvalidInterfaceException
-     * @throws \EventEspresso\core\exceptions\InvalidDataTypeException
-     * @throws \LogicException
-     * @throws \EE_Error
+     * @throws InvalidArgumentException
+     * @throws InvalidInterfaceException
+     * @throws InvalidDataTypeException
+     * @throws LogicException
      * @throws Exception
      */
-    public function recurrencePatternsForm(
-        $EVT_ID,
-        $existing_datetime_ids,
-        $existing_ticket_ids)
+    public function recurrencePatternsForm()
     {
-        echo \EEH_HTML::div(
+        echo EEH_HTML::div(
             '&nbsp;',
             'eea-recurring-events-manager-app'
         );
     }
-
-
-    /**
-     * @param array $qtips
-     *
-     * @return array
-     */
-    public function remQtips(array $qtips)
-    {
-        // ee-edit-datetime-recurrence
-        $qtips[] = array(
-            'content_id' => 'ee-edit-datetime-recurrence-help',
-            'target'     => '.ee-edit-datetime-recurrence',
-            'content'    => __('Edit Recurring Event Datetimes', 'event_espresso')
-        );
-        return $qtips;
-    }
-
-
-
 }
-// End of file RecurringEventsAdmin.php
-// Location: /ui/admin/RecurringEventsAdmin.php

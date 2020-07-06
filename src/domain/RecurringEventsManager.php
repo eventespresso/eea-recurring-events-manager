@@ -60,13 +60,20 @@ Class  RecurringEventsManager extends EE_Addon
                     $domain->pluginPath() . 'src/domain/services/modules/EED_Recurring_Events.module.php',
                 ),
                 'dms_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'src/domain/services/data_migration_scripts/',
+                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/services/data_migration_scripts/',
                 ),
                 'model_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_models/',
+                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_models/',
                 ),
                 'class_paths' => array(
-                    __CLASS__ => $domain->pluginPath() . 'src/domain/entities/db_classes/',
+                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_classes/',
+                ),
+                // EE_Register_Model_Extensions
+                'model_extension_paths' => array(
+                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_model_extensions/',
+                ),
+                'class_extension_paths' => array(
+                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_class_extensions/',
                 ),
             )
         );
@@ -85,7 +92,6 @@ Class  RecurringEventsManager extends EE_Addon
      * @throws DomainException
      * @throws InvalidInterfaceException
      * @throws InvalidEntityException
-     * @throws EE_Error
      */
     public function after_registration()
     {
@@ -101,7 +107,6 @@ Class  RecurringEventsManager extends EE_Addon
      * @throws DomainException
      * @throws InvalidInterfaceException
      * @throws InvalidEntityException
-     * @throws EE_Error
      */
     protected function registerDependencies()
     {
@@ -168,7 +173,7 @@ Class  RecurringEventsManager extends EE_Addon
         );
         add_filter(
             'FHEE__EventEspresso_core_services_graphql_DataLoaderCollection__loadCollection__collection_FQCNs',
-            [$this, 'registerDataloaders']
+            [$this, 'registerDataLoaders']
         );
     }
 
@@ -202,7 +207,7 @@ Class  RecurringEventsManager extends EE_Addon
      * @return array
      * @since $VID:$
      */
-    public function registerDataloaders(array $collection_FQCNs = [])
+    public function registerDataLoaders(array $collection_FQCNs = [])
     {
         $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\data\domains';
         return $collection_FQCNs;
