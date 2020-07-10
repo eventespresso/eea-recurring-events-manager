@@ -1,0 +1,16 @@
+{
+  "files": {
+    "rem.css": "/static/css/rem.f2002c19.css",
+    "rem.js": "/static/js/rem.eb4558d8.js",
+    "rem.js.map": "/static/js/rem.eb4558d8.js.map",
+    "rem.php": "/static/js/rem.3d2f5b6d.asset.php",
+    "static/css/rem.f2002c19.css.map": "/static/css/rem.f2002c19.css.map",
+    "static/js/rem.eb4558d8.js.LICENSE.txt": "/static/js/rem.eb4558d8.js.LICENSE.txt"
+  },
+  "entrypoints": {
+    "rem": [
+      "static/css/rem.f2002c19.css",
+      "static/js/rem.eb4558d8.js"
+    ]
+  }
+}
