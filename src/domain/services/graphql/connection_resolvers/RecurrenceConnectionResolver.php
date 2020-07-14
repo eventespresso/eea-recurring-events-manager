@@ -5,6 +5,7 @@ namespace EventEspresso\RecurringEvents\src\domain\services\graphql\connection_r
 use EE_Datetime;
 use EE_Error;
 use EEM_Recurrence;
+use EventEspresso\core\domain\services\graphql\connection_resolvers\AbstractConnectionResolver;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
 use InvalidArgumentException;
@@ -64,13 +65,13 @@ class RecurrenceConnectionResolver extends AbstractConnectionResolver
     // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps
     public function get_query_args()
     {
-        $where_params = ['TKT_deleted' => ['IN', [true, false]]];
+        $where_params = [];
         $query_args   = [];
 
         $query_args['limit'] = $this->getLimit();
 
         // Avoid multiple entries by join.
-        $query_args['group_by'] = 'TKT_ID';
+        $query_args['group_by'] = 'RCR_ID';
 
         $query_args['default_where_conditions'] = 'minimum';
 
