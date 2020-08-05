@@ -1,16 +1,16 @@
 {
   "files": {
     "rem.css": "/static/css/rem.c610ca24.css",
-    "rem.js": "/static/js/rem.a65278d6.js",
-    "rem.js.map": "/static/js/rem.a65278d6.js.map",
-    "rem.php": "/static/js/rem.22d9d7af.asset.php",
+    "rem.js": "/static/js/rem.d8a5cdc9.js",
+    "rem.js.map": "/static/js/rem.d8a5cdc9.js.map",
+    "rem.php": "/static/js/rem.e7dad382.asset.php",
     "static/css/rem.c610ca24.css.map": "/static/css/rem.c610ca24.css.map",
-    "static/js/rem.a65278d6.js.LICENSE.txt": "/static/js/rem.a65278d6.js.LICENSE.txt"
+    "static/js/rem.d8a5cdc9.js.LICENSE.txt": "/static/js/rem.d8a5cdc9.js.LICENSE.txt"
   },
   "entrypoints": {
     "rem": [
       "static/css/rem.c610ca24.css",
-      "static/js/rem.a65278d6.js"
+      "static/js/rem.d8a5cdc9.js"
     ]
   }
 }
