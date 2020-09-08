@@ -8,15 +8,20 @@ use EE_Dependency_Map;
 use EE_Error;
 use EE_Register_Addon;
 use EventEspresso\core\domain\DomainInterface;
+use EventEspresso\core\domain\entities\routing\handlers\admin\EspressoEventEditor;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidEntityException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
 use EventEspresso\core\services\assets\AssetCollection;
+use EventEspresso\core\services\assets\BaristaFactory;
+use EventEspresso\core\services\assets\BaristaInterface;
 use EventEspresso\core\services\assets\Registry;
+use EventEspresso\core\services\loaders\LoaderFactory;
+use EventEspresso\core\services\loaders\LoaderInterface;
+use EventEspresso\core\services\routing\RouteInterface;
 use EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager;
 use InvalidArgumentException;
 use ReflectionException;
-use EventEspresso\RecurringEvents\src\domain\services\graphql\RegisterSchema;
 
 /**
  * Class  RecurringEventsManager
@@ -27,6 +32,11 @@ use EventEspresso\RecurringEvents\src\domain\services\graphql\RegisterSchema;
  */
 Class  RecurringEventsManager extends EE_Addon
 {
+
+    /**
+     * @var DomainInterface
+     */
+    private static $domain;
 
     /**
      * !!! IMPORTANT !!!
@@ -49,6 +59,7 @@ Class  RecurringEventsManager extends EE_Addon
      */
     public static function registerAddon(DomainInterface $domain)
     {
+        RecurringEventsManager::$domain = $domain;
         // register addon via Plugin API
         EE_Register_Addon::register(
             'EventEspresso\RecurringEvents\src\domain\RecurringEventsManager',
@@ -57,25 +68,6 @@ Class  RecurringEventsManager extends EE_Addon
                 'plugin_slug' => 'eea_recurring_events',
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
                 'main_file_path' => $domain->pluginFile(),
-                'module_paths' => array(
-                    $domain->pluginPath() . 'src/domain/services/modules/EED_Recurring_Events.module.php',
-                ),
-                'dms_paths' => array(
-                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/services/data_migration_scripts/',
-                ),
-                'model_paths' => array(
-                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_models/',
-                ),
-                'class_paths' => array(
-                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_classes/',
-                ),
-                // EE_Register_Model_Extensions
-                'model_extension_paths' => array(
-                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_model_extensions/',
-                ),
-                'class_extension_paths' => array(
-                    RecurringEventsManager::class => $domain->pluginPath() . 'src/domain/entities/db_class_extensions/',
-                ),
             )
         );
     }
@@ -97,10 +89,7 @@ Class  RecurringEventsManager extends EE_Addon
     public function after_registration()
     {
         $this->registerDependencies();
-        $this->registerResources();
-
-        $extend = new RegisterSchema();
-        $extend->addFilters();
+        $this->registerAssets();
     }
 
 
@@ -114,39 +103,6 @@ Class  RecurringEventsManager extends EE_Addon
      */
     protected function registerDependencies()
     {
-        $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\ui\admin\AddNewEventModal',
-            array(
-                'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
-            )
-        );
-        $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdmin',
-            array(
-                'EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager' => EE_Dependency_Map::load_from_cache,
-                'EEM_Event' => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
-            )
-        );
-        $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\ui\admin\RecurringEventsAdminUpdate',
-            array(
-                'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\core\services\request\RequestInterface' => EE_Dependency_Map::load_from_cache,
-                'EventEspresso\core\services\loaders\LoaderInterface' => EE_Dependency_Map::load_from_cache,
-            )
-        );
-
-        $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\domain\services\graphql\types\Recurrence',
-            ['EEM_Recurrence' => EE_Dependency_Map::load_from_cache]
-        );
-        $this->dependencyMap()->registerDependencies(
-            'EventEspresso\RecurringEvents\src\domain\services\graphql\connections\RootQueryRecurrencesConnection',
-            ['EEM_Recurrence' => EE_Dependency_Map::load_from_cache]
-        );
-
         $this->dependencyMap()->add_alias(
             Domain::class,
             DomainInterface::class,
@@ -165,57 +121,36 @@ Class  RecurringEventsManager extends EE_Addon
     /**
      * @since $VID:$
      */
-    public function registerResources()
+    public function registerAssets()
     {
-        add_filter(
-            'FHEE__EventEspresso_core_services_graphql_TypeCollection__loadCollection__collection_FQCNs',
-            [$this, 'registerTypes']
-        );
-        add_filter(
-            'FHEE__EventEspresso_core_services_graphql_ConnectionCollection__loadCollection__collection_FQCNs',
-            [$this, 'registerConnections']
-        );
-        add_filter(
-            'FHEE__EventEspresso_core_services_graphql_DataLoaderCollection__loadCollection__collection_FQCNs',
-            [$this, 'registerDataLoaders']
-        );
+        if (apply_filters('FHEE__load_Barista', true)) {
+            add_action(
+                'AHEE__EventEspresso_core_domain_entities_routes_handlers_Route__handleRequest',
+                [$this, 'enqueueRemAssets'],
+                10,
+                1
+            );
+        }
     }
 
 
     /**
-     * @param array $collection_FQCNs
-     * @return array
+     * @param RouteInterface $route
      * @since $VID:$
      */
-    public function registerTypes(array $collection_FQCNs = [])
+    public function enqueueRemAssets(RouteInterface $route)
     {
-        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\types';
-        return $collection_FQCNs;
-    }
+        if ($route instanceof EspressoEventEditor) {
+            $loader = LoaderFactory::getLoader();
+            /** @var BaristaFactory $factory */
+            $factory = $loader->getShared(BaristaFactory::class);
+            $barista = $factory->createFromDomainObject(RecurringEventsManager::$domain);
+            if ($barista instanceof BaristaInterface) {
+                $barista->initialize();
+            }
+            $asset_manager = $loader->getShared(RecurringEventsAssetManager::class);
+            add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 99);
 
-
-    /**
-     * @param array $collection_FQCNs
-     * @return array
-     * @since $VID:$
-     */
-    public function registerConnections(array $collection_FQCNs = [])
-    {
-        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\connections';
-        return $collection_FQCNs;
-    }
-
-
-    /**
-     * @param array $collection_FQCNs
-     * @return array
-     * @since $VID:$
-     */
-    public function registerDataLoaders(array $collection_FQCNs = [])
-    {
-        $collection_FQCNs[] = 'EventEspresso\RecurringEvents\src\domain\services\graphql\data\domains';
-        return $collection_FQCNs;
+        }
     }
 }
-// End of file RecurringEvents.class.php
-// Location: wp-content/plugins/eea-recurring-events-manager/RecurringEvents.class.php
