@@ -13,23 +13,19 @@ add_action(
             try {
                 EE_Psr4AutoloaderInit::psr4_loader()->addNamespace('EventEspresso\RecurringEvents', __DIR__);
                 EE_Dependency_Map::register_dependencies(
-                    'EventEspresso\RecurringEvents\src\domain\RecurringEventsManager',
+                    'EventEspresso\RecurringEvents\src\domain\Domain',
                     [
                         'EE_Dependency_Map'                               => EE_Dependency_Map::load_from_cache,
                         'EventEspresso\RecurringEvents\src\domain\Domain' => EE_Dependency_Map::load_from_cache,
                     ]
                 );
-                EventEspresso\RecurringEvents\src\domain\RecurringEventsManager::registerAddon(
-                    EventEspresso\core\domain\DomainFactory::getShared(
-                        new EventEspresso\core\domain\values\FullyQualifiedName(
-                            'EventEspresso\RecurringEvents\src\domain\Domain'
-                        ),
-                        [
-                            new EventEspresso\core\domain\values\FilePath(EE_REM_PLUGIN_FILE),
-                            EventEspresso\core\domain\values\Version::fromString(EE_REM_VERSION),
-                        ]
-                    )
+                EE_Dependency_Map::register_class_loader(
+                    'EventEspresso\RecurringEvents\src\domain\Domain',
+                    static function() {
+                        return getRemDomain();
+                    }
                 );
+                EventEspresso\RecurringEvents\src\domain\RecurringEventsManager::registerAddon(getRemDomain());
             } catch (Exception $e) {
                 eea_recurring_events_activation_error($e->getMessage());
             }
@@ -38,6 +34,19 @@ add_action(
         }
     }
 );
+
+
+/**
+ * @returns EventEspresso\core\domain\DomainInterface
+ */
+function getRemDomain() {
+    return EventEspresso\core\domain\DomainFactory::getShared(
+        new EventEspresso\core\domain\values\FullyQualifiedName(
+            'EventEspresso\RecurringEvents\src\domain\Domain'
+        ),
+        [ EE_REM_PLUGIN_FILE, EE_REM_VERSION]
+    );
+}
 
 
 /**
