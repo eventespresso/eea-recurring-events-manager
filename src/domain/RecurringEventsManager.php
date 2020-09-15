@@ -149,7 +149,7 @@ Class  RecurringEventsManager extends EE_Addon
                 $barista->initialize();
             }
             $asset_manager = $loader->getShared(RecurringEventsAssetManager::class);
-            add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 99);
+            add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 3);
 
         }
     }
