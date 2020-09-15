@@ -123,14 +123,12 @@ Class  RecurringEventsManager extends EE_Addon
      */
     public function registerAssets()
     {
-        if (apply_filters('FHEE__load_Barista', true)) {
-            add_action(
-                'AHEE__EventEspresso_core_domain_entities_routes_handlers_Route__handleRequest',
-                [$this, 'enqueueRemAssets'],
-                10,
-                1
-            );
-        }
+        add_action(
+            'AHEE__EventEspresso_core_domain_entities_routes_handlers_Route__handleRequest',
+            [$this, 'enqueueRemAssets'],
+            10,
+            1
+        );
     }
 
 
@@ -142,11 +140,13 @@ Class  RecurringEventsManager extends EE_Addon
     {
         if ($route instanceof EspressoEventEditor) {
             $loader = LoaderFactory::getLoader();
-            /** @var BaristaFactory $factory */
-            $factory = $loader->getShared(BaristaFactory::class);
-            $barista = $factory->createFromDomainObject(RecurringEventsManager::$domain);
-            if ($barista instanceof BaristaInterface) {
-                $barista->initialize();
+            if (apply_filters('FHEE__load_Barista', true)) {
+                /** @var BaristaFactory $factory */
+                $factory = $loader->getShared(BaristaFactory::class);
+                $barista = $factory->createFromDomainObject(RecurringEventsManager::$domain);
+                if ($barista instanceof BaristaInterface) {
+                    $barista->initialize();
+                }
             }
             $asset_manager = $loader->getShared(RecurringEventsAssetManager::class);
             add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 3);
