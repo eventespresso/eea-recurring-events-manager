@@ -18,7 +18,7 @@ class RecurringEventsAssetManager extends ReactAssetManager
 {
     const DOMAIN = 'rem';
 
-    const ASSET_HANDLE = Domain::ASSET_NAMESPACE . RecurringEventsAssetManager::DOMAIN;
+    const ASSET_HANDLE = Domain::ASSET_NAMESPACE . '-' . RecurringEventsAssetManager::DOMAIN;
 
 
     /**
