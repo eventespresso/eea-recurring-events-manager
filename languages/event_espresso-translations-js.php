@@ -427,7 +427,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:63
 	__( 'Repeat yearly on month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:79
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:80
 	__( 'Repeat yearly on a day', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:65
@@ -436,10 +436,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:75
 	__( 'Repeat yearly on the day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:88
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:89
 	__( 'of', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:93
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:94
 	__( 'Repeat yearly on the month', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:19
