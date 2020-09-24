@@ -1,6 +1,6 @@
 <?php
 
-namespace EventEspresso\RecurringEvents\src\domain\services\assets;
+namespace EventEspresso\RecurringEvents\domain\services\assets;
 
 use DomainException;
 use EventEspresso\core\domain\Domain;
@@ -9,7 +9,7 @@ use EventEspresso\core\domain\services\assets\ReactAssetManager;
 /**
  * Class RecurringEventsAssetManager
  *
- * @package EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager
+ * @package EventEspresso\RecurringEvents\domain\services\assets\RecurringEventsAssetManager
  * @author  Brent Christensen
  *
  * @since   $VID:$
