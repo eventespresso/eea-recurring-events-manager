@@ -1,6 +1,6 @@
 <?php
 
-namespace EventEspresso\RecurringEvents\src\domain;
+namespace EventEspresso\RecurringEvents\domain;
 
 use EventEspresso\core\domain\DomainBase;
 

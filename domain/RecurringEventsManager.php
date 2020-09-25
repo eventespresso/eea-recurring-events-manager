@@ -1,14 +1,16 @@
 <?php
 
-namespace EventEspresso\RecurringEvents\src\domain;
+namespace EventEspresso\RecurringEvents\domain;
 
 use DomainException;
 use EE_Addon;
 use EE_Dependency_Map;
 use EE_Error;
 use EE_Register_Addon;
-use EventEspresso\core\domain\DomainInterface;
+use EED_Recurring_Events;
 use EventEspresso\core\domain\entities\routing\handlers\admin\EspressoEventEditor;
+use EventEspresso\core\domain\entities\routing\handlers\frontend\FrontendRequests;
+use EventEspresso\core\domain\DomainInterface;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidEntityException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
@@ -16,10 +18,11 @@ use EventEspresso\core\services\assets\AssetCollection;
 use EventEspresso\core\services\assets\BaristaFactory;
 use EventEspresso\core\services\assets\BaristaInterface;
 use EventEspresso\core\services\assets\Registry;
-use EventEspresso\core\services\loaders\LoaderFactory;
-use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\core\services\routing\RouteInterface;
-use EventEspresso\RecurringEvents\src\domain\services\assets\RecurringEventsAssetManager;
+use EventEspresso\RecurringEvents\domain\entities\admin\RecurringEventsTemplateSettingsForm;
+use EventEspresso\RecurringEvents\domain\entities\config\RecurringEventsConfig;
+use EventEspresso\RecurringEvents\domain\services\admin\RecurringEventsTemplateSettingsFormHandler;
+use EventEspresso\RecurringEvents\domain\services\assets\RecurringEventsAssetManager;
 use InvalidArgumentException;
 use ReflectionException;
 
@@ -29,14 +32,16 @@ use ReflectionException;
  * @package     Event Espresso
  * @subpackage  eea-recurring-events-manager
  * @author      Brent Christensen
+ * @since   $VID:$
  */
-Class  RecurringEventsManager extends EE_Addon
+class  RecurringEventsManager extends EE_Addon
 {
 
     /**
      * @var DomainInterface
      */
     private static $domain;
+
 
     /**
      * !!! IMPORTANT !!!
@@ -62,13 +67,16 @@ Class  RecurringEventsManager extends EE_Addon
         RecurringEventsManager::$domain = $domain;
         // register addon via Plugin API
         EE_Register_Addon::register(
-            'EventEspresso\RecurringEvents\src\domain\RecurringEventsManager',
-            array(
-                'version' => $domain->version(),
-                'plugin_slug' => 'eea_recurring_events',
+            'EventEspresso\RecurringEvents\domain\RecurringEventsManager',
+            [
+                'version'          => $domain->version(),
+                'plugin_slug'      => 'eea_recurring_events',
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
-                'main_file_path' => $domain->pluginFile(),
-            )
+                'main_file_path'   => $domain->pluginFile(),
+                'module_paths'     => [
+                    $domain->pluginPath() . 'domain/services/modules/EED_Recurring_Events.module.php',
+                ],
+            ]
         );
     }
 
@@ -79,7 +87,6 @@ Class  RecurringEventsManager extends EE_Addon
      * that will run immediately after addon registration
      * making this a great place for code that needs to be "omnipresent"
      *
-     * @since 4.9.26
      * @throws InvalidArgumentException
      * @throws InvalidDataTypeException
      * @throws DomainException
@@ -89,7 +96,12 @@ Class  RecurringEventsManager extends EE_Addon
     public function after_registration()
     {
         $this->registerDependencies();
-        $this->registerAssets();
+        add_action(
+            'AHEE__EventEspresso_core_domain_entities_routes_handlers_Route__handleRequest',
+            [$this, 'handleRemRoutes'],
+            10,
+            1
+        );
     }
 
 
@@ -112,45 +124,68 @@ Class  RecurringEventsManager extends EE_Addon
             RecurringEventsAssetManager::class,
             [
                 AssetCollection::class => EE_Dependency_Map::load_from_cache,
-                Domain::class => EE_Dependency_Map::load_from_cache,
-                Registry::class => EE_Dependency_Map::load_from_cache
+                Domain::class          => EE_Dependency_Map::load_from_cache,
+                Registry::class        => EE_Dependency_Map::load_from_cache,
             ]
         );
-    }
-
-    /**
-     * @since $VID:$
-     */
-    public function registerAssets()
-    {
-        add_action(
-            'AHEE__EventEspresso_core_domain_entities_routes_handlers_Route__handleRequest',
-            [$this, 'enqueueRemAssets'],
-            10,
-            1
+        $this->dependencyMap()->registerDependencies(
+            RecurringEventsTemplateSettingsForm::class,
+            [RecurringEventsConfig::class => EE_Dependency_Map::load_from_cache]
+        );
+        $this->dependencyMap()->registerDependencies(
+            RecurringEventsTemplateSettingsFormHandler::class,
+            [
+                RecurringEventsConfig::class               => EE_Dependency_Map::load_from_cache,
+                RecurringEventsTemplateSettingsForm::class => EE_Dependency_Map::load_from_cache,
+            ]
         );
     }
 
 
     /**
      * @param RouteInterface $route
-     * @since $VID:$
      */
-    public function enqueueRemAssets(RouteInterface $route)
+    public function handleRemRoutes(RouteInterface $route)
     {
         if ($route instanceof EspressoEventEditor) {
-            $loader = LoaderFactory::getLoader();
             if (apply_filters('FHEE__load_Barista', true)) {
                 /** @var BaristaFactory $factory */
-                $factory = $loader->getShared(BaristaFactory::class);
+                $factory = EED_Recurring_Events::loader()->getShared(BaristaFactory::class);
                 $barista = $factory->createFromDomainObject(RecurringEventsManager::$domain);
                 if ($barista instanceof BaristaInterface) {
                     $barista->initialize();
                 }
             }
-            $asset_manager = $loader->getShared(RecurringEventsAssetManager::class);
+            $asset_manager = EED_Recurring_Events::loader()->getShared(RecurringEventsAssetManager::class);
             add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 3);
-
+        } elseif ($route instanceof FrontendRequests) {
+            add_filter(
+                'FHEE__espresso_list_of_event_dates__arguments',
+                ['EED_Recurring_Events', 'filterDatesListArguments'],
+                10
+            );
+            add_filter(
+                'FHEE__espresso_list_of_event_dates__datetime_html',
+                ['EED_Recurring_Events', 'filterDatesListInnerHtml'],
+                10, 3
+            );
+            add_filter(
+                'FHEE__espresso_list_of_event_dates__html',
+                ['EED_Recurring_Events', 'filterDatesListHtml']
+            );
+            add_action('wp_enqueue_scripts',  [$this, 'enqueueScripts']);
         }
+    }
+
+
+    public function enqueueScripts()
+    {
+        wp_register_style(
+            'ee-rem-dates-list',
+            RecurringEventsManager::$domain->distributionAssetsUrl('ee-rem-dates-list.css'),
+            [],
+            RecurringEventsManager::$domain->version()
+        );
+        wp_enqueue_style('ee-rem-dates-list');
     }
 }
