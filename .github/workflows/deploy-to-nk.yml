@@ -7,6 +7,8 @@ jobs:
   deploy-to-nk-site:
     runs-on: ubuntu-latest
     steps:
+      - name: out-put-ssh-user
+        run: echo "${{ secrets.SERVER_EE_DEVBOX_SITES_USERNAME }}"
       - name: deploy via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
