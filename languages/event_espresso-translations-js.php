@@ -318,25 +318,25 @@ $generated_i18n_strings = array(
 	/* translators: undo exclusion and add back(linebreak)into list of generated dates */
 	__( 'undo exclusion and add back%sinto list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:33
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:32
 	__( 'You must set a recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:37
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:34
 	__( 'defines a rule or repeating pattern for generating event dates that occur regularly', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:42
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:39
 	__( 'Recurrence Pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:48
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
 	__( 'Remove exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:48
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
 	__( 'Add exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:55
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:52
 	__( 'defines a rule or repeating pattern that will remove dates from those generated above', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:60
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:57
 	__( 'Exclusion Pattern', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/End/After.tsx:18
