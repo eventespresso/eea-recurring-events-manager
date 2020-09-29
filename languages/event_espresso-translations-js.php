@@ -280,7 +280,7 @@ $generated_i18n_strings = array(
 	__( 'The number of Event Dates has been capped at 5 for YEARLY recurrence patterns', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:30
-	__( 'The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (2 years)', 'event_espresso' ),
+	__( 'The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (3 years)', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:33
 	__( 'The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)', 'event_espresso' ),
@@ -306,15 +306,15 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/generatedDates/config.ts:41
 	__( 'Remove Date: extra one off exclusions, removes dates created by the pattern editor', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/utils.ts:24
+	// Reference: domains/rem/src/ui/generatedDates/utils.ts:29
 	/* translators: remove from list(linebreak)of generated dates */
 	__( 'remove from list%sof generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/utils.ts:29
+	// Reference: domains/rem/src/ui/generatedDates/utils.ts:34
 	/* translators: undo addition of extra date and(linebreak)remove from list of generated dates */
 	__( 'undo addition of extra date and%sremove from list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/utils.ts:34
+	// Reference: domains/rem/src/ui/generatedDates/utils.ts:39
 	/* translators: undo exclusion and add back(linebreak)into list of generated dates */
 	__( 'undo exclusion and add back%sinto list of generated dates', 'event_espresso' ),
 
