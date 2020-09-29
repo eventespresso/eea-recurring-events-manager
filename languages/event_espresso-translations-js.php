@@ -111,7 +111,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:51
 	__( 'Add', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:15
+	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:22
 	__( 'edit ticket', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:12
@@ -270,7 +270,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:83
 	__( 'Capacity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:24
+	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:32
 	__( 'Dates List', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:30
