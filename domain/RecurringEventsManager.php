@@ -66,6 +66,7 @@ class  RecurringEventsManager extends EE_Addon
     {
         RecurringEventsManager::$domain = $domain;
         // register addon via Plugin API
+        $plugin_path = $domain->pluginPath();
         EE_Register_Addon::register(
             'EventEspresso\RecurringEvents\domain\RecurringEventsManager',
             [
@@ -74,8 +75,24 @@ class  RecurringEventsManager extends EE_Addon
                 'min_core_version' => Domain::CORE_VERSION_REQUIRED,
                 'main_file_path'   => $domain->pluginFile(),
                 'module_paths'     => [
-                    $domain->pluginPath() . 'domain/services/modules/EED_Recurring_Events.module.php',
+                    $plugin_path . 'domain/services/modules/EED_Recurring_Events.module.php',
                 ],
+                'dms_paths' => array(
+                    RecurringEventsManager::class => $plugin_path . 'domain/services/data_migration_scripts/',
+                ),
+                'model_paths' => array(
+                    RecurringEventsManager::class => $plugin_path . 'domain/entities/db_models/',
+                ),
+                'class_paths' => array(
+                    RecurringEventsManager::class => $plugin_path . 'domain/entities/db_classes/',
+                ),
+                // EE_Register_Model_Extensions
+                'model_extension_paths' => array(
+                    RecurringEventsManager::class => $plugin_path . 'domain/entities/db_model_extensions/',
+                ),
+                'class_extension_paths' => array(
+                    RecurringEventsManager::class => $plugin_path . 'domain/entities/db_class_extensions/',
+                ),
             ]
         );
     }
