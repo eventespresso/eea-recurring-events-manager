@@ -47,16 +47,19 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:23
 	__( 'ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:31
-	/* translators: select an existing "date / ticket" to use as a template */
-	__( 'select an existing %s to use as a template.', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:34
+	/* translators: Select an existing "date / ticket" to use as a template */
+	__( 'Select an existing %s to use as a template.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:36
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:39
 	__( 'or', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:41
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:44
 	/* translators: Add new "date / ticket" and insert details manually */
 	__( 'Add new %s and insert details manually', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:49
+	__( 'Add New', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Modal/Modal.tsx:19
 	__( 'Recurring Events Manager', 'event_espresso' ),
@@ -100,15 +103,11 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/RemButton.tsx:27
 	__( 'Add Recurring Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:34
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:21
+	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:33
+	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:20
 	__( 'Select...', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:43
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:28
-	__( 'Add New', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:51
+	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:45
 	__( 'Add', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:22
@@ -212,44 +211,44 @@ $generated_i18n_strings = array(
 	__( 'Ticket Sales End', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:189
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:79
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:81
 	__( 'Details', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:193
 	__( 'Quantity For Sale', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:198
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:199
 	__( 'The maximum number of this ticket available for sale.%sSet to 0 to stop sales, or leave blank for no limit.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:207
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:208
 	__( 'Number of Uses', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:212
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:213
 	__( 'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.%sExample: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:221
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:222
 	__( 'Minimum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:225
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:226
 	__( 'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no minimum.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:234
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:235
 	__( 'Maximum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:239
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:240
 	__( 'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no maximum.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:248
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:249
 	__( 'Required Ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:250
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:251
 	__( 'If enabled, the ticket must be selected and will appear first in frontend ticket lists.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:27
 	__( 'Unit value', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:35
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:70
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:72
 	__( 'Unit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:42
@@ -258,7 +257,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:58
 	__( 'Start/ end', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:39
+	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:35
 	__( 'Select', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:61
@@ -267,7 +266,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:65
 	__( 'Duration', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:83
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:85
 	__( 'Capacity', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:32
@@ -442,7 +441,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:94
 	__( 'Repeat yearly on the month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:21
 	__( 'Repeat', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Start/index.tsx:24
