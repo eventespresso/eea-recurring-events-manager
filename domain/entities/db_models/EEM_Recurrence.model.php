@@ -59,11 +59,6 @@ class EEM_Recurrence extends EEM_Base
                     true,
                     null
                 ),
-                'RCR_gDates' => new EE_Plain_Text_Field(
-                    'RCR_gDates',
-                    esc_html__('Generated Dates', 'event_espresso'),
-                    false
-                ),
                 'RCR_date_duration' => new EE_Plain_Text_Field(
                     'RCR_date_duration',
                     esc_html__('Recurring Datetime Duration', 'event_espresso'),
