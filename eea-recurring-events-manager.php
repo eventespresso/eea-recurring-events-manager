@@ -44,7 +44,7 @@ define('EE_REM_PLUGIN_FILE', __FILE__);
 define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
 
 // check php version, if not PHP 5.6 ++ then deactivate and show notice
-if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 50600) {
+if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70100) {
     require_once __DIR__ . '/eea-recurring-events-bootstrap.php';
 } else {
     add_action(
@@ -62,7 +62,7 @@ if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 50600) {
                         . 'because it requires PHP version %s or greater.',
                         'event_espresso'
                     ),
-                    '5.6.0'
+                    '7.1.0'
                 )
             );
         }
