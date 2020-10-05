@@ -7,9 +7,10 @@ cache:
 env:
   global:
   - EE_VERSION=master
+    - WP_VERSION=latest
   matrix:
-  - WP_VERSION=latest WP_MULTISITE=0
-  - WP_VERSION=latest WP_MULTISITE=1
+  - WP_MULTISITE=0
+  - WP_MULTISITE=1
 php:
 - 7.1
 - 7.2
@@ -18,20 +19,17 @@ php:
 matrix:
   exclude:
   - php: 7.1
-    env: WP_VERSION=4.1 WP_MULTISITE=1
+    env: WP_MULTISITE=1
   - php: 7.2
-    env: WP_VERSION=4.1 WP_MULTISITE=1
+    env: WP_MULTISITE=1
   - php: 7.3
-    env: WP_VERSION=4.1 WP_MULTISITE=1
+    env: WP_MULTISITE=1
   fast_finish: true
 before_install:
-- |
-  if [[ "$SKIP_XDEBUG_REMOVE" != "true" ]]; then
-    phpenv config-rm xdebug.ini
-    echo "xdebug removed";
-  fi
-before_script:
+- composer self-update
 - composer require --dev phpunit/phpunit ^6
+- phpenv config-rm xdebug.ini
+before_script:
 - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 - . tests/bin/setup-addon-tests.sh
 - mysql --version
