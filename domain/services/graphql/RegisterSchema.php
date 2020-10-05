@@ -46,7 +46,7 @@ class RegisterSchema
             [$this, 'registerCoreDatetimeFields']
         );
         add_filter(
-            'FHEE__EventEspresso_core_domain_services_graphql_data__datetime_mutation_args',
+            'FHEE__EventEspresso_core_domain_services_graphql_data_mutations__datetime_args',
             [$this, 'addDatetimeMutationArgs'],
             10,
             2
