@@ -26,11 +26,13 @@ before_install:
 install:
   # Install our Composer dependencies
   - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-7.5.phar
+  - wget -O ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit https://phar.phpunit.de/phpunit-7.phar;
+  - chmod 755 ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit;
 #  - composer install || exit 1
 #  - composer global require "phpunit/phpunit=7.5.*"
   # Install the WordPress core test suite
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-  - ./tests/bin/setup-addon-tests.sh
+  - . tests/bin/setup-addon-tests.sh
   - mysql --version
   - phpunit --version
 
