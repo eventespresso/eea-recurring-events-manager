@@ -12,12 +12,12 @@ if (! is_dir($core_tests_dir)) {
 require $core_tests_dir . 'includes/CoreLoader.php';
 require $core_tests_dir . 'includes/AddonLoader.php';
 
-define('EEADDON_PLUGIN_DIR', dirname(__DIR__) . '/');
-define('EEADDON_TESTS_DIR', EEADDON_PLUGIN_DIR . 'tests/');
+define('EE_REM_PLUGIN_DIR', dirname(__DIR__) . '/');
+define('EE_REM_TESTS_DIR', EEADDON_PLUGIN_DIR . 'tests/');
 
 $addon_loader = new AddonLoader(
-    EEADDON_TESTS_DIR,
-    EEADDON_PLUGIN_DIR,
+    EE_REM_TESTS_DIR,
+    EE_REM_PLUGIN_DIR,
     'eea-recurring-events-manager.php'
 );
 $addon_loader->init();
