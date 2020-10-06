@@ -35,7 +35,7 @@ before_script:
 - mysql --version
 - phpenv versions
 - ./vendor/bin/phpunit --version
-script: cd tests; ./vendor/bin/phpunit;
+script: cd tests; ../vendor/bin/phpunit;
 notifications:
   slack:
     rooms:
