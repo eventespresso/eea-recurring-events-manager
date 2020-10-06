@@ -94,28 +94,10 @@ class Recurrence extends TypeBase
                 esc_html__('Excluded dates', 'event_espresso')
             ),
             new GraphQLField(
-                'gDates',
-                'String',
-                'generatedDatesJson',
-                esc_html__('Generated Dates', 'event_espresso')
-            ),
-            new GraphQLField(
                 'dateDuration',
                 'String',
                 'dateDuration',
                 esc_html__('Recurring Datetime Duration', 'event_espresso')
-            ),
-            new GraphQLField(
-                'salesStartOffset',
-                'String',
-                'salesStartOffset',
-                esc_html__('Offset for sales start', 'event_espresso')
-            ),
-            new GraphQLField(
-                'salesEndOffset',
-                'String',
-                'salesEndOffset',
-                esc_html__('Offset for sales end', 'event_espresso')
             ),
         ];
     }
