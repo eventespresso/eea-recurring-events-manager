@@ -3,8 +3,6 @@
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
 
-defined('EVENT_ESPRESSO_VERSION') || exit;
-
 /**
  * Class EE_Recurrence
  * Description
@@ -256,7 +254,6 @@ class EE_Recurrence extends EE_Base_Class
         }
         $this->set('RCR_date_duration', $date_duration);
     }
-
 
 
     /**

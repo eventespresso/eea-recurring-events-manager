@@ -26,7 +26,8 @@ class RecurringEventsTemplateSettingsFormHandler
      * @param RecurringEventsConfig               $config
      * @param RecurringEventsTemplateSettingsForm $form
      */
-    public function __construct(RecurringEventsConfig $config, RecurringEventsTemplateSettingsForm $form) {
+    public function __construct(RecurringEventsConfig $config, RecurringEventsTemplateSettingsForm $form)
+    {
         $this->config = $config;
         $this->form   = $form;
     }

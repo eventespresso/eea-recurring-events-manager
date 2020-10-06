@@ -35,7 +35,7 @@ use ReflectionException;
  * @author      Brent Christensen
  * @since       $VID:$
  */
-class  RecurringEventsManager extends EE_Addon
+class RecurringEventsManager extends EE_Addon
 {
 
     /**
@@ -111,6 +111,7 @@ class  RecurringEventsManager extends EE_Addon
      * @throws InvalidInterfaceException
      * @throws InvalidEntityException
      */
+    // @codingStandardsIgnoreLine
     public function after_registration()
     {
         $this->registerDependencies();

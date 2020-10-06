@@ -34,14 +34,14 @@ class EEE_Recurrence_Datetime extends EEE_Base_Class
      * @throws InvalidDataTypeException
      * @throws InvalidInterfaceException
      */
-    public function ext_recurrence($query_params = array())
+    public function ext_recurrence($query_params = [])
     {
         return EEM_Recurrence::instance()->get_one(
             array_replace_recursive(
-                array(array('Recurrence.RCR_ID' => $this->_->get('RCR_ID'))),
+                // @codingStandardsIgnoreLine
+                [['Recurrence.RCR_ID' => $this->_->get('RCR_ID')]],
                 $query_params
             )
         );
     }
-
 }

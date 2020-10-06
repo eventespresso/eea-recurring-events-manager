@@ -42,6 +42,7 @@ class EEME_Recurrence_Datetime extends EEME_Base
      */
     public function ext_getRecurrence($RCR_ID = 0)
     {
+        // @codingStandardsIgnoreLine
         return $this->_->get_one(array(array('Recurrence.RCR_ID' => $RCR_ID)));
     }
 }
