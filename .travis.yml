@@ -1,41 +1,59 @@
 dist: trusty
+
 language: php
+
 services:
   - mysql
+
 cache:
   apt: true
+  directories:
+    - $HOME/.composer/cache
+
 env:
   global:
-  - EE_VERSION=master
-  - EE_BRANCH=barista-prod
-  - WP_VERSION=latest
+    - EE_VERSION=master
+    - EE_BRANCH=barista-prod
+    - WP_VERSION=latest
   matrix:
-  - WP_MULTISITE=0
-  - WP_MULTISITE=1
+    - WP_MULTISITE=0
+    - WP_MULTISITE=1
+
 php:
-- 7.1
-- 7.2
-- 7.3
-- 7.4
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+
 matrix:
   exclude:
-  - php: 7.1
-    env: WP_MULTISITE=1
-  - php: 7.2
-    env: WP_MULTISITE=1
-  - php: 7.3
-    env: WP_MULTISITE=1
+    - php: 7.1
+      env: WP_MULTISITE=1
+    - php: 7.2
+      env: WP_MULTISITE=1
+    - php: 7.3
+      env: WP_MULTISITE=1
   fast_finish: true
+
 before_install:
-- composer install || exit 1
-- composer global require phpunit/phpunit ^7
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  # Unless we need XDebug, disable it for improved performance.
+  - phpenv config-rm xdebug.ini || return 0
+
+install:
+  # Install our Composer dependencies
+  - composer install --prefer-dist --no-interaction || exit 1
+  # Install the WordPress core test suite
+  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - . tests/bin/setup-addon-tests.sh
+
 before_script:
-- bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-- . tests/bin/setup-addon-tests.sh
-- mysql --version
-- phpenv versions
-- phpunit --version
-script: cd tests; phpunit;
+  - mysql --version
+  - phpenv versions
+  - phpunit --version
+
+script: cd tests; ./vendor/bin/phpunit;
+
 notifications:
   slack:
     rooms:

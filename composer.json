@@ -35,11 +35,12 @@
 	],
 	"require-dev": {
 		"eventespresso/ee-coding-standards": "dev-master",
-		"roave/security-advisories": "dev-master"
+		"roave/security-advisories": "dev-master",
+		"phpunit/phpunit": "^7"
 	},
 	"require": {
 		"composer/installers": "~1.0",
-		"php": ">=5.5"
+		"php": ">=7.1"
 	},
 	"scripts": {
 		"config-eventespressocs": [
