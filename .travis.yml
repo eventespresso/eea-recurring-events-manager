@@ -41,7 +41,8 @@ jobs:
   fast_finish: true
   allow_failures:
     - php: nightly
-    - env:
+    - php: 7.4
+      env:
         - PHP_LINT=1
   include:
     - php: 7.1
