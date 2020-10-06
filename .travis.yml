@@ -14,6 +14,7 @@ env:
   global:
     - EE_VERSION=master
     - EE_BRANCH=barista-prod
+    - BRANCH=barista-prod
     - WP_VERSION=latest
     - WP_MULTISITE=0
 
@@ -34,29 +35,29 @@ install:
 before_script:
   - phpenv versions
 
-script: cd tests; ../vendor/bin/phpunit;
+script: cd tests; phpunit;
 
 jobs:
   fast_finish: true
   allow_failures:
     - php: nightly
-    - php: 7.4
-      env:
+    - env:
         - PHP_LINT=1
   include:
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
     - php: 7.4
-      env:
-        - PHP_LINT=1
-      script:
-        - composer config-eventespressocs || exit 1
-        - composer run-script lint:skip-warnings || exit 1
+    - php: nightly
     - php: 7.4
       env:
         - WP_MULTISITE=1
     - php: 7.4
-    - php: 7.3
-    - php: 7.2
-    - php: 7.1
+    env:
+      - PHP_LINT=1
+    script:
+      - composer config-eventespressocs || exit 1
+      - composer run-script lint:skip-warnings || exit 1
 
 notifications:
   slack:
