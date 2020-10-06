@@ -47,6 +47,7 @@ jobs:
       env:
         - PHP_LINT=1
       script:
+        - composer install --no-interaction
         - composer config-eventespressocs || exit 1
         - composer run-script lint:skip-warnings || exit 1
     - php: 7.4
