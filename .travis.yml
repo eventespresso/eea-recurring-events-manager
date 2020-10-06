@@ -25,19 +25,16 @@ before_install:
 
 install:
   # Install our Composer dependencies
-  - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-7.5.phar
   - wget -O ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit https://phar.phpunit.de/phpunit-7.phar;
   - chmod 755 ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit;
-#  - composer install || exit 1
-#  - composer global require "phpunit/phpunit=7.5.*"
   # Install the WordPress core test suite
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - . tests/bin/setup-addon-tests.sh
-  - mysql --version
-  - phpunit --version
 
 before_script:
+  - mysql --version
   - phpenv versions
+  - phpunit --version
 
 script: cd tests; phpunit;
 
@@ -51,7 +48,7 @@ jobs:
         - PHP_LINT=1
       script:
         - composer config-eventespressocs || exit 1
-        - composer ./vendor/bin/phpcs -n || exit 1
+        - composer run-script lint:skip-warnings || exit 1
     - php: 7.4
     - php: 7.3
     - php: 7.2
