@@ -43,6 +43,8 @@ before_install:
 install:
   # Install our Composer dependencies
   - composer install --prefer-dist --no-interaction || exit 1
+  - composer config-eventespressocs || exit 1
+  - composer run-script lint --skip-warnings || exit 1
   # Install the WordPress core test suite
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - . tests/bin/setup-addon-tests.sh
@@ -52,7 +54,7 @@ before_script:
   - phpenv versions
   - phpunit --version
 
-script: cd tests; ./vendor/bin/phpunit;
+script: cd tests; ../vendor/bin/phpunit;
 
 notifications:
   slack:
