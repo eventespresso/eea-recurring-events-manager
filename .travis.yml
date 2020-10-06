@@ -54,11 +54,11 @@ jobs:
       env:
         - WP_MULTISITE=1
     - php: 7.4
-    env:
-      - PHP_LINT=1
-    script:
-      - composer config-eventespressocs || exit 1
-      - composer run-script lint:skip-warnings || exit 1
+      env:
+        - PHP_LINT=1
+      script:
+        - composer config-eventespressocs || exit 1
+        - composer run-script lint:skip-warnings || exit 1
 
 notifications:
   slack:
