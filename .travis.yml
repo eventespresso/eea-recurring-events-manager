@@ -7,7 +7,8 @@ cache:
 env:
   global:
   - EE_VERSION=master
-    - WP_VERSION=latest
+  - EE_BRANCH=barista-prod
+  - WP_VERSION=latest
   matrix:
   - WP_MULTISITE=0
   - WP_MULTISITE=1
