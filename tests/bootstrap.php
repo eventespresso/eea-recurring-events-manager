@@ -13,7 +13,7 @@ require $core_tests_dir . 'includes/CoreLoader.php';
 require $core_tests_dir . 'includes/AddonLoader.php';
 
 define('EE_REM_PLUGIN_DIR', dirname(__DIR__) . '/');
-define('EE_REM_TESTS_DIR', EEADDON_PLUGIN_DIR . 'tests/');
+define('EE_REM_TESTS_DIR', EE_REM_PLUGIN_DIR . 'tests/');
 
 $addon_loader = new AddonLoader(
     EE_REM_TESTS_DIR,
