@@ -26,7 +26,7 @@ matrix:
     env: WP_MULTISITE=1
   fast_finish: true
 before_install:
-- composer self-update
+- composer install
 - composer require --dev phpunit/phpunit ^6
 - phpenv config-rm xdebug.ini
 before_script:
@@ -34,8 +34,8 @@ before_script:
 - . tests/bin/setup-addon-tests.sh
 - mysql --version
 - phpenv versions
-- phpunit --version
-script: cd tests; phpunit;
+- ./vendor/bin/phpunit --version
+script: cd tests; ./vendor/bin/phpunit;
 notifications:
   slack:
     rooms:
