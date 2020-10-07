@@ -24,6 +24,7 @@ use EventEspresso\RecurringEvents\domain\entities\admin\RecurringEventsTemplateS
 use EventEspresso\RecurringEvents\domain\entities\config\RecurringEventsConfig;
 use EventEspresso\RecurringEvents\domain\services\admin\RecurringEventsTemplateSettingsFormHandler;
 use EventEspresso\RecurringEvents\domain\services\assets\RecurringEventsAssetManager;
+use EventEspresso\RecurringEvents\domain\services\graphql\RegisterSchema;
 use InvalidArgumentException;
 use ReflectionException;
 
@@ -167,6 +168,10 @@ class RecurringEventsManager extends EE_Addon
             'EventEspresso\RecurringEvents\domain\services\graphql\connections\RootQueryRecurrencesConnection',
             ['EEM_Recurrence' => EE_Dependency_Map::load_from_cache]
         );
+        $this->dependencyMap()->registerDependencies(
+            RegisterSchema::class,
+            ['EventEspresso\core\domain\services\graphql\Utilities' => EE_Dependency_Map::load_from_cache]
+        );
     }
 
 
@@ -230,6 +235,9 @@ class RecurringEventsManager extends EE_Addon
     {
         static $registered = false;
         if (! $registered) {
+            /** @var RegisterSchema $schema */
+            $schema = EED_Recurring_Events::loader()->getShared(RegisterSchema::class);
+            $schema->addFilters();
             add_filter(
                 'FHEE__EventEspresso_core_services_graphql_TypeCollection__loadCollection__collection_FQCNs',
                 [$this, 'registerTypes']
