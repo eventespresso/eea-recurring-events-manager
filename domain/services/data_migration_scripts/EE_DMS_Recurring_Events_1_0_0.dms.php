@@ -53,24 +53,25 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
 					PRIMARY KEY  (RCR_ID)',
             'ENGINE=InnoDB '
         );
+
         /** @type WPDB */
         global $wpdb;
-        $table = "`{$wpdb->prefix}esp_datetime`";
+        $table = "{$wpdb->prefix}esp_datetime";
         // first check if the datetime table has the RCR_ID column already
         $row = $wpdb->get_results(
             "SELECT COLUMN_NAME
                 FROM INFORMATION_SCHEMA.COLUMNS 
-                WHERE table_name = {$table} 
-                AND column_name = 'RCR_ID';"
+                WHERE TABLE_NAME = '{$table}'
+                AND COLUMN_NAME = 'RCR_ID';"
         );
 
         $result = 0;
         if (empty($row)) {
             $result = $wpdb->query(
                 "ALTER TABLE {$table}
-                ADD `RCR_ID` INT UNSIGNED NULL DEFAULT NULL
-                AFTER `DTT_deleted`,
-                ADD INDEX `RCR_ID` (`RCR_ID`);"
+                ADD 'RCR_ID' INT UNSIGNED NULL DEFAULT NULL
+                AFTER 'DTT_deleted',
+                ADD INDEX 'RCR_ID' ('RCR_ID');"
             );
         }
         return $result > 0;
