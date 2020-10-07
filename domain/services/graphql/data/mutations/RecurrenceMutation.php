@@ -41,20 +41,8 @@ class RecurrenceMutation
             $args['RCR_exDates'] = sanitize_text_field($input['exDates']);
         }
 
-        if (isset($input['gDates'])) {
-            $args['RCR_gDates'] = sanitize_text_field($input['gDates']);
-        }
-
         if (isset($input['dateDuration'])) {
             $args['RCR_date_duration'] = sanitize_text_field($input['dateDuration']);
-        }
-
-        if (isset($input['salesStartOffset'])) {
-            $args['RCR_sales_start_offset'] = sanitize_text_field($input['salesStartOffset']);
-        }
-
-        if (isset($input['salesEndOffset'])) {
-            $args['RCR_sales_end_offset'] = sanitize_text_field($input['salesEndOffset']);
         }
 
         return $args;

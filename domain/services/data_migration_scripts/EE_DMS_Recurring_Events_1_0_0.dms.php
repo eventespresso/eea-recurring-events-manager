@@ -49,10 +49,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
 					RCR_exRule text DEFAULT NULL,
 					RCR_rDates text DEFAULT NULL,
 					RCR_exDates text DEFAULT NULL,
-					RCR_gDates text NOT NULL,
                     RCR_date_duration text DEFAULT NULL,
-                    RCR_sales_start_offset text DEFAULT NULL,
-                    RCR_sales_end_offset text DEFAULT NULL,
 					PRIMARY KEY  (RCR_ID)',
             'ENGINE=InnoDB '
         );
