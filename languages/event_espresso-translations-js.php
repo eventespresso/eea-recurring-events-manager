@@ -193,15 +193,15 @@ $generated_i18n_strings = array(
 	__( 'Assign Dates', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:121
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:48
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:49
 	__( 'Basics', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:125
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:52
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:53
 	__( 'Name', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:132
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:59
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:60
 	__( 'Description', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:137
@@ -217,7 +217,7 @@ $generated_i18n_strings = array(
 	__( 'Ticket Sales End', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:189
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:87
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:100
 	__( 'Details', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:193
@@ -254,7 +254,7 @@ $generated_i18n_strings = array(
 	__( 'Unit value', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:35
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:78
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:91
 	__( 'Unit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:42
@@ -266,14 +266,20 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:35
 	__( 'Select', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:67
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:104
+	__( 'Capacity', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:68
+	__( 'Time', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:72
+	__( 'Start Time', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:80
 	__( 'Length', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:71
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:84
 	__( 'Duration', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:91
-	__( 'Capacity', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:32
 	__( 'Dates List', 'event_espresso' ),
