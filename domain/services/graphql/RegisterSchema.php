@@ -99,7 +99,7 @@ class RegisterSchema
     {
         if (! empty($input['recurrence'])) {
             $parts = Relay::fromGlobalId(sanitize_text_field($input['recurrence']));
-            $args['RCR_ID'] = (! empty($parts['id']) && is_int($parts['id'])) ? $parts['id'] : null;
+            $args['RCR_ID'] = (! empty($parts['id'])) ? $parts['id'] : null;
         }
 
         return $args;
