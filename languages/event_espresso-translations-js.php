@@ -67,7 +67,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:49
 	__( 'Add New', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Modal/Modal.tsx:19
+	// Reference: domains/rem/src/ui/Modal/Modal.tsx:18
 	__( 'Recurring Events Manager', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/MultiStep/CancelButton.tsx:7
