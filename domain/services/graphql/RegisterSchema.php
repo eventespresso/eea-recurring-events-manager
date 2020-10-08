@@ -153,12 +153,9 @@ class RegisterSchema
                 'recurrenceId'   => 'RCR_ID',
                 'recurrenceIdIn' => 'RCR_ID',
             ],
-            ['recurrence', 'recurrenceIn']
+            ['recurrence', 'recurrenceIn'],
+            ['include_all_args' => true, 'use_IN_operator' => true]
         );
-        // Use the proper operator.
-        if (! empty($where_params['RCR_ID']) && is_array($where_params['RCR_ID'])) {
-            $where_params['RCR_ID'] = ['IN', $where_params['RCR_ID']];
-        }
         return $where_params;
     }
 }
