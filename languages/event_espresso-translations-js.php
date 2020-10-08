@@ -281,6 +281,9 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:84
 	__( 'Duration', 'event_espresso' ),
 
+	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
+	__( 'Recurrence pattern', 'event_espresso' ),
+
 	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:32
 	__( 'Dates List', 'event_espresso' ),
 
