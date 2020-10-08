@@ -91,4 +91,4 @@ wpCoreSetup
 eeCoreSetup $CORE_TAG
 addOnSetup
 createDB
-setupPhpUnit
+#setupPhpUnit

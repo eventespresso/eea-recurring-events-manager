@@ -44,12 +44,12 @@ define('EE_REM_PLUGIN_FILE', __FILE__);
 define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
 
 // check php version, if not PHP 5.6 ++ then deactivate and show notice
-if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 50600) {
+if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70100) {
     require_once __DIR__ . '/eea-recurring-events-bootstrap.php';
 } else {
     add_action(
         'admin_notices',
-        static function() {
+        static function () {
             unset($_GET['activate'], $_REQUEST['activate']);
             if (! function_exists('deactivate_plugins')) {
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -58,11 +58,10 @@ if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 50600) {
             eea_recurring_events_activation_error(
                 sprintf(
                     esc_html__(
-                        'Event Espresso Recurring Events Manager add-on could not be activated '
-                        . 'because it requires PHP version %s or greater.',
+                        'Event Espresso Recurring Events Manager add-on could not be activated because it requires PHP version %s or greater.',
                         'event_espresso'
                     ),
-                    '5.6.0'
+                    '7.1.0'
                 )
             );
         }
@@ -81,15 +80,14 @@ function eea_recurring_events_activation_error($error_message = '')
         ? $error_message
         : sprintf(
             esc_html__(
-                'Event Espresso Recurring Events Manager add-on could not be activated. ' .
-                'Please ensure that Event Espresso version %1$s or higher is activated.',
+                'Event Espresso Recurring Events Manager add-on could not be activated. Please ensure that Event Espresso version %1$s or higher is activated.',
                 'event_espresso'
             ),
             EE_REM_CORE_VERSION_REQUIRED
         );
     add_action(
         'admin_notices',
-        static function() use ($error_message) {
+        static function () use ($error_message) {
             unset($_GET['activate'], $_REQUEST['activate']);
             if (! function_exists('deactivate_plugins')) {
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';

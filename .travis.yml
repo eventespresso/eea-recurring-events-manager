@@ -1,66 +1,64 @@
+dist: trusty
+
 language: php
+
 services:
   - mysql
+
 cache:
   apt: true
+#  directories:
+#    - $HOME/.composer/cache
+
 env:
   global:
-  - EE_VERSION=master
-  matrix:
-  - WP_VERSION=latest WP_MULTISITE=0
-  - WP_VERSION=latest WP_MULTISITE=1
-  - WP_VERSION=4.1 WP_MULTISITE=0
-  - WP_VERSION=4.1 WP_MULTISITE=1
-php:
-- 5.6
-- 7.0
-- 7.1
-- 7.2
-matrix:
-  exclude:
-  - php: 7.2
-    env: WP_VERSION=4.1 WP_MULTISITE=0
-  - php: 7.2
-    env: WP_VERSION=4.1 WP_MULTISITE=1
-  - php: 7.1
-    env: WP_VERSION=4.1 WP_MULTISITE=0
-  - php: 7.1
-    env: WP_VERSION=4.1 WP_MULTISITE=1
-  - php: 7.1
-    env: WP_VERSION=latest WP_MULTISITE=1
-  - php: 7.0
-    env: WP_VERSION=4.1 WP_MULTISITE=0
-  - php: 7.0
-    env: WP_VERSION=4.1 WP_MULTISITE=1
-  - php: 7.0
-    env: WP_VERSION=latest WP_MULTISITE=1
-  - php: 5.6
-    env: WP_VERSION=4.1 WP_MULTISITE=0
-  - php: 5.6
-    env: WP_VERSION=4.1 WP_MULTISITE=1
-  - php: 5.6
-    env: WP_VERSION=latest WP_MULTISITE=1
-  fast_finish: true
+    - EE_VERSION=master
+    - EE_BRANCH=barista-prod
+    - BRANCH=barista-prod
+    - WP_VERSION=latest
+    - WP_MULTISITE=0
+
 before_install:
-- |
-  if [[ "$SKIP_XDEBUG_REMOVE" != "true" ]]; then
-    phpenv config-rm xdebug.ini
-    echo "xdebug removed";
-  fi
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  # Unless we need XDebug, disable it for improved performance.
+  - phpenv config-rm xdebug.ini || return 0
+
+install:
+  # Install our Composer dependencies
+  - wget -O ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit https://phar.phpunit.de/phpunit-7.phar;
+  - chmod 755 ~/.phpenv/versions/$(phpenv version-name)/bin/phpunit;
+  # Install the WordPress core test suite
+  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - . tests/bin/setup-addon-tests.sh
+
 before_script:
-- bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-- . tests/bin/setup-addon-tests.sh
-- export PATH="$HOME/.composer/vendor/bin:$PATH"
-- |
-  if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
-    composer global require "phpunit/phpunit=5.7.*"
-  else
-    composer global require "phpunit/phpunit=4.8.*"
-  fi
-- mysql --version
-- phpunit --version
-- phpenv versions
+  - mysql --version
+  - phpenv versions
+  - phpunit --version
+
 script: cd tests; phpunit;
+
+jobs:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+  include:
+    - php: 7.4
+      env:
+        - PHP_LINT=1
+      script:
+        - composer install --no-interaction
+        - composer config-eventespressocs || exit 1
+        - composer run-script lint:skip-warnings || exit 1
+    - php: 7.4
+    - php: 7.3
+    - php: 7.2
+    - php: 7.1
+    - php: 7.4
+      env:
+        - WP_MULTISITE=1
+    - php: nightly
+
 notifications:
   slack:
     rooms:

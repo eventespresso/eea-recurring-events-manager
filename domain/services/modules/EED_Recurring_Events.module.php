@@ -132,6 +132,7 @@ class EED_Recurring_Events extends EED_Module
     {
     }
 
+
     /**
      * @throws InvalidArgumentException
      * @throws InvalidDataTypeException
@@ -162,13 +163,13 @@ class EED_Recurring_Events extends EED_Module
 
 
     /**
-     * @param array         $arguments
+     * @param array $arguments
      * @return array
      */
     public static function filterDatesListArguments(array $arguments)
     {
-        $remConfig = EED_Recurring_Events::remConfig();
-        $arguments[4] = $remConfig->showExpired();
+        $remConfig     = EED_Recurring_Events::remConfig();
+        $arguments[4]  = $remConfig->showExpired();
         $numberOfDates = $remConfig->numberOfDates();
         if ($remConfig->allowScrolling()) {
             $numberOfDates = null;
@@ -192,11 +193,11 @@ class EED_Recurring_Events extends EED_Module
     public static function filterDatesListInnerHtml($html, EE_Datetime $datetime, array $arguments)
     {
         $remConfig = EED_Recurring_Events::remConfig();
-        switch($remConfig->templateStyle()) {
-            case RecurringEventsConfig::TEMPLATE_STYLE_BOX :
-            case RecurringEventsConfig::TEMPLATE_STYLE_CARD :
-            case RecurringEventsConfig::TEMPLATE_STYLE_CIRCLE :
-            case RecurringEventsConfig::TEMPLATE_STYLE_STRIPE :
+        switch ($remConfig->templateStyle()) {
+            case RecurringEventsConfig::TEMPLATE_STYLE_BOX:
+            case RecurringEventsConfig::TEMPLATE_STYLE_CARD:
+            case RecurringEventsConfig::TEMPLATE_STYLE_CIRCLE:
+            case RecurringEventsConfig::TEMPLATE_STYLE_STRIPE:
                 return EED_Recurring_Events::remDatesListTemplate($datetime, $arguments);
         }
         return $html;
@@ -211,9 +212,10 @@ class EED_Recurring_Events extends EED_Module
      * @throws ReflectionException
      * @since   $VID:$
      */
-    private static function remDatesListTemplate(EE_Datetime $datetime, array $arguments) {
+    private static function remDatesListTemplate(EE_Datetime $datetime, array $arguments)
+    {
         // the following variables are utilized in the included template
-        $name = $datetime->name();
+        $name        = $datetime->name();
         $description = $datetime->description();
         list($EVT_ID, $date_format, $time_format, $echo, $show_expired, $format, $add_breaks, $limit) = $arguments;
         ob_start();
@@ -228,15 +230,15 @@ class EED_Recurring_Events extends EED_Module
      */
     public static function filterDatesListHtml($html)
     {
-        $remConfig = EED_Recurring_Events::remConfig();
-        $style = $remConfig->templateStyle();
+        $remConfig  = EED_Recurring_Events::remConfig();
+        $style      = $remConfig->templateStyle();
         $max_height = $remConfig->numberOfDates() * 90 + 16;
         $attributes = "class='ee-rem-dates-list ee-rem-dates-list--{$style}' style='max-height: {$max_height}px;'";
-        $html = "<div {$attributes}>" . $html . "</div>";
-        $heading = $remConfig->showNextUpcomingOnly()
-            ? esc_html__( 'Next Upcoming Date', 'event_espresso' )
-            : esc_html__( 'Upcoming Dates', 'event_espresso' );
-        $html = "<h3>{$heading}</h3>" . $html;
+        $html       = "<div {$attributes}>" . $html . "</div>";
+        $heading    = $remConfig->showNextUpcomingOnly()
+            ? esc_html__('Next Upcoming Date', 'event_espresso')
+            : esc_html__('Upcoming Dates', 'event_espresso');
+        $html       = "<h3>{$heading}</h3>" . $html;
         return $html;
     }
 }

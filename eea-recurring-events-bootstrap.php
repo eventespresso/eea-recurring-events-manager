@@ -21,7 +21,7 @@ add_action(
                 );
                 EE_Dependency_Map::register_class_loader(
                     'EventEspresso\RecurringEvents\domain\Domain',
-                    static function() {
+                    static function () {
                         return getRemDomain();
                     }
                 );
@@ -39,7 +39,8 @@ add_action(
 /**
  * @returns EventEspresso\core\domain\DomainInterface
  */
-function getRemDomain() {
+function getRemDomain()
+{
     return EventEspresso\core\domain\DomainFactory::getShared(
         new EventEspresso\core\domain\values\FullyQualifiedName(
             'EventEspresso\RecurringEvents\domain\Domain'
@@ -79,5 +80,4 @@ add_action(
             }
         }
     }
-
 );
