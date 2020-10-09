@@ -7,14 +7,12 @@ services:
 
 cache:
   apt: true
-#  directories:
-#    - $HOME/.composer/cache
 
 env:
   global:
     - EE_VERSION=master
-    - EE_BRANCH=barista-prod
-    - BRANCH=barista-prod
+    - EE_BRANCH=barista
+    - BRANCH=barista
     - WP_VERSION=latest
     - WP_MULTISITE=0
 
