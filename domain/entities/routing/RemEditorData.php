@@ -33,10 +33,10 @@ class RemEditorData extends JsonDataNode
     /**
      * EventEditor JsonDataNode constructor.
      *
-     * @param Datetimes $datetimes
-     * @param EEM_Datetime $datetimes_model
-     * @param JsonDataNodeValidator  $validator
-     * @param Recurrences $recurrences
+     * @param Datetimes             $datetimes
+     * @param EEM_Datetime          $datetimes_model
+     * @param JsonDataNodeValidator $validator
+     * @param Recurrences           $recurrences
      */
     public function __construct(
         Datetimes $datetimes,
@@ -45,28 +45,28 @@ class RemEditorData extends JsonDataNode
         Recurrences $recurrences
     ) {
         parent::__construct($validator);
-        $this->datetimes = $datetimes;
+        $this->datetimes       = $datetimes;
         $this->datetimes_model = $datetimes_model;
-        $this->recurrences = $recurrences;
+        $this->recurrences     = $recurrences;
         $this->setNodeName(RemEditorData::NODE_NAME);
     }
 
 
-	/**
-	 * @inheritDoc
-	 */
-	public function initialize()
-	{
+    /**
+     * @inheritDoc
+     */
+    public function initialize()
+    {
         global $post;
 
         $recurrences = [];
-        $relations = [];
+        $relations   = [];
 
         $eventId = isset($_REQUEST['post']) ? absint($_REQUEST['post']) : 0;
         // if there's no event ID but there IS a WP Post... then use the Post ID
         $use_post_id = $eventId === 0 && $post instanceof WP_Post && $post->post_type === 'espresso_events';
-        $eventId = $use_post_id ? $post->ID : $eventId;
-        $datetimes = $this->datetimes->getData(['eventId' => $eventId]);
+        $eventId     = $use_post_id ? $post->ID : $eventId;
+        $datetimes   = $this->datetimes->getData(['eventId' => $eventId]);
         if (! empty($datetimes['nodes'])) {
             $datetimeIn = wp_list_pluck($datetimes['nodes'], 'id');
             \EEH_Debug_Tools::printr($datetimeIn, '$datetimeIn', __FILE__, __LINE__);
@@ -103,5 +103,5 @@ class RemEditorData extends JsonDataNode
         // }
         $this->addData('recurrences', $recurrences);
         $this->addData('relations', $datetimes);
-	}
+    }
 }

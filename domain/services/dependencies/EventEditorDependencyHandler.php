@@ -7,11 +7,11 @@ use EventEspresso\core\services\dependencies\DependencyHandler;
 
 class EventEditorDependencyHandler extends DependencyHandler
 {
-	/**
-	 * @inheritDoc
-	 */
-	public function registerDependencies()
-	{
+    /**
+     * @inheritDoc
+     */
+    public function registerDependencies()
+    {
         $this->dependency_map->add_alias(
             'EventEspresso\RecurringEvents\domain\Domain',
             'EventEspresso\core\domain\DomainInterface',
@@ -52,5 +52,5 @@ class EventEditorDependencyHandler extends DependencyHandler
                 'EventEspresso\core\domain\services\admin\events\editor\EventEntityRelations'    => EE_Dependency_Map::load_from_cache,
             ]
         );
-	}
+    }
 }
