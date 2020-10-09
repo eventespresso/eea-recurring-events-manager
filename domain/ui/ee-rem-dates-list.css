@@ -1,0 +1,197 @@
+
+.ee-rem-dates-list {
+    margin: 0 0 4rem;
+    max-width: 732px;
+    overflow-x: visible;
+    overflow-y: auto;
+    padding: 6px 12px 6px 6px;
+    width: 100%;
+}
+
+.ee-rem-dates-list--box .ee-event-datetimes-ul,
+.ee-rem-dates-list--card .ee-event-datetimes-ul,
+.ee-rem-dates-list--circle .ee-event-datetimes-ul,
+.ee-rem-dates-list--stripe .ee-event-datetimes-ul {
+    margin: 0;
+}
+
+.ee-rem-dates-list--box .ee-event-datetimes-ul .ee-event-datetimes-li,
+.ee-rem-dates-list--card .ee-event-datetimes-ul .ee-event-datetimes-li,
+.ee-rem-dates-list--circle .ee-event-datetimes-ul .ee-event-datetimes-li,
+.ee-rem-dates-list--stripe .ee-event-datetimes-ul .ee-event-datetimes-li {
+    display: flex;
+    float: unset;
+    height: 72px;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    padding: 0 12px 0 0;
+    width: 100%;
+}
+.ee-rem-dates-list--box .ee-event-datetimes-ul .ee-event-datetimes-li {
+    padding: 6px 18px 6px 6px;
+}
+.ee-rem-dates-list--card .ee-event-datetimes-ul .ee-event-datetimes-li {
+    background: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 1px 3px 6px rgba(0, 0, 0, .25);
+    padding: 0 30px 0 0;
+}
+
+.ee-event-datetimes-ul li .download-iCal-frm {
+    margin: auto 0;
+}
+
+.ee-rem-date__wrapper {
+    display: flex;
+    height: 60px;
+    justify-content: flex-start;
+    width: calc(100% - 2rem);
+}
+.ee-rem-dates-list--card .ee-rem-date__wrapper {
+    height: 72px;
+}
+
+.ee-rem-dates-list--card .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-rem-date__stripe {
+    flex: 0 0 6px;
+    margin-right: .5rem;
+}
+.ee-rem-dates-list--box .ee-rem-date__stripe {
+    display: none;
+}
+
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTE .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTE .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTE .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTE .ee-rem-date__stripe {
+    background: var(--ee-status-color-grey);
+}
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTU .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTU .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTU .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTU .ee-rem-date__stripe {
+    background: var(--ee-status-color-blue);
+}
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTS .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTS .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTS .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTS .ee-rem-date__stripe {
+    background: var(--ee-status-color-pink);
+}
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTA .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTA .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTA .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTA .ee-rem-date__stripe {
+    background: var(--ee-status-color-green);
+}
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTP .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTP .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTP .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTP .ee-rem-date__stripe {
+    background: var(--ee-status-color-orange);
+}
+.ee-rem-dates-list--box .ee-event-datetimes-li-DTC .ee-rem-date__date,
+.ee-rem-dates-list--circle .ee-event-datetimes-li-DTC .ee-rem-date__date,
+.ee-rem-dates-list--card .ee-event-datetimes-li-DTC .ee-rem-date__stripe,
+.ee-rem-dates-list--stripe .ee-event-datetimes-li-DTC .ee-rem-date__stripe {
+    background: var(--ee-status-color-dark-grey);
+}
+
+.ee-rem-date__date,
+.ee-rem-date__time {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    flex-flow: column nowrap;
+    flex-grow: 0;
+    justify-content: center;
+    opacity: .75;
+    text-align: center;
+}
+
+.ee-rem-date__date {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    margin-right: 12px;
+    width: 60px;
+}
+.ee-rem-dates-list--card .ee-rem-date__date {
+    margin: 6px 12px 6px 0;
+}
+.ee-rem-dates-list--circle .ee-rem-date__date {
+    border-radius: 99rem;
+    color: white;
+}
+.ee-rem-dates-list--box .ee-rem-date__date {
+    color: white;
+}
+
+.ee-rem-date__date--day {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 2px;
+    position: relative;
+    right: -1px;
+}
+.ee-rem-dates-list--circle .ee-rem-date__date--day {
+    font-size: 27px;
+    line-height: 23px;
+}
+
+.ee-rem-date__date--month {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 20px;
+    position: relative;
+    right: -2px;
+    text-transform: uppercase;
+}
+.ee-rem-dates-list--circle .ee-rem-date__date--month {
+    font-size: 15px;
+}
+
+.ee-rem-date__details {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 10;
+    justify-content: center;
+    line-height: 1.5;
+    max-width: calc(100% - 180px);
+}
+
+.ee-rem-date__details--name * {
+    margin: 0;
+}
+
+.ee-rem-date__details--description {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 100%;
+    opacity: .75;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ee-rem-date__details--description p {
+    margin: 0;
+}
+
+.ee-rem-date__time {
+    font-size: 12px;
+    line-height: 9px;
+    margin: 0 12px 0 auto;
+    width: 60px;
+}
+.ee-rem-dates-list--card .ee-rem-date__time {
+    margin: 6px 12px 6px auto;
+}
+
+.ee-rem-date__time--sep {
+    font-size: 12px;
+    opacity: .75;
+}
+
+.ee-rem-date__time--end {
+    line-height: 12px;
+}
