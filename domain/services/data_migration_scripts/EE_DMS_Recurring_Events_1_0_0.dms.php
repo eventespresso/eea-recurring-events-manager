@@ -69,9 +69,9 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
         if (empty($row)) {
             $result = $wpdb->query(
                 "ALTER TABLE {$table}
-                ADD 'RCR_ID' INT UNSIGNED NULL DEFAULT NULL
-                AFTER 'DTT_deleted',
-                ADD INDEX 'RCR_ID' ('RCR_ID');"
+                ADD `RCR_ID` INT UNSIGNED NULL DEFAULT NULL
+                AFTER `DTT_deleted`,
+                ADD INDEX `RCR_ID` (`RCR_ID`);"
             );
         }
         return $result > 0;
