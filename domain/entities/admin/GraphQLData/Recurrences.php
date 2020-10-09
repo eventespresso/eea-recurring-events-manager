@@ -36,8 +36,6 @@ class Recurrences extends GraphQLData
                     rDates
                     rRule
                     dateDuration
-                    salesEndOffset
-                    salesStartOffset
                     __typename
                 }
                 __typename
