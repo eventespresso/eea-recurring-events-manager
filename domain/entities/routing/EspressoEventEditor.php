@@ -44,6 +44,7 @@ class EspressoEventEditor extends RemAdminRoute
                 'EEM_Datetime'                                                                => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\core\services\json\JsonDataNodeValidator'                      => EE_Dependency_Map::load_from_cache,
                 'EventEspresso\RecurringEvents\domain\entities\admin\GraphQLData\Recurrences' => EE_Dependency_Map::load_from_cache,
+                'EventEspresso\core\domain\services\graphql\Utilities'                        => EE_Dependency_Map::load_from_cache,
             ]
         );
         /** @var RemEditorData $data_node */
