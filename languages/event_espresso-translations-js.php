@@ -229,25 +229,25 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:208
 	__( 'Number of Uses', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:213
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:214
 	__( 'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.%sExample: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:222
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:223
 	__( 'Minimum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:226
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:228
 	__( 'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no minimum.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:235
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:237
 	__( 'Maximum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:240
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:243
 	__( 'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no maximum.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:249
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:252
 	__( 'Required Ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:251
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:254
 	__( 'If enabled, the ticket must be selected and will appear first in frontend ticket lists.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:27
