@@ -30,12 +30,12 @@ class Recurrences extends GraphQLData
                     id
                     dbId
                     cacheId
+                    dateDuration
                     exDates
                     exRule
-                    patternHash
+                    name
                     rDates
                     rRule
-                    dateDuration
                     __typename
                 }
                 __typename

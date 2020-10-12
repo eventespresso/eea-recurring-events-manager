@@ -3,11 +3,13 @@
 namespace EventEspresso\RecurringEvents\domain\entities\routing;
 
 use EEM_Datetime;
+use EEM_Recurrence;
 use EventEspresso\core\domain\entities\admin\GraphQLData\Datetimes;
 use EventEspresso\core\services\json\JsonDataNode;
 use EventEspresso\core\services\json\JsonDataNodeValidator;
 use EventEspresso\RecurringEvents\domain\entities\admin\GraphQLData\Recurrences;
 use WP_Post;
+use GraphQLRelay\Relay;
 
 class RemEditorData extends JsonDataNode
 {
@@ -69,39 +71,63 @@ class RemEditorData extends JsonDataNode
         $datetimes   = $this->datetimes->getData(['eventId' => $eventId]);
         if (! empty($datetimes['nodes'])) {
             $datetimeIn = wp_list_pluck($datetimes['nodes'], 'id');
-            \EEH_Debug_Tools::printr($datetimeIn, '$datetimeIn', __FILE__, __LINE__);
             if (! empty($datetimeIn)) {
                 $recurrences = $this->recurrences->getData(['datetimeIn' => $datetimeIn]);
-                \EEH_Debug_Tools::printr($recurrences, '$recurrences', __FILE__, __LINE__);
             }
         }
 
-        // $this->datetimes_model->show_next_x_db_queries();
-        // $datetimeIDs = $this->datetimes_model->get_col(
-        //     [
-        //         [
-        //             'Event.EVT_ID' => $eventId,
-        //             'RCR_ID' => ['IS_NOT_NULL']
-        //         ],
-        //         'default_where_conditions' => 'none',
-        //     ]
-        // );
-        // if (! empty($datetimeIDs)) {
-        //     \EEH_Debug_Tools::printr($datetimeIDs, '$datetimeIDs', __FILE__, __LINE__);
-        //     $relations = $this->datetimes->getData(['datetimeIn' => $datetimeIDs]);
-        //     \EEH_Debug_Tools::printr($relations, '$relations', __FILE__, __LINE__);
-        //
-        //     if (! empty($relations['nodes'])) {
-        //         $recurrenceIn = wp_list_pluck($relations['nodes'], 'recurrence');
-        //         \EEH_Debug_Tools::printr($recurrenceIn, '$recurrenceIn', __FILE__, __LINE__);
-        //
-        //         if (! empty($recurrenceIn)) {
-        //             $recurrences = $this->recurrences->getData(['recurrenceIn' => $datetimeIDs]);
-        //             \EEH_Debug_Tools::printr($recurrences, '$recurrences', __FILE__, __LINE__);
-        //         }
-        //     }
-        // }
+        $recurrence_model = EEM_Recurrence::instance();
+
+        if (!empty($recurrences['nodes'])) {
+            foreach ($recurrences['nodes'] as $recurrence) {
+                $GID = $recurrence['id'];
+    
+                // Get the IDs of related entities for the recurrence ID.
+                $Ids = $this->datetimes_model->get_col([
+                    [ 'Recurrence.RCR_ID' => $recurrence['dbId'] ],
+                    'default_where_conditions' => 'minimum',
+                ]);
+                $relations['recurrences'][ $GID ]['datetimes'] = ! empty($Ids)
+                    ? $this->convertToGlobalId($this->datetimes_model->item_name(), $Ids)
+                    : [];
+            }
+            // we are here, which means $datetimes['nodes'] will be defined
+            foreach ($datetimes['nodes'] as $datetime) {
+                $GID = $datetime['id'];
+    
+                // Get the IDs of related entities for the datetime ID.
+                $Ids = $recurrence_model->get_col([
+                    [ 'Datetime.DTT_ID' => $datetime['dbId'] ],
+                    'default_where_conditions' => 'minimum',
+                ]);
+                $relations['datetimes'][ $GID ]['recurrences'] = ! empty($Ids)
+                    ? $this->convertToGlobalId($recurrence_model->item_name(), $Ids)
+                    : [];
+            }
+        }
         $this->addData('recurrences', $recurrences);
-        $this->addData('relations', $datetimes);
+        $this->addData('relations', $relations);
+    }
+
+
+    /**
+     * Convert the DB ID into GID
+     *
+     * @param string    $type
+     * @param int|int[] $ID
+     * @return mixed
+     */
+    public function convertToGlobalId($type, $ID)
+    {
+        $convertToGlobalId = [$this, 'convertToGlobalId'];
+        if (is_array($ID)) {
+            return array_map(
+                static function ($id) use ($convertToGlobalId, $type) {
+                    return $convertToGlobalId($type, $id);
+                },
+                $ID
+            );
+        }
+        return Relay::toGlobalId($type, $ID);
     }
 }
