@@ -2,14 +2,15 @@
 
 namespace EventEspresso\RecurringEvents\domain\entities\routing;
 
+use EE_Error;
 use EEM_Datetime;
 use EEM_Recurrence;
 use EventEspresso\core\domain\entities\admin\GraphQLData\Datetimes;
+use EventEspresso\core\domain\services\graphql\Utilities;
 use EventEspresso\core\services\json\JsonDataNode;
 use EventEspresso\core\services\json\JsonDataNodeValidator;
 use EventEspresso\RecurringEvents\domain\entities\admin\GraphQLData\Recurrences;
 use WP_Post;
-use GraphQLRelay\Relay;
 
 class RemEditorData extends JsonDataNode
 {
@@ -31,6 +32,11 @@ class RemEditorData extends JsonDataNode
      */
     protected $recurrences;
 
+    /**
+     * @var Utilities
+     */
+    private $utilities;
+
 
     /**
      * EventEditor JsonDataNode constructor.
@@ -39,23 +45,27 @@ class RemEditorData extends JsonDataNode
      * @param EEM_Datetime          $datetimes_model
      * @param JsonDataNodeValidator $validator
      * @param Recurrences           $recurrences
+     * @param Utilities $utilities
      */
     public function __construct(
         Datetimes $datetimes,
         EEM_Datetime $datetimes_model,
         JsonDataNodeValidator $validator,
-        Recurrences $recurrences
+        Recurrences $recurrences,
+        Utilities $utilities
     ) {
         parent::__construct($validator);
         $this->datetimes       = $datetimes;
         $this->datetimes_model = $datetimes_model;
         $this->recurrences     = $recurrences;
+        $this->utilities       = $utilities;
         $this->setNodeName(RemEditorData::NODE_NAME);
     }
 
 
     /**
      * @inheritDoc
+     * @throws EE_Error
      */
     public function initialize()
     {
@@ -88,7 +98,7 @@ class RemEditorData extends JsonDataNode
                     'default_where_conditions' => 'minimum',
                 ]);
                 $relations['recurrences'][ $GID ]['datetimes'] = ! empty($Ids)
-                    ? $this->convertToGlobalId($this->datetimes_model->item_name(), $Ids)
+                    ? $this->utilities->convertToGlobalId($this->datetimes_model->item_name(), $Ids)
                     : [];
             }
             // we are here, which means $datetimes['nodes'] will be defined
@@ -101,33 +111,11 @@ class RemEditorData extends JsonDataNode
                     'default_where_conditions' => 'minimum',
                 ]);
                 $relations['datetimes'][ $GID ]['recurrences'] = ! empty($Ids)
-                    ? $this->convertToGlobalId($recurrence_model->item_name(), $Ids)
+                    ? $this->utilities->convertToGlobalId($recurrence_model->item_name(), $Ids)
                     : [];
             }
         }
         $this->addData('recurrences', $recurrences);
         $this->addData('relations', $relations);
-    }
-
-
-    /**
-     * Convert the DB ID into GID
-     *
-     * @param string    $type
-     * @param int|int[] $ID
-     * @return mixed
-     */
-    public function convertToGlobalId($type, $ID)
-    {
-        $convertToGlobalId = [$this, 'convertToGlobalId'];
-        if (is_array($ID)) {
-            return array_map(
-                static function ($id) use ($convertToGlobalId, $type) {
-                    return $convertToGlobalId($type, $id);
-                },
-                $ID
-            );
-        }
-        return Relay::toGlobalId($type, $ID);
     }
 }
