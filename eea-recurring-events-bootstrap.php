@@ -7,7 +7,9 @@
 add_action(
     'AHEE__EE_System__load_espresso_addons',
     static function () {
-        if (class_exists('EE_Addon')
+        if (defined('EE_PLUGIN_DIR_PATH')
+            && is_readable(EE_PLUGIN_DIR_PATH . 'core/third_party_libs/wp-graphql')
+            && class_exists('EE_Addon')
             && class_exists('EventEspresso\core\domain\DomainBase')
         ) {
             try {
@@ -15,7 +17,7 @@ add_action(
                 EE_Dependency_Map::register_dependencies(
                     'EventEspresso\RecurringEvents\domain\Domain',
                     [
-                        'EE_Dependency_Map'                               => EE_Dependency_Map::load_from_cache,
+                        'EE_Dependency_Map'                           => EE_Dependency_Map::load_from_cache,
                         'EventEspresso\RecurringEvents\domain\Domain' => EE_Dependency_Map::load_from_cache,
                     ]
                 );
@@ -41,12 +43,16 @@ add_action(
  */
 function getRemDomain()
 {
-    return EventEspresso\core\domain\DomainFactory::getShared(
-        new EventEspresso\core\domain\values\FullyQualifiedName(
-            'EventEspresso\RecurringEvents\domain\Domain'
-        ),
-        [ EE_REM_PLUGIN_FILE, EE_REM_VERSION]
-    );
+    static $domain;
+    if (! $domain instanceof EventEspresso\RecurringEvents\domain\Domain) {
+        $domain = EventEspresso\core\domain\DomainFactory::getShared(
+            new EventEspresso\core\domain\values\FullyQualifiedName(
+                'EventEspresso\RecurringEvents\domain\Domain'
+            ),
+            [EE_REM_PLUGIN_FILE, EE_REM_VERSION]
+        );
+    }
+    return $domain;
 }
 
 
