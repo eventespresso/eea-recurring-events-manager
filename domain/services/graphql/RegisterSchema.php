@@ -69,7 +69,7 @@ class RegisterSchema
      * @return GraphQLFieldInterface[]
      * @since $VID:$
      */
-    public function registerCoreDatetimeFields($fields)
+    public function registerCoreDatetimeFields(array $fields)
     {
         $newFields = [
             // add recurrence field to datetime mutation input
@@ -95,7 +95,7 @@ class RegisterSchema
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeMutationArgs($args, $input)
+    public function addDatetimeMutationArgs(array $args, array $input)
     {
         if (! empty($input['recurrence'])) {
             $parts = Relay::fromGlobalId(sanitize_text_field($input['recurrence']));
@@ -111,7 +111,7 @@ class RegisterSchema
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeConnectionArgs($args)
+    public function addDatetimeConnectionArgs(array $args)
     {
         $newArgs = [
             'recurrence'  => [
@@ -143,7 +143,7 @@ class RegisterSchema
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeConnectionWhereParams($where_params, $source, $args)
+    public function addDatetimeConnectionWhereParams(array $where_params, $source, array $args)
     {
         $where_params = $this->utilities->sanitizeWhereArgs(
             $where_params,
