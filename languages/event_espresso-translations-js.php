@@ -111,7 +111,7 @@ $generated_i18n_strings = array(
 
 	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:33
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:20
-	__( 'Select...', 'event_espresso' ),
+	__( 'Select…', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:45
 	__( 'Add', 'event_espresso' ),
@@ -125,26 +125,25 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:24
 	__( 'starts', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:44
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:45
 	__( 'ends', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:57
-	/* translators: 1. interval value, like 10 in "10 days", 15 in "15 minutes" 2. the interval e.g. "days", "weeks" 3. position (before/after) with respect to start or end date 4. the date ("start" or "end") for which the position is sepcified The final string may look like this: "3 days before the end date"  */
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:59
 	__( '%1$d %2$s %3$s the %4$s date', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:60
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:47
 	__( 'before', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:60
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:51
 	__( 'after', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:61
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:63
 	__( 'start', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:61
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:67
 	__( 'end', 'event_espresso' ),
 
@@ -156,10 +155,11 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:15
 	__( 'Name must be at least three characters', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:9
-	__( 'Edit ticket %s', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:12
+	/* translators: %d ticket id */
+	__( 'Edit ticket %d', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:9
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:15
 	__( 'New Ticket Details', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:41
@@ -224,25 +224,34 @@ $generated_i18n_strings = array(
 	__( 'Quantity For Sale', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:199
-	__( 'The maximum number of this ticket available for sale.%sSet to 0 to stop sales, or leave blank for no limit.', 'event_espresso' ),
+	__( 'The maximum number of this ticket available for sale.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:208
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:201
+	__( 'Set to 0 to stop sales, or leave blank for no limit.', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:206
 	__( 'Number of Uses', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:214
-	__( 'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.%sExample: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:212
+	__( 'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:216
+	__( 'Example: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:223
 	__( 'Minimum Quantity', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:228
-	__( 'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no minimum.', 'event_espresso' ),
+	__( 'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:237
 	__( 'Maximum Quantity', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:243
-	__( 'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no maximum.', 'event_espresso' ),
+	__( 'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:247
+	__( 'Leave blank for no minimum.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:252
 	__( 'Required Ticket', 'event_espresso' ),
@@ -263,7 +272,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:58
 	__( 'Start/ end', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:35
+	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:33
 	__( 'Select', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:104
@@ -374,10 +383,12 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/index.tsx:20
 	__( 'End', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/RRuleGenerator/RRuleText.tsx:15
-	__( '%s,%sstarting %s', 'event_espresso' ),
+	// Reference: packages/rrule-generator/src/components/RRuleGenerator/RRuleText.tsx:16
+	/* translators: %1$s recurrence pattern ex: 'Every month on the first', %2$s line break, starting, %3$s date ex: 'Jan 1, 20221' */
+	__( '%1$s,%2$sstarting %3$s', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:26
+	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:27
+	/* translators: %s error message */
 	__( 'You provided an invalid RRule value to component. %s is not a correct RRule string.', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:18
