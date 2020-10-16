@@ -26,11 +26,11 @@ class RecurrenceMutation
         }
 
         if (isset($input['rRule'])) {
-            $args['RCR_rRule'] = sanitize_text_field($input['rRule']);
+            $args['RCR_rRule'] = sanitize_textarea_field($input['rRule']);
         }
 
         if (isset($input['exRule'])) {
-            $args['RCR_exRule'] = sanitize_text_field($input['exRule']);
+            $args['RCR_exRule'] = sanitize_textarea_field($input['exRule']);
         }
 
         if (isset($input['rDates'])) {
