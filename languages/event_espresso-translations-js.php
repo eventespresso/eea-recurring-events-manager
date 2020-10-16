@@ -47,6 +47,12 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/apollo/queries/recurrences/useFetchRecurrences.ts:43
 	__( 'initializing recurrences', 'event_espresso' ),
 
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:33
+	__( 'Recurring series', 'event_espresso' ),
+
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:34
+	__( 'Series', 'event_espresso' ),
+
 	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:23
 	__( 'datetime', 'event_espresso' ),
 
