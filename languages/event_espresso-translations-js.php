@@ -47,10 +47,10 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/apollo/queries/recurrences/useFetchRecurrences.ts:43
 	__( 'initializing recurrences', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:33
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:34
 	__( 'Recurring series', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:34
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:35
 	__( 'Series', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:23
@@ -105,6 +105,10 @@ $generated_i18n_strings = array(
 
 	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:13
 	__( 'Submit', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/RecurrenceTag.tsx:35
+	/* translators: %s recurrence dbId */
+	__( 'recurring series #%s', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/RemButton.tsx:22
 	__( 'Add multiple dates in bulk that follow a recurring pattern', 'event_espresso' ),
@@ -389,12 +393,8 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/index.tsx:20
 	__( 'End', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/RRuleGenerator/RRuleText.tsx:16
-	/* translators: %1$s recurrence pattern ex: 'Every month on the first', %2$s line break, starting, %3$s date ex: 'Jan 1, 20221' */
-	__( '%1$s,%2$sstarting %3$s', 'event_espresso' ),
-
 	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:27
-	/* translators: %s error message */
+	/* translators: %s rrule string */
 	__( 'You provided an invalid RRule value to component. %s is not a correct RRule string.', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:18
@@ -570,6 +570,10 @@ $generated_i18n_strings = array(
 	__( 'Apr', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/constants.ts:9
-	__( 'May', 'event_espresso' )
+	__( 'May', 'event_espresso' ),
+
+	// Reference: packages/rrule-generator/src/utils/getRuleText.ts:14
+	/* translators: %1$s recurrence pattern ex: 'Every month on the first', %2$s line break, starting, %3$s date ex: 'Jan 1, 20221' */
+	__( '%1$s,%2$sstarting %3$s', 'event_espresso' )
 );
 /* THIS IS THE END OF THE GENERATED FILE */
