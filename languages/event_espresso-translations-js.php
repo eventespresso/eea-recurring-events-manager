@@ -129,7 +129,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:22
 	__( 'edit ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:12
+	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:13
 	__( 'trash ticket', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:24
@@ -351,25 +351,25 @@ $generated_i18n_strings = array(
 	/* translators: undo exclusion and add back(linebreak)into list of generated dates */
 	__( 'undo exclusion and add back%sinto list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:32
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:31
 	__( 'You must set a recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:34
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:33
 	__( 'defines a rule or repeating pattern for generating event dates that occur regularly', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:39
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:38
 	__( 'Recurrence Pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:44
 	__( 'Remove exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:44
 	__( 'Add exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:52
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:51
 	__( 'defines a rule or repeating pattern that will remove dates from those generated above', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:57
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:56
 	__( 'Exclusion Pattern', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/End/After.tsx:18
@@ -572,7 +572,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/constants.ts:9
 	__( 'May', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/utils/getRuleText.ts:14
+	// Reference: packages/rrule-generator/src/utils/getRuleTextWithStartingDate.ts:14
 	/* translators: %1$s recurrence pattern ex: 'Every month on the first', %2$s line break, starting, %3$s date ex: 'Jan 1, 20221' */
 	__( '%1$s,%2$sstarting %3$s', 'event_espresso' )
 );
