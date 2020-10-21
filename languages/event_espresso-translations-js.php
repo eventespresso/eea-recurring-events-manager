@@ -172,16 +172,16 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:15
 	__( 'New Ticket Details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:41
-	__( 'Add ticket prices', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:39
+	__( 'Set ticket prices', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:47
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:45
 	__( 'Skip prices - Save', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:59
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:57
 	__( 'Ticket details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:61
 	__( 'Save', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:11
