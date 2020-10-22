@@ -1,10 +1,11 @@
 
 .ee-rem-dates-list {
+    box-sizing: border-box;
     margin: 0 0 4rem;
-    max-width: 732px;
+    max-width: 45.75rem;
     overflow-x: visible;
     overflow-y: auto;
-    padding: 6px 12px 6px 6px;
+    padding: 0.375rem 0.75rem 0.375rem 0.375rem;
     width: 100%;
 }
 
@@ -13,47 +14,41 @@
 .ee-rem-dates-list--circle .ee-event-datetimes-ul,
 .ee-rem-dates-list--stripe .ee-event-datetimes-ul {
     margin: 0;
+    padding: 0;
 }
 
 .ee-rem-dates-list--box .ee-event-datetimes-ul .ee-event-datetimes-li,
 .ee-rem-dates-list--card .ee-event-datetimes-ul .ee-event-datetimes-li,
 .ee-rem-dates-list--circle .ee-event-datetimes-ul .ee-event-datetimes-li,
 .ee-rem-dates-list--stripe .ee-event-datetimes-ul .ee-event-datetimes-li {
+    box-sizing: border-box;
     display: flex;
     float: unset;
-    height: 72px;
     justify-content: space-between;
-    margin: 0 0 24px;
-    padding: 0 12px 0 0;
+    margin: 0 0 1.5rem;
+    padding: 0 0.75rem 0 0;
     width: 100%;
 }
 .ee-rem-dates-list--box .ee-event-datetimes-ul .ee-event-datetimes-li {
-    padding: 6px 18px 6px 6px;
+    padding: 0.375rem 1.125rem 0.375rem 0.375rem;
 }
 .ee-rem-dates-list--card .ee-event-datetimes-ul .ee-event-datetimes-li {
-    background: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 1px 3px 6px rgba(0, 0, 0, .25);
-    padding: 0 30px 0 0;
-}
-
-.ee-event-datetimes-ul li .download-iCal-frm {
-    margin: auto 0;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, .25), 0 0.1875rem .5rem rgba(0, 0, 0, .25);
+    color: rgba(0, 0, 0, 0.875);
+    padding: 0 1.875rem 0 0;
 }
 
 .ee-rem-date__wrapper {
     display: flex;
-    height: 60px;
     justify-content: flex-start;
     width: calc(100% - 2rem);
-}
-.ee-rem-dates-list--card .ee-rem-date__wrapper {
-    height: 72px;
 }
 
 .ee-rem-dates-list--card .ee-rem-date__stripe,
 .ee-rem-dates-list--stripe .ee-rem-date__stripe {
-    flex: 0 0 6px;
-    margin-right: .5rem;
+    flex: 0 0 0.375rem;
+    margin-right: 0.5rem;
 }
 .ee-rem-dates-list--box .ee-rem-date__stripe {
     display: none;
@@ -100,21 +95,21 @@
 .ee-rem-date__time {
     align-items: center;
     display: flex;
-    height: 60px;
+    height: 3.75rem;
     flex-flow: column nowrap;
     flex-grow: 0;
     justify-content: center;
-    opacity: .75;
+    opacity: 0.875;
     text-align: center;
 }
 
 .ee-rem-date__date {
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-    margin-right: 12px;
-    width: 60px;
+    margin-right: 1rem;
+    width: 3.75rem;
 }
 .ee-rem-dates-list--card .ee-rem-date__date {
-    margin: 6px 12px 6px 0;
+    margin: 0.375rem 0.75rem 0.375rem 0;
 }
 .ee-rem-dates-list--circle .ee-rem-date__date {
     border-radius: 99rem;
@@ -125,29 +120,29 @@
 }
 
 .ee-rem-date__date--day {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 300;
-    line-height: 30px;
-    letter-spacing: 2px;
+    line-height: 1.875rem;
+    letter-spacing: 0.125rem;
     position: relative;
-    right: -1px;
+    right: -0.0625rem;
 }
 .ee-rem-dates-list--circle .ee-rem-date__date--day {
-    font-size: 27px;
-    line-height: 23px;
+    font-size: 1.6875rem;
+    line-height: 1.4375rem;
 }
 
 .ee-rem-date__date--month {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 900;
-    letter-spacing: 4px;
-    line-height: 20px;
+    letter-spacing: 0.25rem;
+    line-height: 1.25rem;
     position: relative;
-    right: -2px;
+    right: -0.125rem;
     text-transform: uppercase;
 }
 .ee-rem-dates-list--circle .ee-rem-date__date--month {
-    font-size: 15px;
+    font-size: 0.9375rem;
 }
 
 .ee-rem-date__details {
@@ -156,8 +151,12 @@
     flex-flow: column nowrap;
     flex-grow: 10;
     justify-content: center;
-    line-height: 1.5;
-    max-width: calc(100% - 180px);
+    line-height: 1.25;
+    max-width: calc(100% - 11.25rem);
+    padding: 0;
+}
+.ee-rem-dates-list--card .ee-rem-date__details {
+    padding: 0.75rem 0;
 }
 
 .ee-rem-date__details--name * {
@@ -165,33 +164,38 @@
 }
 
 .ee-rem-date__details--description {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     max-width: 100%;
-    opacity: .75;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    opacity: 0.875;
 }
 .ee-rem-date__details--description p {
-    margin: 0;
+    line-height: 1.3125rem !important;
+    margin: 0 !important;
 }
 
 .ee-rem-date__time {
-    font-size: 12px;
-    line-height: 9px;
-    margin: 0 12px 0 auto;
-    width: 60px;
+    font-size: 0.875rem;
+    line-height: 0.9375rem;
+    margin: 0 0.75rem 0 auto;
+    width: 3.75rem;
 }
 .ee-rem-dates-list--card .ee-rem-date__time {
-    margin: 6px 12px 6px auto;
+    margin: 0.75rem 0.75rem 0.75rem auto;
 }
 
 .ee-rem-date__time--sep {
-    font-size: 12px;
+    font-size: 0.75rem;
     opacity: .75;
 }
 
 .ee-rem-date__time--end {
-    line-height: 12px;
+    padding-bottom: 0.1875rem;
+}
+
+.ee-event-datetimes-ul li .download-iCal-frm {
+    margin: 0.5rem 0;
+}
+.ee-rem-dates-list--card .ee-event-datetimes-ul li .download-iCal-frm {
+    padding: 0.75rem 0;
 }
