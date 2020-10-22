@@ -52,7 +52,7 @@ class FrontendRequests extends CoreFrontendRequests
         $this->rem_config = $this->loader->getShared(RecurringEventsConfig::class);
         add_filter('FHEE__espresso_list_of_event_dates__arguments', [$this, 'filterDatesListArguments'], 10);
         add_filter('FHEE__espresso_list_of_event_dates__datetime_html', [$this, 'filterDatesListInnerHtml'], 10, 3);
-        add_filter('FHEE__espresso_list_of_event_dates__html', [$this, 'filterDatesListHtml']);
+        add_filter('FHEE__espresso_list_of_event_dates__html', [$this, 'filterDatesListHtml'], 10, 3);
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
         return true;
     }
@@ -120,14 +120,16 @@ class FrontendRequests extends CoreFrontendRequests
 
 
     /**
-     * @param string $html
+     * @param string      $html
+     * @param array       $arguments
+     * @param EE_Datetime $datetime
      * @return string
      */
-    public function filterDatesListHtml(string $html)
+    public function filterDatesListHtml(string $html, array $arguments, EE_Datetime $datetime)
     {
         $style      = $this->rem_config->templateStyle();
-        $max_height = $this->rem_config->numberOfDates() * 96 + 6;
-        $max_height = $this->rem_config->allowScrolling() ? " style='max-height: {$max_height}px;'" : '';
+        $max_height = $this->rem_config->numberOfDates() * $this->calculateListItemHeight($datetime);
+        $max_height = $this->rem_config->allowScrolling() ? " style='max-height: {$max_height}rem;'" : '';
         $attributes = "class='ee-rem-dates-list ee-rem-dates-list--{$style}'{$max_height}";
         $html       = "<div {$attributes}>" . $html . "</div>";
         $heading    = $this->rem_config->showNextUpcomingOnly()
@@ -135,6 +137,27 @@ class FrontendRequests extends CoreFrontendRequests
             : esc_html__('Upcoming Dates', 'event_espresso');
         $html       = "<h3>{$heading}</h3>" . $html;
         return $html;
+    }
+
+
+    /**
+     * @param EE_Datetime $datetime
+     * @return float
+     * @throws EE_Error
+     * @throws ReflectionException
+     */
+    private function calculateListItemHeight(EE_Datetime $datetime)
+    {
+        $name = $datetime->name();
+        $desc = $datetime->description();
+        // taking a wild guess that one line of text will be about 60 characters
+        $name_lines = ceil(strlen($name) / 55);
+        $desc_lines = ceil(strlen($desc) / 55);
+        // we're multiplying the number of lines by the line heights for those elements
+        $name_height = $name_lines * 1.5;
+        $desc_height = $desc_lines * 1.3125;
+        // add those together plus the amount of padding and margin used in the list
+        return $name_height + $desc_height + 3;
     }
 
 
