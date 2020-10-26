@@ -1,26 +1,26 @@
 {
   "files": {
-    "rem.css": "/static/css/rem.96a8336b.css",
-    "rem.js": "/static/js/rem.87045deb.js",
-    "rem.js.map": "/static/js/rem.87045deb.js.map",
-    "rem.php": "/static/js/rem.6eef85ad.asset.php",
-    "rruleGenerator.css": "/static/css/rruleGenerator.e02c2907.css",
-    "rruleGenerator.js": "/static/js/rruleGenerator.ad7fdb04.js",
-    "rruleGenerator.js.map": "/static/js/rruleGenerator.ad7fdb04.js.map",
-    "rruleGenerator.php": "/static/js/rruleGenerator.e99fc231.asset.php",
-    "static/css/rem.96a8336b.css.map": "/static/css/rem.96a8336b.css.map",
-    "static/css/rruleGenerator.e02c2907.css.map": "/static/css/rruleGenerator.e02c2907.css.map",
-    "static/js/rem.87045deb.js.LICENSE.txt": "/static/js/rem.87045deb.js.LICENSE.txt",
-    "static/js/rruleGenerator.ad7fdb04.js.LICENSE.txt": "/static/js/rruleGenerator.ad7fdb04.js.LICENSE.txt"
+    "rem.css": "/static/css/rem.e491ce4b.css",
+    "rem.js": "/static/js/rem.ffc82b40.js",
+    "rem.js.map": "/static/js/rem.ffc82b40.js.map",
+    "rem.php": "/static/js/rem.e4475b75.asset.php",
+    "rruleGenerator.css": "/static/css/rruleGenerator.4c05e3e8.css",
+    "rruleGenerator.js": "/static/js/rruleGenerator.012b48f9.js",
+    "rruleGenerator.js.map": "/static/js/rruleGenerator.012b48f9.js.map",
+    "rruleGenerator.php": "/static/js/rruleGenerator.dcfd0bb9.asset.php",
+    "static/css/rem.e491ce4b.css.map": "/static/css/rem.e491ce4b.css.map",
+    "static/css/rruleGenerator.4c05e3e8.css.map": "/static/css/rruleGenerator.4c05e3e8.css.map",
+    "static/js/rem.ffc82b40.js.LICENSE.txt": "/static/js/rem.ffc82b40.js.LICENSE.txt",
+    "static/js/rruleGenerator.012b48f9.js.LICENSE.txt": "/static/js/rruleGenerator.012b48f9.js.LICENSE.txt"
   },
   "entrypoints": {
     "rruleGenerator": [
-      "static/css/rruleGenerator.e02c2907.css",
-      "static/js/rruleGenerator.ad7fdb04.js"
+      "static/css/rruleGenerator.4c05e3e8.css",
+      "static/js/rruleGenerator.012b48f9.js"
     ],
     "rem": [
-      "static/css/rem.96a8336b.css",
-      "static/js/rem.87045deb.js"
+      "static/css/rem.e491ce4b.css",
+      "static/js/rem.ffc82b40.js"
     ]
   }
 }
