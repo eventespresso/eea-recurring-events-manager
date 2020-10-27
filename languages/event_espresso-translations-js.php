@@ -41,11 +41,8 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/constants.ts:26
 	__( 'Sunday', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/apollo/queries/recurrences/useFetchRecurrences.ts:29
+	// Reference: domains/rem/src/services/apollo/initialization/useCacheRehydration.ts:44
 	__( 'recurrences initialized', 'event_espresso' ),
-
-	// Reference: domains/rem/src/services/apollo/queries/recurrences/useFetchRecurrences.ts:43
-	__( 'initializing recurrences', 'event_espresso' ),
 
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:34
 	__( 'Recurring series', 'event_espresso' ),
