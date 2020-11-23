@@ -200,15 +200,15 @@ $generated_i18n_strings = array(
 	__( 'Assign Dates', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:122
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:50
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:51
 	__( 'Basics', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:126
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:54
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:55
 	__( 'Name', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:133
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:61
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:62
 	__( 'Description', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:138
@@ -224,7 +224,7 @@ $generated_i18n_strings = array(
 	__( 'Ticket Sales End', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:190
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:101
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:102
 	__( 'Details', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:194
@@ -270,7 +270,7 @@ $generated_i18n_strings = array(
 	__( 'Unit value', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:35
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:92
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:93
 	__( 'Unit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:42
@@ -282,19 +282,19 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:33
 	__( 'Select', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:105
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:106
 	__( 'Capacity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:69
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:70
 	__( 'Time', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:73
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:74
 	__( 'Start Time', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:81
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:82
 	__( 'Length', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:85
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:86
 	__( 'Duration', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
@@ -446,16 +446,16 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:46
 	__( 'week(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:47
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:48
 	__( 'Repeat yearly on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:56
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:57
 	__( 'on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:63
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:64
 	__( 'Repeat yearly on month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:80
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:81
 	__( 'Repeat yearly on a day', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:65
