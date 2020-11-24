@@ -46,7 +46,6 @@ jobs:
         services:
             mysql:
                 image: mariadb:10.3
-                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
         runs-on: ${{ matrix.operating-system }}
         needs: what_has_changed
         # Run only if PHP files have changed
