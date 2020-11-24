@@ -49,7 +49,6 @@ jobs:
         if: ${{ needs.what_has_changed.outputs.php == 'true' }}
         env:
             PHPUNIT_VER: v7 # default
-            WP_VERSION: latest
             WP_MULTISITE: 0
         strategy:
             matrix:
@@ -68,7 +67,7 @@ jobs:
                   extensions: mysql # needed for PHP < 7.1
 
             - name: Start mysql service
-              run: sudo /etc/init.d/mysql start
+              run: sudo systemctl start mysql.service
 
             - name: Get composer cache directory
               id: composercache
