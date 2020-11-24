@@ -67,7 +67,9 @@ jobs:
                   extensions: mysql # needed for PHP < 7.1
 
             - name: Start mysql service
-              run: sudo systemctl start mysql.service
+              run: |
+                  sudo service mysql start
+                  sudo service mysqld start
 
             - name: Get composer cache directory
               id: composercache
