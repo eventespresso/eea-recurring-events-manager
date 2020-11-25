@@ -101,5 +101,6 @@ function eea_recurring_events_activation_error($error_message = '')
         }
     );
 }
+
 // End of file eea-recurring-events-manager.php
 // Location: wp-content/plugins/eea-recurring-events-manager/eea-recurring-events-manager-manager.php
