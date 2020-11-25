@@ -79,7 +79,7 @@ class AddNewEventModal
 
     public function addNewEventTypeModal(WP_Post $post)
     {
-        if($post->post_type !== 'espresso_events') {
+        if ($post->post_type !== 'espresso_events') {
             return;
         }
         $html = EEH_HTML::div();
@@ -88,17 +88,13 @@ class AddNewEventModal
 
     public function calendarIcon()
     {
-        for($day=1; $day<=28; $day++){
-
+        for ($day=1; $day<=28; $day++) {
         }
         $days =
         $html = EEH_HTML::table(
             EEH_HTML::tr(
-
             )
         );
     }
-
-
 }
 // Location: AddNewEventModal.php

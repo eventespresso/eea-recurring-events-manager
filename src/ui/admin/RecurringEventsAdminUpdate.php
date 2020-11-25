@@ -10,8 +10,6 @@ use EventEspresso\RecurringEvents\src\domain\Domain;
 use Exception;
 use LogicException;
 
-
-
 /**
  * Class RecurringEventsAdminUpdate
  * logic for hooking into Events Admin Pages during saves and updates
@@ -58,7 +56,8 @@ class RecurringEventsAdminUpdate
     {
         add_filter(
             'FHEE__Events_Admin_Page___insert_update_cpt_item__event_update_callbacks',
-            array($this, 'eventUpdateCallbacks'), 5
+            array($this, 'eventUpdateCallbacks'),
+            5
         );
     }
 
@@ -83,7 +82,5 @@ class RecurringEventsAdminUpdate
      */
     public function remEditorUpdate(EE_Event $event, array $form_data)
     {
-
     }
 }
-

@@ -25,7 +25,7 @@ use EventEspresso\RecurringEvents\src\domain\services\graphql\RegisterSchema;
  * @subpackage  eea-recurring-events-manager
  * @author      Brent Christensen
  */
-Class  RecurringEventsManager extends EE_Addon
+class RecurringEventsManager extends EE_Addon
 {
 
     /**

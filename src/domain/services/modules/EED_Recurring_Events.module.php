@@ -106,7 +106,7 @@ class EED_Recurring_Events extends EED_Module
      */
     public static function loadRecurringEventsAdminComponents()
     {
-        if(! class_exists('EventEspresso\core\domain\services\assets\AdminRefactorAssetManager', false)) {
+        if (! class_exists('EventEspresso\core\domain\services\assets\AdminRefactorAssetManager', false)) {
             return;
         }
         try {
@@ -176,7 +176,6 @@ class EED_Recurring_Events extends EED_Module
 //        );
 //        $recurring_events_admin_update->setHooks();
 //    }
-
 }
 // End of file EED_Recurring_Events.module.php
 // Location: /eea-recurring-events-manager/ui/modules/EED_Recurring_Events.module.php

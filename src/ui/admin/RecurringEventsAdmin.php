@@ -14,7 +14,6 @@ use Exception;
 use InvalidArgumentException;
 use LogicException;
 
-
 /**
  * RecurringEventsAdmin
  * logic for hooking into Events Admin Pages.
@@ -69,15 +68,18 @@ class RecurringEventsAdmin
 
 
 
-    public function setHooks() {
+    public function setHooks()
+    {
         add_action(
             'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_datetime_edit_row__actions_column_last',
             array($this, 'editDatetimeRecurrenceAction'),
-            10, 2
+            10,
+            2
         );
         add_action(
             'AHEE__caffeinated_admin_new_pricing_templates__event_tickets_metabox_main__before_content',
-            array($this, 'recurrencePatternsForm'), 10
+            array($this, 'recurrencePatternsForm'),
+            10
         );
         add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
     }

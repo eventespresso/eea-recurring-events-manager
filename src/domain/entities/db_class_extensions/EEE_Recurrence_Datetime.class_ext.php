@@ -43,5 +43,4 @@ class EEE_Recurrence_Datetime extends EEE_Base_Class
             )
         );
     }
-
 }
