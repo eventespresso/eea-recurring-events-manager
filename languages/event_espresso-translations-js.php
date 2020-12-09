@@ -318,22 +318,22 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:36
 	__( 'The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:12
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:13
 	__( 'Generated: recurring dates that have been created via pattern editors', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:17
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:18
 	__( 'Additions: extra one off single dates that could not be created using the pattern editor', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:22
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:23
 	__( 'Exceptions: dates that have been created via the pattern editor, but should be skipped or excluded', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:29
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:30
 	__( 'Undo Exclusion: undo an exclusion and add a date back into list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:34
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:35
 	__( 'Undo Addition: undo an extra one off single date and remove it from list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/config.ts:41
+	// Reference: domains/rem/src/ui/generatedDates/config.ts:42
 	__( 'Remove Date: extra one off exclusions, removes dates created by the pattern editor', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/utils.ts:29
