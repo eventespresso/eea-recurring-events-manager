@@ -46,7 +46,7 @@ class FrontendRequests extends CoreFrontendRequests
      * @return bool
      * @since   $VID:$
      */
-    protected function requestHandler()
+    protected function requestHandler(): bool
     {
         $this->domain = $this->loader->getShared(Domain::class);
         $this->rem_config = $this->loader->getShared(RecurringEventsConfig::class);

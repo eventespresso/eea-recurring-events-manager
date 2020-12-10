@@ -3,8 +3,6 @@
 namespace EventEspresso\RecurringEvents\domain\entities\routing;
 
 use EE_Dependency_Map;
-use EventEspresso\core\services\assets\BaristaFactory;
-use EventEspresso\core\services\assets\BaristaInterface;
 use EventEspresso\RecurringEvents\domain\Domain;
 use EventEspresso\RecurringEvents\domain\services\assets\RecurringEventsAssetManager;
 
@@ -22,7 +20,7 @@ class EspressoEventEditor extends RemAdminRoute
      * @return bool
      * @since   $VID:$
      */
-    public function matchesCurrentRequest()
+    public function matchesCurrentRequest(): bool
     {
         return parent::matchesCurrentRequest()
             && $this->admin_config->useAdvancedEditor()
@@ -33,10 +31,21 @@ class EspressoEventEditor extends RemAdminRoute
     }
 
 
+    /**
+     * called just before matchesCurrentRequest()
+     * and allows Route to perform any setup required such as calling setSpecification()
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        $this->initializeBaristaForDomain(Domain::class);
+    }
+
+
     protected function registerDependencies()
     {
         parent::registerDependencies();
-
         $this->dependency_map->registerDependencies(
             RemEditorData::class,
             [
@@ -47,9 +56,15 @@ class EspressoEventEditor extends RemAdminRoute
                 'EventEspresso\core\domain\services\graphql\Utilities'                        => EE_Dependency_Map::load_from_cache,
             ]
         );
-        /** @var RemEditorData $data_node */
-        $data_node = $this->loader->getShared(RemEditorData::class);
-        $this->setDataNode($data_node);
+    }
+
+
+    /**
+     * @return string
+     */
+    protected function dataNodeClass(): string
+    {
+        return RemEditorData::class;
     }
 
 
@@ -59,18 +74,8 @@ class EspressoEventEditor extends RemAdminRoute
      * @return bool
      * @since   $VID:$
      */
-    protected function requestHandler()
+    protected function requestHandler(): bool
     {
-        if (apply_filters('FHEE__load_Barista', true)) {
-            /** @var Domain $factory */
-            $domain = $this->loader->getShared(Domain::class);
-            /** @var BaristaFactory $factory */
-            $factory = $this->loader->getShared(BaristaFactory::class);
-            $barista = $factory->createFromDomainObject($domain);
-            if ($barista instanceof BaristaInterface) {
-                $barista->initialize();
-            }
-        }
         /** @var RecurringEventsAssetManager $schema */
         $asset_manager = $this->loader->getShared(RecurringEventsAssetManager::class);
         add_action('admin_enqueue_scripts', [$asset_manager, 'enqueueEventEditor'], 3);

@@ -15,7 +15,7 @@ add_action(
             try {
                 EE_Psr4AutoloaderInit::psr4_loader()->addNamespace('EventEspresso\RecurringEvents', __DIR__);
                 EE_Dependency_Map::register_dependencies(
-                    'EventEspresso\RecurringEvents\domain\Domain',
+                    'EventEspresso\RecurringEvents\domain\RecurringEventsManager',
                     [
                         'EE_Dependency_Map'                           => EE_Dependency_Map::load_from_cache,
                         'EventEspresso\RecurringEvents\domain\Domain' => EE_Dependency_Map::load_from_cache,
