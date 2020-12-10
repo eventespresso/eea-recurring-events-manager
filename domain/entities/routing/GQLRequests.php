@@ -55,7 +55,7 @@ class GQLRequests extends CoreGQLRequests
      * @return bool
      * @since   $VID:$
      */
-    protected function requestHandler()
+    protected function requestHandler(): bool
     {
         /** @var RegisterResources $schema */
         $gqlResources = $this->loader->getShared(RegisterResources::class);

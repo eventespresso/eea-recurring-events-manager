@@ -27,7 +27,7 @@ class EventTemplatesAdmin extends RemAdminRoute
      *
      * @return bool
      */
-    public function matchesCurrentRequest()
+    public function matchesCurrentRequest(): bool
     {
         return parent::matchesCurrentRequest() && (
             $this->request->getRequestParam('action') === 'template_settings'
@@ -60,7 +60,7 @@ class EventTemplatesAdmin extends RemAdminRoute
      *
      * @return bool
      */
-    protected function requestHandler()
+    protected function requestHandler(): bool
     {
         add_action(
             'AHEE__template_settings__template__before_settings_form',
