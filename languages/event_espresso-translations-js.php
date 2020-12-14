@@ -220,57 +220,58 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:150
 	__( 'Ticket Sales Start', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:170
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:171
 	__( 'Ticket Sales End', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:190
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:102
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:192
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:103
 	__( 'Details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:194
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:196
 	__( 'Quantity For Sale', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:200
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:202
 	__( 'The maximum number of this ticket available for sale.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:202
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:204
 	__( 'Set to 0 to stop sales, or leave blank for no limit.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:207
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:209
 	__( 'Number of Uses', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:213
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:215
 	__( 'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:217
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:219
 	__( 'Example: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:224
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:226
 	__( 'Minimum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:229
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:231
 	__( 'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:238
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:240
 	__( 'Maximum Quantity', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:244
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:246
 	__( 'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:248
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:250
 	__( 'Leave blank for no minimum.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:253
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:255
 	__( 'Required Ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:255
+	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:257
 	__( 'If enabled, the ticket must be selected and will appear first in frontend ticket lists.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:27
-	__( 'Unit value', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:87
+	__( 'Duration', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:35
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:93
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:94
 	__( 'Unit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:42
@@ -282,7 +283,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:33
 	__( 'Select', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:106
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:107
 	__( 'Capacity', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:70
@@ -291,11 +292,8 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:74
 	__( 'Start Time', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:82
+	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:83
 	__( 'Length', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:86
-	__( 'Duration', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
 	__( 'Recurrence pattern', 'event_espresso' ),
