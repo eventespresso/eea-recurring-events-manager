@@ -370,7 +370,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/After.tsx:18
 	__( 'End after', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/After.tsx:27
+	// Reference: packages/rrule-generator/src/components/End/After.tsx:26
 	__( 'occurrences', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/End/Mode.tsx:10
