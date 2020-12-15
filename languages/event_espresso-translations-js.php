@@ -100,7 +100,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:26
 	__( 'Generated Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:13
+	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:20
 	__( 'Submit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/RecurrenceTag.tsx:35
@@ -298,23 +298,11 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
 	__( 'Recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:32
+	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:33
 	__( 'Dates List', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:30
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:41
 	__( 'Add Extra Event Date', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:27
-	__( 'The number of Event Dates has been capped at 5 for YEARLY recurrence patterns', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:30
-	__( 'The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (3 years)', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:33
-	__( 'The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/generatedDates/Warning.tsx:36
-	__( 'The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/config.ts:13
 	__( 'Generated: recurring dates that have been created via pattern editors', 'event_espresso' ),
@@ -346,31 +334,43 @@ $generated_i18n_strings = array(
 	/* translators: undo exclusion and add back(linebreak)into list of generated dates */
 	__( 'undo exclusion and add back%sinto list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:30
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:31
 	__( 'You must set a recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:32
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:33
 	__( 'defines a rule or repeating pattern for generating event dates that occur regularly', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:37
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:38
 	__( 'Recurrence Pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:43
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
 	__( 'Remove exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:43
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:45
 	__( 'Add exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:50
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:52
 	__( 'defines a rule or repeating pattern that will remove dates from those generated above', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:55
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:57
 	__( 'Exclusion Pattern', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/After.tsx:18
+	// Reference: domains/rem/src/utils/misc.ts:64
+	__( 'The number of Event Dates has been capped at 5 for YEARLY recurrence patterns', 'event_espresso' ),
+
+	// Reference: domains/rem/src/utils/misc.ts:66
+	__( 'The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (3 years)', 'event_espresso' ),
+
+	// Reference: domains/rem/src/utils/misc.ts:68
+	__( 'The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)', 'event_espresso' ),
+
+	// Reference: domains/rem/src/utils/misc.ts:70
+	__( 'The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)', 'event_espresso' ),
+
+	// Reference: packages/rrule-generator/src/components/End/After.tsx:21
 	__( 'End after', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/After.tsx:26
+	// Reference: packages/rrule-generator/src/components/End/After.tsx:30
 	__( 'occurrences', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/End/Mode.tsx:10
@@ -382,13 +382,13 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/Mode.tsx:9
 	__( 'After', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/OnDate.tsx:7
+	// Reference: packages/rrule-generator/src/components/End/OnDate.tsx:13
 	__( 'Datetime picker for end on date', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/index.tsx:20
+	// Reference: packages/rrule-generator/src/components/End/index.tsx:18
 	__( 'End', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:27
+	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:28
 	/* translators: %s rrule string */
 	__( 'You provided an invalid RRule value to component. %s is not a correct RRule string.', 'event_espresso' ),
 
@@ -468,7 +468,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:94
 	__( 'Repeat yearly on the month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:21
+	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:19
 	__( 'Repeat', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Start/index.tsx:24
