@@ -301,7 +301,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:33
 	__( 'Dates List', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:41
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:42
 	__( 'Add Extra Event Date', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/config.ts:13
