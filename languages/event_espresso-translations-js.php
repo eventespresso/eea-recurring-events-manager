@@ -129,28 +129,28 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:13
 	__( 'trash ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:24
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:25
 	__( 'starts', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:45
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:46
 	__( 'ends', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:59
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:60
 	__( '%1$d %2$s %3$s the %4$s date', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:47
 	__( 'before', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:51
 	__( 'after', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:64
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:63
 	__( 'start', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:64
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:67
 	__( 'end', 'event_espresso' ),
 
