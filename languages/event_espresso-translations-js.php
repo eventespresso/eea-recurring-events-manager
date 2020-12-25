@@ -50,107 +50,107 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:35
 	__( 'Series', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:23
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
 	__( 'datetime', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:23
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
 	__( 'ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:34
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:32
 	/* translators: Select an existing "date / ticket" to use as a template */
 	__( 'Select an existing %s to use as a template.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:39
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:37
 	__( 'or', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:44
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:42
 	/* translators: Add new "date / ticket" and insert details manually */
 	__( 'Add new %s and insert details manually', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:49
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:47
 	__( 'Add New', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Modal/Modal.tsx:18
+	// Reference: domains/rem/src/ui/Modal/Modal.tsx:17
 	__( 'Recurring Events Manager', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/CancelButton.tsx:7
+	// Reference: domains/rem/src/ui/MultiStep/CancelButton.tsx:6
 	__( 'Cancel', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:13
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:12
 	__( 'define how recurring dates are generated', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:15
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:14
 	__( 'Pattern Editor', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:18
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:17
 	__( 'primary information for generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:20
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:19
 	__( 'Date Details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:22
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:21
 	__( 'create or add tickets for generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:22
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:21
 	__( 'Tickets', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:24
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:23
 	__( 'confirm final dates list and add or remove exceptions', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:26
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:25
 	__( 'Generated Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:20
+	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:19
 	__( 'Submit', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/RecurrenceTag.tsx:35
+	// Reference: domains/rem/src/ui/RecurrenceTag.tsx:33
 	/* translators: %s recurrence dbId */
 	__( 'recurring series #%s', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/RemButton.tsx:22
+	// Reference: domains/rem/src/ui/RemButton.tsx:23
 	__( 'Add multiple dates in bulk that follow a recurring pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/RemButton.tsx:24
+	// Reference: domains/rem/src/ui/RemButton.tsx:25
 	__( 'Recurring Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/RemButton.tsx:27
+	// Reference: domains/rem/src/ui/RemButton.tsx:28
 	__( 'Add Recurring Dates', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:33
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:20
+	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:21
 	__( 'Select…', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:45
 	__( 'Add', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:22
+	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:21
 	__( 'edit ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:13
+	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:14
 	__( 'trash ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:25
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:24
 	__( 'starts', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:46
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:45
 	__( 'ends', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:60
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:59
 	__( '%1$d %2$s %3$s the %4$s date', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:47
 	__( 'before', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:51
 	__( 'after', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:64
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:63
 	__( 'start', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:64
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:67
 	__( 'end', 'event_espresso' ),
 
@@ -162,41 +162,41 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:15
 	__( 'Name must be at least three characters', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:12
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:11
 	/* translators: %d ticket id */
 	__( 'Edit ticket %d', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:15
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:14
 	__( 'New Ticket Details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:39
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:38
 	__( 'Set ticket prices', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:45
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:44
 	__( 'Skip prices - Save', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:57
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:56
 	__( 'Ticket details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:61
+	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:60
 	__( 'Save', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:11
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:10
 	__( 'primary information about the ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:11
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:10
 	__( 'Ticket Details', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:13
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:12
 	__( 'apply ticket price modifiers and taxes', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:15
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:14
 	__( 'Price Calculator', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:17
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:16
 	__( 'relations between tickets and dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:17
+	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:16
 	__( 'Assign Dates', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:122
@@ -280,7 +280,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:58
 	__( 'Start/ end', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:28
+	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:29
 	__( 'Select', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:107
@@ -298,10 +298,10 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
 	__( 'Recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:33
+	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:34
 	__( 'Dates List', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:42
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:43
 	__( 'Add Extra Event Date', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/config.ts:13
@@ -334,25 +334,25 @@ $generated_i18n_strings = array(
 	/* translators: undo exclusion and add back(linebreak)into list of generated dates */
 	__( 'undo exclusion and add back%sinto list of generated dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:29
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:30
 	__( 'You must set a recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:31
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:32
 	__( 'defines a rule or repeating pattern for generating event dates that occur regularly', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:36
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:37
 	__( 'Recurrence Pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:43
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:44
 	__( 'Remove exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:43
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:44
 	__( 'Add exclusion pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:50
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:51
 	__( 'defines a rule or repeating pattern that will remove dates from those generated above', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:55
+	// Reference: domains/rem/src/ui/recurrence/PatternEditor.tsx:56
 	__( 'Exclusion Pattern', 'event_espresso' ),
 
 	// Reference: domains/rem/src/utils/misc.ts:64
@@ -382,48 +382,48 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/Mode.tsx:13
 	__( 'On date', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/OnDate.tsx:14
+	// Reference: packages/rrule-generator/src/components/End/OnDate.tsx:12
 	__( 'Datetime picker for end on date', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/index.tsx:20
+	// Reference: packages/rrule-generator/src/components/End/index.tsx:18
 	__( 'End', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:28
+	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:26
 	/* translators: %s rrule string */
 	__( 'You provided an invalid RRule value to component. %s is not a correct RRule string.', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:18
-	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:17
+	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:18
 	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:33
-	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:34
+	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:35
 	__( 'every', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:20
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:19
 	__( 'Repeat daily interval', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:28
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:27
 	__( 'day(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:21
+	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:20
 	__( 'Repeat hourly interval', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:29
+	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:28
 	__( 'hour(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:33
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:34
 	__( 'Repeat monthly on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:42
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:43
 	__( 'on day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:49
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:50
 	__( 'Repeat monthly on a day', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:44
 	__( 'Repeat monthly on the', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:53
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:62
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:63
 	__( 'on the', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:58
@@ -438,40 +438,40 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:43
 	__( 'month(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:39
+	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:40
 	__( 'Repeat weekly interval', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:46
+	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:47
 	__( 'week(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:51
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:52
 	__( 'Repeat yearly on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:59
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:60
 	__( 'on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:66
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:67
 	__( 'Repeat yearly on month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:86
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:87
 	__( 'Repeat yearly on a day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:67
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:68
 	__( 'Repeat yearly on the', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:79
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:80
 	__( 'Repeat yearly on the day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:93
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:94
 	__( 'of', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:98
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:99
 	__( 'Repeat yearly on the month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:18
 	__( 'Repeat', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Start/index.tsx:24
+	// Reference: packages/rrule-generator/src/components/Start/index.tsx:25
 	__( 'Start', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/constants.ts:10
