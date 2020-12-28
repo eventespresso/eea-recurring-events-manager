@@ -1,16 +1,16 @@
 {
   "files": {
-    "rem.css": "/static/css/rem.480df951.css",
-    "rem.js": "/static/js/rem.53fcd167.js",
-    "rem.js.map": "/static/js/rem.53fcd167.js.map",
-    "rem.php": "/static/js/rem.b0fe9819.asset.php",
+    "rem.css": "/static/css/rem.fff832ed.css",
+    "rem.js": "/static/js/rem.e1cdf77e.js",
+    "rem.js.map": "/static/js/rem.e1cdf77e.js.map",
+    "rem.php": "/static/js/rem.0692ccca.asset.php",
     "rruleGenerator.css": "/static/css/rruleGenerator.597e669e.css",
     "rruleGenerator.js": "/static/js/rruleGenerator.023a51b4.js",
     "rruleGenerator.js.map": "/static/js/rruleGenerator.023a51b4.js.map",
     "rruleGenerator.php": "/static/js/rruleGenerator.3c450d2d.asset.php",
-    "static/css/rem.480df951.css.map": "/static/css/rem.480df951.css.map",
+    "static/css/rem.fff832ed.css.map": "/static/css/rem.fff832ed.css.map",
     "static/css/rruleGenerator.597e669e.css.map": "/static/css/rruleGenerator.597e669e.css.map",
-    "static/js/rem.53fcd167.js.LICENSE.txt": "/static/js/rem.53fcd167.js.LICENSE.txt",
+    "static/js/rem.e1cdf77e.js.LICENSE.txt": "/static/js/rem.e1cdf77e.js.LICENSE.txt",
     "static/js/rruleGenerator.023a51b4.js.LICENSE.txt": "/static/js/rruleGenerator.023a51b4.js.LICENSE.txt"
   },
   "entrypoints": {
@@ -19,8 +19,8 @@
       "static/js/rruleGenerator.023a51b4.js"
     ],
     "rem": [
-      "static/css/rem.480df951.css",
-      "static/js/rem.53fcd167.js"
+      "static/css/rem.fff832ed.css",
+      "static/js/rem.e1cdf77e.js"
     ]
   }
 }
