@@ -400,80 +400,80 @@ $generated_i18n_strings = array(
 	/* translators: %s rrule string */
 	__( 'You provided an invalid RRule value to component. %s is not a correct RRule string.', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:17
-	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:18
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:33
-	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:35
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:34
+	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:36
 	__( 'every', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:19
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:22
 	__( 'Repeat daily interval', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:27
+	// Reference: packages/rrule-generator/src/components/Repeat/Daily/index.tsx:30
 	__( 'day(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:20
+	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:22
 	__( 'Repeat hourly interval', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Hourly/index.tsx:28
 	__( 'hour(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:34
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:32
 	__( 'Repeat monthly on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:43
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:39
 	__( 'on day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:50
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/On.tsx:46
 	__( 'Repeat monthly on a day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:44
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:43
 	__( 'Repeat monthly on the', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:53
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:63
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:50
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:59
 	__( 'on the', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:58
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:55
 	__( 'Repeat monthly on the which', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:70
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/OnThe.tsx:67
 	__( 'Repeat monthly on the day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:35
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:37
 	__( 'Repeat monthly interval', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:43
+	// Reference: packages/rrule-generator/src/components/Repeat/Monthly/index.tsx:45
 	__( 'month(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:40
+	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:39
 	__( 'Repeat weekly interval', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Weekly/index.tsx:47
 	__( 'week(s)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:52
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:50
 	__( 'Repeat yearly on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:60
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:57
 	__( 'on', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:67
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:64
 	__( 'Repeat yearly on month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:87
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:84
 	__( 'Repeat yearly on a day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:68
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:64
 	__( 'Repeat yearly on the', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:80
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:76
 	__( 'Repeat yearly on the day', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:94
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:90
 	__( 'of', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:99
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:95
 	__( 'Repeat yearly on the month', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/index.tsx:18
