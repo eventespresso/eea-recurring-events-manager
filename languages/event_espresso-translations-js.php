@@ -47,10 +47,10 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/apollo/initialization/useCacheRehydration.ts:44
 	__( 'recurrences initialized', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:34
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:36
 	__( 'Recurring series', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:35
+	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:37
 	__( 'Series', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
