@@ -53,24 +53,24 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:37
 	__( 'Series', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:19
 	__( 'datetime', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:19
 	__( 'ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:32
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:30
 	/* translators: Select an existing "date / ticket" to use as a template */
 	__( 'Select an existing %s to use as a template.', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:37
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:35
 	__( 'or', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:42
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:40
 	/* translators: Add new "date / ticket" and insert details manually */
 	__( 'Add new %s and insert details manually', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:47
+	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:45
 	__( 'Add New', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Modal/Modal.tsx:15
@@ -117,41 +117,41 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/RemButton.tsx:28
 	__( 'Add Recurring Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:33
+	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:31
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:21
 	__( 'Select…', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:45
+	// Reference: domains/rem/src/ui/Tickets/TicketTemplate.tsx:43
 	__( 'Add', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:21
+	// Reference: domains/rem/src/ui/Tickets/actions/Edit.tsx:15
 	__( 'edit ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:14
+	// Reference: domains/rem/src/ui/Tickets/actions/Trash.tsx:7
 	__( 'trash ticket', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:24
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:23
 	__( 'starts', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:45
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:44
 	__( 'ends', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:59
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:58
 	__( '%1$d %2$s %3$s the %4$s date', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:61
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:47
 	__( 'before', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:61
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:51
 	__( 'after', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:63
 	__( 'start', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:63
+	// Reference: domains/rem/src/ui/Tickets/card/TicketCard.tsx:62
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:67
 	__( 'end', 'event_espresso' ),
 
@@ -163,24 +163,24 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:15
 	__( 'Name must be at least three characters', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:11
+	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:26
+	__( 'Set ticket prices', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:31
+	__( 'Skip prices - Save', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:37
+	__( 'Ticket details', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:38
+	__( 'Save', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:26
 	/* translators: %d ticket id */
 	__( 'Edit ticket %d', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Container.tsx:14
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:29
 	__( 'New Ticket Details', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:38
-	__( 'Set ticket prices', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:44
-	__( 'Skip prices - Save', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:56
-	__( 'Ticket details', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/multiStep/ContentBody.tsx:60
-	__( 'Save', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:10
 	__( 'primary information about the ticket', 'event_espresso' ),
