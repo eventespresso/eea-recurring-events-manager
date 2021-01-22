@@ -100,10 +100,6 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:25
 	__( 'Generated Dates', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/SubmitButton.tsx:19
-	// Reference: domains/rem/src/ui/bulkAddTickets/Footer.tsx:17
-	__( 'Submit', 'event_espresso' ),
-
 	// Reference: domains/rem/src/ui/RecurrenceTag.tsx:33
 	/* translators: %s recurrence dbId */
 	__( 'recurring series #%s', 'event_espresso' ),
@@ -286,6 +282,9 @@ $generated_i18n_strings = array(
 
 	// Reference: domains/rem/src/ui/bulkAddTickets/Footer.tsx:15
 	__( 'Cancel', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/bulkAddTickets/Footer.tsx:17
+	__( 'Submit', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:29
 	__( 'Select', 'event_espresso' ),
