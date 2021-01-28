@@ -357,11 +357,8 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/utils/misc.ts:77
 	__( 'The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/After.tsx:22
+	// Reference: packages/rrule-generator/src/components/End/After.tsx:21
 	__( 'End after', 'event_espresso' ),
-
-	// Reference: packages/rrule-generator/src/components/End/After.tsx:31
-	__( 'occurrences', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/End/Mode.tsx:11
 	__( 'After', 'event_espresso' ),
@@ -377,6 +374,9 @@ $generated_i18n_strings = array(
 
 	// Reference: packages/rrule-generator/src/components/End/index.tsx:18
 	__( 'End', 'event_espresso' ),
+
+	// Reference: packages/rrule-generator/src/components/End/index.tsx:28
+	__( 'occurrences', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:26
 	/* translators: %s rrule string */
