@@ -121,6 +121,10 @@ class RecurrenceConnectionResolver extends AbstractConnectionResolver
     public function sanitizeInputFields(array $where_args)
     {
         $arg_mapping = [
+            'event'        => 'Datetime.EVT_ID',
+            'eventIn'      => 'Datetime.EVT_ID',
+            'eventIdIn'    => 'Datetime.EVT_ID',
+            'eventId'      => 'Datetime.EVT_ID', // priority.
             'datetime'     => 'Datetime.DTT_ID',
             'datetimeIn'   => 'Datetime.DTT_ID',
             'datetimeIdIn' => 'Datetime.DTT_ID',
@@ -129,7 +133,7 @@ class RecurrenceConnectionResolver extends AbstractConnectionResolver
         return $this->sanitizeWhereArgsForInputFields(
             $where_args,
             $arg_mapping,
-            ['datetime', 'datetimeIn']
+            ['datetime', 'datetimeIn', 'event', 'eventIn']
         );
     }
 }
