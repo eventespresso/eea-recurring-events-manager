@@ -80,10 +80,7 @@ class RemEditorData extends JsonDataNode
         $eventId     = $use_post_id ? $post->ID : $eventId;
         $datetimes   = $this->datetimes->getData(['eventId' => $eventId]);
         if (! empty($datetimes['nodes'])) {
-            $datetimeIn = wp_list_pluck($datetimes['nodes'], 'id');
-            if (! empty($datetimeIn)) {
-                $recurrences = $this->recurrences->getData(['datetimeIn' => $datetimeIn]);
-            }
+            $recurrences = $this->recurrences->getData(['eventId' => $eventId]);
         }
 
         $recurrence_model = EEM_Recurrence::instance();

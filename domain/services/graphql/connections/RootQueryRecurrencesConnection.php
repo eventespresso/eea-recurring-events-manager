@@ -95,6 +95,22 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
                     'type'        => ['list_of' => 'Int'],
                     'description' => esc_html__('Datetime IDs to get the recurrences for.', 'event_espresso'),
                 ],
+                'event'  => [
+                    'type'        => 'ID',
+                    'description' => esc_html__('Globally unique event ID to get the recurrences for.', 'event_espresso'),
+                ],
+                'eventIn'  => [
+                    'type'        => ['list_of' => 'ID'],
+                    'description' => esc_html__('Globally unique event IDs to get the recurrences for.', 'event_espresso'),
+                ],
+                'eventId'  => [
+                    'type'        => 'Int',
+                    'description' => esc_html__('Event ID to get the recurrences for.', 'event_espresso'),
+                ],
+                'eventIdIn'  => [
+                    'type'        => ['list_of' => 'Int'],
+                    'description' => esc_html__('Event IDs to get the recurrences for.', 'event_espresso'),
+                ],
             ],
             $args
         );
