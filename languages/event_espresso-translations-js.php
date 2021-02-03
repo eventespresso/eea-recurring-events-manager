@@ -132,11 +132,11 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/useTicketFormConfig.ts:66
 	__( 'end', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/formValidation.ts:55
+	// Reference: domains/rem/src/ui/Tickets/formValidation.ts:52
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:14
 	__( 'Name is required', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/formValidation.ts:56
+	// Reference: domains/rem/src/ui/Tickets/formValidation.ts:53
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:15
 	__( 'Name must be at least three characters', 'event_espresso' ),
 
