@@ -152,11 +152,11 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:38
 	__( 'Save', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:26
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:20
 	/* translators: %d ticket id */
 	__( 'Edit ticket %d', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:29
+	// Reference: domains/rem/src/ui/Tickets/multiStep/Modal.tsx:23
 	__( 'New Ticket Details', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:10
