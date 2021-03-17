@@ -76,11 +76,12 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Modal/Modal.tsx:15
 	__( 'Recurring Events Manager', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:12
-	__( 'define how recurring dates are generated', 'event_espresso' ),
-
+	// Reference: domains/rem/src/ui/MultiStep/ContentFooter.tsx:44
 	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:14
 	__( 'Pattern Editor', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:12
+	__( 'define how recurring dates are generated', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/MultiStep/Steps.tsx:17
 	__( 'primary information for generated dates', 'event_espresso' ),
