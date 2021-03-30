@@ -44,7 +44,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/hooks/useDatesBulkEditActions.ts:23
 	__( 'add tickets', 'event_espresso' ),
 
-	// Reference: domains/rem/src/services/apollo/initialization/useCacheRehydration.ts:40
+	// Reference: domains/rem/src/services/apollo/initialization/useCacheRehydration.ts:41
 	__( 'recurrences initialized', 'event_espresso' ),
 
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:36
