@@ -32,7 +32,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
      */
     public function can_migrate_from_version($current_database_state_of)
     {
-        return true;
+        return false;
     }
 
 
