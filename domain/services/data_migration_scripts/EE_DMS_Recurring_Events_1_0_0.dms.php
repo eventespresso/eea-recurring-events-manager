@@ -50,8 +50,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
 					RCR_rDates text DEFAULT NULL,
 					RCR_exDates text DEFAULT NULL,
                     RCR_date_duration text DEFAULT NULL,
-					PRIMARY KEY  (RCR_ID)',
-            'ENGINE=InnoDB '
+					PRIMARY KEY  (RCR_ID)'
         );
 
         /** @type WPDB */
@@ -61,7 +60,8 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
         $row = $wpdb->get_results(
             "SELECT COLUMN_NAME
                 FROM INFORMATION_SCHEMA.COLUMNS 
-                WHERE TABLE_NAME = '{$table}'
+                WHERE TABLE_SCHEMA = '{$wpdb->dbname}'
+                AND TABLE_NAME = '{$table}'
                 AND COLUMN_NAME = 'RCR_ID';"
         );
 
