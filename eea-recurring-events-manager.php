@@ -3,7 +3,7 @@
   Plugin Name: Event Espresso - Recurring Events Manager (EE 4.9+)
   Plugin URI: http://www.eventespresso.com
   Description: The Event Espresso Recurring Events Manager addon...
-  Version: 1.0.0.rc.002
+  Version: 1.0.0.rc.003
   Author: Event Espresso
   Author URI: http://www.eventespresso.com
   Copyright 2014 Event Espresso (email : support@eventespresso.com)
@@ -39,7 +39,7 @@
 
 
 // define versions and this file
-define('EE_REM_VERSION', '1.0.0.rc.002');
+define('EE_REM_VERSION', '1.0.0.rc.003');
 define('EE_REM_PLUGIN_FILE', __FILE__);
 define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
 
