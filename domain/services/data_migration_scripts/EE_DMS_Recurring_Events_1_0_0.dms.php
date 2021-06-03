@@ -44,7 +44,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
         $this->_table_is_new_in_this_version(
             'esp_recurrence',
             'RCR_ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-					RCR_name varchar(50) NOT NULL,
+					RCR_name varchar(256) NOT NULL,
 					RCR_rRule text NOT NULL,
 					RCR_exRule text DEFAULT NULL,
 					RCR_rDates text DEFAULT NULL,
