@@ -303,7 +303,7 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/filterBar/controls/RecurrenceControl.tsx:42
 	__( 'Recurrence pattern', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:34
+	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:33
 	__( 'Dates List', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:43
