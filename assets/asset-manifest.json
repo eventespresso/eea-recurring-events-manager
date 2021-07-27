@@ -1,28 +1,28 @@
 {
   "files": {
-    "rem.css": "/static/css/rem.9f87b175.css",
-    "rem.js": "/static/js/rem.54f64d36.js",
-    "rem.js.map": "/static/js/rem.54f64d36.js.map",
-    "rem.php": "/static/js/rem.48480b8c.asset.php",
-    "rruleGenerator.css": "/static/css/rruleGenerator.5ab536e2.css",
-    "rruleGenerator.js": "/static/js/rruleGenerator.449f1ec4.js",
-    "rruleGenerator.js.map": "/static/js/rruleGenerator.449f1ec4.js.map",
-    "rruleGenerator.php": "/static/js/rruleGenerator.37573ef8.asset.php",
-    "static/css/rem.9f87b175.css.map": "/static/css/rem.9f87b175.css.map",
-    "static/css/rruleGenerator.5ab536e2.css.map": "/static/css/rruleGenerator.5ab536e2.css.map",
-    "static/js/rem.54f64d36.js.LICENSE.txt": "/static/js/rem.54f64d36.js.LICENSE.txt",
-    "static/js/rruleGenerator.449f1ec4.js.LICENSE.txt": "/static/js/rruleGenerator.449f1ec4.js.LICENSE.txt"
+    "rem.css": "/static/css/rem.339f7700.css",
+    "rem.js": "/static/js/rem.5a59f7be.js",
+    "rem.js.map": "/static/js/rem.5a59f7be.js.map",
+    "rem.php": "/static/js/rem.95095b58.asset.php",
+    "rruleGenerator.css": "/static/css/rruleGenerator.978e5ed0.css",
+    "rruleGenerator.js": "/static/js/rruleGenerator.077fd54f.js",
+    "rruleGenerator.js.map": "/static/js/rruleGenerator.077fd54f.js.map",
+    "rruleGenerator.php": "/static/js/rruleGenerator.b970c592.asset.php",
+    "static/css/rem.339f7700.css.map": "/static/css/rem.339f7700.css.map",
+    "static/css/rruleGenerator.978e5ed0.css.map": "/static/css/rruleGenerator.978e5ed0.css.map",
+    "static/js/rem.5a59f7be.js.LICENSE.txt": "/static/js/rem.5a59f7be.js.LICENSE.txt",
+    "static/js/rruleGenerator.077fd54f.js.LICENSE.txt": "/static/js/rruleGenerator.077fd54f.js.LICENSE.txt"
   },
   "entrypoints": {
     "rruleGenerator": [
-      "static/css/rruleGenerator.5ab536e2.css",
-      "static/js/rruleGenerator.449f1ec4.js",
-      "static/js/rruleGenerator.37573ef8.asset.php"
+      "static/css/rruleGenerator.978e5ed0.css",
+      "static/js/rruleGenerator.077fd54f.js",
+      "static/js/rruleGenerator.b970c592.asset.php"
     ],
     "rem": [
-      "static/css/rem.9f87b175.css",
-      "static/js/rem.54f64d36.js",
-      "static/js/rem.48480b8c.asset.php"
+      "static/css/rem.339f7700.css",
+      "static/js/rem.5a59f7be.js",
+      "static/js/rem.95095b58.asset.php"
     ]
   }
 }
