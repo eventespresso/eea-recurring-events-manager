@@ -29,8 +29,7 @@ class EE_Recurrence extends EE_Base_Class
         array $props_n_values = [],
         string $timezone = null,
         array $date_formats = []
-    ): EE_Recurrence
-    {
+    ): EE_Recurrence {
         $has_object = parent::_check_for_object(
             $props_n_values,
             EE_Recurrence::class,

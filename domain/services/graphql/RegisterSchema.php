@@ -99,10 +99,9 @@ class RegisterSchema
     {
         if (! empty($input['recurrence'])) {
             $parts          = Relay::fromGlobalId(sanitize_text_field($input['recurrence']));
-            $args['RCR_ID'] =
-                (! empty($parts['id']))
-                    ? $parts['id']
-                    : null;
+            $args['RCR_ID'] = (! empty($parts['id']))
+                ? $parts['id']
+                : null;
         }
 
         return $args;
@@ -119,13 +118,17 @@ class RegisterSchema
         $newArgs = [
             'recurrence'     => [
                 'type'        => 'ID',
-                'description' => esc_html__('Globally unique recurrence ID to get the datetimes for.',
-                                            'event_espresso'),
+                'description' => esc_html__(
+                    'Globally unique recurrence ID to get the datetimes for.',
+                    'event_espresso'
+                ),
             ],
             'recurrenceIn'   => [
                 'type'        => ['list_of' => 'ID'],
-                'description' => esc_html__('Globally unique recurrence IDs to get the datetimes for.',
-                                            'event_espresso'),
+                'description' => esc_html__(
+                    'Globally unique recurrence IDs to get the datetimes for.',
+                    'event_espresso'
+                ),
             ],
             'recurrenceId'   => [
                 'type'        => 'Int',
