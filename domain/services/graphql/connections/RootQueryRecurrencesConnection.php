@@ -3,6 +3,7 @@
 namespace EventEspresso\RecurringEvents\domain\services\graphql\connections;
 
 use EEM_Recurrence;
+use EventEspresso\core\domain\services\graphql\connection_resolvers\AbstractConnectionResolver;
 use EventEspresso\RecurringEvents\domain\services\graphql\connection_resolvers\RecurrenceConnectionResolver;
 use EventEspresso\core\domain\services\graphql\abstracts\AbstractRootQueryConnection;
 use Exception;
@@ -21,11 +22,11 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
     /**
      * RecurrenceConnection constructor.
      *
-     * @param EEM_Recurrence               $model
+     * @param EEM_Recurrence $model
      */
     public function __construct(EEM_Recurrence $model)
     {
-        $this->model = $model;
+        parent::__construct($model);
     }
 
 
@@ -33,7 +34,7 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
      * @return array
      * @since $VID:$
      */
-    public function config()
+    public function config(): array
     {
         return [
             'fromType'           => 'RootQuery',
@@ -51,11 +52,11 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
      * @param $args
      * @param $context
      * @param $info
-     * @return RecurrenceConnectionResolver
+     * @return AbstractConnectionResolver|RecurrenceConnectionResolver
      * @throws Exception
      * @since $VID:$
      */
-    public function getConnectionResolver($entity, $args, $context, $info)
+    public function getConnectionResolver($entity, $args, $context, $info): AbstractConnectionResolver
     {
         return new RecurrenceConnectionResolver($entity, $args, $context, $info);
     }
@@ -69,25 +70,25 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
      * @return array
      */
     // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-    public static function get_connection_args($args = [])
+    public static function get_connection_args(array $args = []): array
     {
         return array_merge(
             [
-                'datetime' => [
+                'datetime'     => [
                     'type'        => 'ID',
                     'description' => esc_html__(
                         'Globally unique datetime ID to get the recurrences for.',
                         'event_espresso'
                     ),
                 ],
-                'datetimeIn' => [
+                'datetimeIn'   => [
                     'type'        => ['list_of' => 'ID'],
                     'description' => esc_html__(
                         'Globally unique datetime IDs to get the recurrences for.',
                         'event_espresso'
                     ),
                 ],
-                'datetimeId' => [
+                'datetimeId'   => [
                     'type'        => 'Int',
                     'description' => esc_html__('Datetime ID to get the recurrences for.', 'event_espresso'),
                 ],
@@ -95,19 +96,21 @@ class RootQueryRecurrencesConnection extends AbstractRootQueryConnection
                     'type'        => ['list_of' => 'Int'],
                     'description' => esc_html__('Datetime IDs to get the recurrences for.', 'event_espresso'),
                 ],
-                'event'  => [
+                'event'        => [
                     'type'        => 'ID',
-                    'description' => esc_html__('Globally unique event ID to get the recurrences for.', 'event_espresso'),
+                    'description' => esc_html__('Globally unique event ID to get the recurrences for.',
+                                                'event_espresso'),
                 ],
-                'eventIn'  => [
+                'eventIn'      => [
                     'type'        => ['list_of' => 'ID'],
-                    'description' => esc_html__('Globally unique event IDs to get the recurrences for.', 'event_espresso'),
+                    'description' => esc_html__('Globally unique event IDs to get the recurrences for.',
+                                                'event_espresso'),
                 ],
-                'eventId'  => [
+                'eventId'      => [
                     'type'        => 'Int',
                     'description' => esc_html__('Event ID to get the recurrences for.', 'event_espresso'),
                 ],
-                'eventIdIn'  => [
+                'eventIdIn'    => [
                     'type'        => ['list_of' => 'Int'],
                     'description' => esc_html__('Event IDs to get the recurrences for.', 'event_espresso'),
                 ],

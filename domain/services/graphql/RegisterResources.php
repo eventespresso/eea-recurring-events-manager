@@ -54,12 +54,11 @@ class RegisterResources
     }
 
 
-
     /**
      * @param array $collection_FQCNs
      * @return array
      */
-    public function registerConnections(array $collection_FQCNs = [])
+    public function registerConnections(array $collection_FQCNs = []): array
     {
         $collection_FQCNs[] = 'EventEspresso\RecurringEvents\domain\services\graphql\connections';
         return $collection_FQCNs;
@@ -70,7 +69,7 @@ class RegisterResources
      * @param array $collection_FQCNs
      * @return array
      */
-    public function registerDataLoaders(array $collection_FQCNs = [])
+    public function registerDataLoaders(array $collection_FQCNs = []): array
     {
         $collection_FQCNs[] = 'EventEspresso\RecurringEvents\domain\services\graphql\data\domains';
         return $collection_FQCNs;
@@ -81,7 +80,7 @@ class RegisterResources
      * @param array $collection_FQCNs
      * @return array
      */
-    public function registerTypes(array $collection_FQCNs = [])
+    public function registerTypes(array $collection_FQCNs = []): array
     {
         $collection_FQCNs[] = 'EventEspresso\RecurringEvents\domain\services\graphql\types';
         return $collection_FQCNs;

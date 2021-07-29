@@ -13,11 +13,15 @@ use EventEspresso\core\services\json\JsonConfig;
 class RecurringEventsConfig extends JsonConfig
 {
 
-    const TEMPLATE_STYLE_BOX = 'box';
-    const TEMPLATE_STYLE_CARD = 'card';
-    const TEMPLATE_STYLE_CIRCLE = 'circle';
+    const TEMPLATE_STYLE_BOX     = 'box';
+
+    const TEMPLATE_STYLE_CARD    = 'card';
+
+    const TEMPLATE_STYLE_CIRCLE  = 'circle';
+
     const TEMPLATE_STYLE_DEFAULT = 'default';
-    const TEMPLATE_STYLE_STRIPE = 'stripe';
+
+    const TEMPLATE_STYLE_STRIPE  = 'stripe';
 
     /**
      * @var boolean $allow_scrolling
@@ -55,11 +59,11 @@ class RecurringEventsConfig extends JsonConfig
      * @param string $template_style
      */
     public function __construct(
-        $allow_scrolling = true,
-        $number_of_dates = 5,
-        $show_expired = false,
-        $show_next_upcoming_only = false,
-        $template_style = RecurringEventsConfig::TEMPLATE_STYLE_STRIPE
+        bool $allow_scrolling = true,
+        int $number_of_dates = 5,
+        bool $show_expired = false,
+        bool $show_next_upcoming_only = false,
+        string $template_style = RecurringEventsConfig::TEMPLATE_STYLE_STRIPE
     ) {
         parent::__construct(
             [
@@ -76,7 +80,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return array
      */
-    protected function getProperties()
+    protected function getProperties(): array
     {
         return get_object_vars($this);
     }
@@ -85,7 +89,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return bool
      */
-    public function allowScrolling()
+    public function allowScrolling(): bool
     {
         return $this->allow_scrolling;
     }
@@ -94,7 +98,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @param bool $allow_scrolling
      */
-    public function setAllowScrolling($allow_scrolling)
+    public function setAllowScrolling(bool $allow_scrolling)
     {
         $this->setProperty('allow_scrolling', filter_var($allow_scrolling, FILTER_VALIDATE_BOOLEAN));
     }
@@ -103,7 +107,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return int
      */
-    public function numberOfDates()
+    public function numberOfDates(): int
     {
         return $this->number_of_dates;
     }
@@ -112,7 +116,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @param int $number_of_dates
      */
-    public function setNumberOfDates($number_of_dates = 6)
+    public function setNumberOfDates(int $number_of_dates = 6)
     {
         $number_of_dates = absint($number_of_dates);
         $number_of_dates = $number_of_dates > 0 ? $number_of_dates : 1;
@@ -123,7 +127,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return bool
      */
-    public function showExpired()
+    public function showExpired(): bool
     {
         return $this->show_expired;
     }
@@ -132,7 +136,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @param bool $show_expired
      */
-    public function setShowExpired($show_expired = false)
+    public function setShowExpired(bool $show_expired = false)
     {
         $this->setProperty('show_expired', filter_var($show_expired, FILTER_VALIDATE_BOOLEAN));
     }
@@ -141,7 +145,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return bool
      */
-    public function showNextUpcomingOnly()
+    public function showNextUpcomingOnly(): bool
     {
         return $this->show_next_upcoming_only;
     }
@@ -150,7 +154,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @param bool $show_next_upcoming_only
      */
-    public function setShowNextUpcomingOnly($show_next_upcoming_only = false)
+    public function setShowNextUpcomingOnly(bool $show_next_upcoming_only = false)
     {
         $this->setProperty('show_next_upcoming_only', filter_var($show_next_upcoming_only, FILTER_VALIDATE_BOOLEAN));
     }
@@ -159,7 +163,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return string
      */
-    public function templateStyle()
+    public function templateStyle(): string
     {
         return $this->template_style;
     }
@@ -168,7 +172,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return array
      */
-    public function templateStyles()
+    public function templateStyles(): array
     {
         return [
             RecurringEventsConfig::TEMPLATE_STYLE_BOX,
@@ -183,7 +187,7 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @return array
      */
-    public function templateStyleOptions()
+    public function templateStyleOptions(): array
     {
         return [
             RecurringEventsConfig::TEMPLATE_STYLE_BOX     => RecurringEventsConfig::TEMPLATE_STYLE_BOX,
@@ -198,11 +202,13 @@ class RecurringEventsConfig extends JsonConfig
     /**
      * @param string $template_style
      */
-    public function setTemplateStyle($template_style = '')
+    public function setTemplateStyle(string $template_style = '')
     {
         $this->setProperty(
             'template_style',
-            in_array($template_style, $this->templateStyles()) ? $template_style : RecurringEventsConfig::TEMPLATE_STYLE_STRIPE
+            in_array($template_style, $this->templateStyles())
+                ? $template_style
+                : RecurringEventsConfig::TEMPLATE_STYLE_STRIPE
         );
     }
 }

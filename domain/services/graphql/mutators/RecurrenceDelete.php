@@ -26,9 +26,9 @@ class RecurrenceDelete extends EntityMutator
          * @param array       $input   The input for the mutation
          * @param AppContext  $context The AppContext passed down to all resolvers
          * @param ResolveInfo $info    The ResolveInfo passed down to all resolvers
-         * @return array|void
+         * @return EE_Recurrence[]
          */
-        return static function ($input, AppContext $context, ResolveInfo $info) use ($model) {
+        return static function (array $input, AppContext $context, ResolveInfo $info) use ($model): array {
             try {
                 /** @var EE_Recurrence $entity */
                 $entity = EntityMutator::getEntityFromInputData($model, $input);

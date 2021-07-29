@@ -18,8 +18,8 @@ class EEME_Recurrence_Datetime extends EEME_Base
     public function __construct()
     {
         $this->_model_name_extended = 'Datetime';
-        $this->_extra_relations = [ 'Recurrence' => new EE_Belongs_To_Relation() ];
-        $this->_extra_fields = [
+        $this->_extra_relations     = ['Recurrence' => new EE_Belongs_To_Relation()];
+        $this->_extra_fields        = [
             'Datetime' => [
                 'RCR_ID' => new EE_Foreign_Key_Int_Field(
                     'RCR_ID',
@@ -27,8 +27,8 @@ class EEME_Recurrence_Datetime extends EEME_Base
                     true,
                     0,
                     'Recurrence'
-                )
-            ]
+                ),
+            ],
         ];
         parent::__construct();
     }
@@ -40,9 +40,9 @@ class EEME_Recurrence_Datetime extends EEME_Base
      * @throws EE_Error
      * @since $VID:$
      */
-    public function ext_getRecurrence($RCR_ID = 0)
+    public function ext_getRecurrence(int $RCR_ID = 0)
     {
         // @codingStandardsIgnoreLine
-        return $this->_->get_one(array(array('Recurrence.RCR_ID' => $RCR_ID)));
+        return $this->_->get_one([['Recurrence.RCR_ID' => $RCR_ID]]);
     }
 }

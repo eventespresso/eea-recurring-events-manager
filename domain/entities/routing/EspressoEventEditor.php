@@ -14,6 +14,7 @@ class EspressoEventEditor extends RemAdminRoute
      */
     protected $registered = false;
 
+
     /**
      * returns true if the current request matches this route
      *
@@ -23,11 +24,11 @@ class EspressoEventEditor extends RemAdminRoute
     public function matchesCurrentRequest(): bool
     {
         return parent::matchesCurrentRequest()
-            && $this->admin_config->useAdvancedEditor()
-            && (
-                $this->request->getRequestParam('action') === 'create_new'
-                || $this->request->getRequestParam('action') === 'edit'
-            );
+               && $this->admin_config->useAdvancedEditor()
+               && (
+                   $this->request->getRequestParam('action') === 'create_new'
+                   || $this->request->getRequestParam('action') === 'edit'
+               );
     }
 
 

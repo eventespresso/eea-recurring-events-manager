@@ -17,7 +17,7 @@ class RecurrenceMutation
      * @param array $input Data coming from the GraphQL mutation query input
      * @return array
      */
-    public static function prepareFields(array $input)
+    public static function prepareFields(array $input): array
     {
         $args = [];
 

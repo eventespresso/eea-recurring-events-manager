@@ -20,10 +20,10 @@ class Recurrences extends GraphQLData
      * @return array|null
      * @since $VID:$
      */
-    public function getData(array $where_params = [])
+    public function getData(array $where_params = []): ?array
     {
         $field_key = lcfirst($this->namespace) . 'Recurrences';
-        $query = <<<QUERY
+        $query     = <<<QUERY
         query GET_RECURRENCES(\$where: {$this->namespace}RootQueryRecurrencesConnectionWhereArgs, \$first: Int, \$last: Int ) {
             {$field_key}(where: \$where, first: \$first, last: \$last) {
                 nodes {

@@ -24,7 +24,7 @@ class EspressoEditor implements GQLDataDomainInterface
      * @return array
      * @since $VID:$
      */
-    public function registerLoaders(array $loaders, AppContext $context)
+    public function registerLoaders(array $loaders, AppContext $context): array
     {
         $newLoaders = ['espresso_recurrence' => new Loaders\RecurrenceLoader($context)];
         return array_merge($loaders, $newLoaders);
