@@ -48,7 +48,7 @@ class FrontendRequests extends CoreFrontendRequests
      */
     protected function requestHandler(): bool
     {
-        $this->domain = $this->loader->getShared(Domain::class);
+        $this->domain     = $this->loader->getShared(Domain::class);
         $this->rem_config = $this->loader->getShared(RecurringEventsConfig::class);
         add_filter('FHEE__espresso_list_of_event_dates__arguments', [$this, 'filterDatesListArguments'], 10);
         add_filter('FHEE__espresso_list_of_event_dates__datetime_html', [$this, 'filterDatesListInnerHtml'], 10, 3);
@@ -62,7 +62,7 @@ class FrontendRequests extends CoreFrontendRequests
      * @param array $arguments
      * @return array
      */
-    public function filterDatesListArguments(array $arguments)
+    public function filterDatesListArguments(array $arguments): array
     {
         $arguments[4]  = $this->rem_config->showExpired();
         $numberOfDates = $this->rem_config->numberOfDates();
@@ -85,7 +85,7 @@ class FrontendRequests extends CoreFrontendRequests
      * @throws EE_Error
      * @throws ReflectionException
      */
-    public function filterDatesListInnerHtml(string $html, EE_Datetime $datetime, array $arguments)
+    public function filterDatesListInnerHtml(string $html, EE_Datetime $datetime, array $arguments): string
     {
         switch ($this->rem_config->templateStyle()) {
             case RecurringEventsConfig::TEMPLATE_STYLE_BOX:
@@ -106,14 +106,14 @@ class FrontendRequests extends CoreFrontendRequests
      * @throws ReflectionException
      * @since   $VID:$
      */
-    private function remDatesListTemplate(EE_Datetime $datetime, array $arguments)
+    private function remDatesListTemplate(EE_Datetime $datetime, array $arguments): string
     {
         // the following variables are utilized in the included template
         $name        = $datetime->name();
         $description = $datetime->description();
         [$EVT_ID, $date_format, $time_format, $echo, $show_expired, $format, $add_breaks, $limit] = $arguments;
         ob_start();
-        
+
         include $this->domain->pluginPath('domain/ui/rem-dates-list-datetime.php');
         return ob_get_clean();
     }
@@ -124,19 +124,19 @@ class FrontendRequests extends CoreFrontendRequests
      * @param array       $arguments
      * @param EE_Datetime $datetime
      * @return string
+     * @throws EE_Error
+     * @throws ReflectionException
      */
-    public function filterDatesListHtml(string $html, array $arguments, EE_Datetime $datetime)
+    public function filterDatesListHtml(string $html, array $arguments, EE_Datetime $datetime): string
     {
         $style      = $this->rem_config->templateStyle();
         $max_height = $this->rem_config->numberOfDates() * $this->calculateListItemHeight($datetime);
         $max_height = $this->rem_config->allowScrolling() ? " style='max-height: {$max_height}rem;'" : '';
         $attributes = "class='ee-rem-dates-list ee-rem-dates-list--{$style}'{$max_height}";
-        $html       = "<div {$attributes}>" . $html . "</div>";
         $heading    = $this->rem_config->showNextUpcomingOnly()
             ? esc_html__('Next Upcoming Date', 'event_espresso')
             : esc_html__('Upcoming Dates', 'event_espresso');
-        $html       = "<h3>{$heading}</h3>" . $html;
-        return $html;
+        return "<h3>{$heading}</h3><div {$attributes}>" . $html . "</div>";
     }
 
 

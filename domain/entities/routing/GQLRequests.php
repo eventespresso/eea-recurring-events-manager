@@ -21,11 +21,11 @@ class GQLRequests extends CoreGQLRequests
     /**
      * AssetRequests constructor.
      *
-     * @param AssetManifestFactory $manifest_factory
-     * @param EE_Dependency_Map $dependency_map
+     * @param AssetManifestFactory         $manifest_factory
+     * @param EE_Dependency_Map            $dependency_map
      * @param EventEditorDependencyHandler $dependency_handler
-     * @param LoaderInterface $loader
-     * @param RequestInterface $request
+     * @param LoaderInterface              $loader
+     * @param RequestInterface             $request
      */
     public function __construct(
         AssetManifestFactory $manifest_factory,

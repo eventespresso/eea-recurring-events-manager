@@ -20,7 +20,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
     }
 
 
-    public static function eeAddonClass()
+    public static function eeAddonClass(): string
     {
         return 'EventEspresso\RecurringEvents\domain\RecurringEventsManager';
     }
@@ -30,7 +30,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
      * @param array $current_database_state_of
      * @return boolean
      */
-    public function can_migrate_from_version($current_database_state_of)
+    public function can_migrate_from_version($current_database_state_of): bool
     {
         return false;
     }
@@ -39,7 +39,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
     /**
      * @return boolean
      */
-    public function schema_changes_before_migration()
+    public function schema_changes_before_migration(): bool
     {
         $this->_table_is_new_in_this_version(
             'esp_recurrence',
@@ -81,7 +81,7 @@ class EE_DMS_Recurring_Events_1_0_0 extends EE_Data_Migration_Script_Base
     /**
      * @return boolean of success
      */
-    public function schema_changes_after_migration()
+    public function schema_changes_after_migration(): bool
     {
         return true;
     }

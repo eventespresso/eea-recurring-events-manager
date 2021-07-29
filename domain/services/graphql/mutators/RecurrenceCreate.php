@@ -29,7 +29,7 @@ class RecurrenceCreate extends EntityMutator
          * @param ResolveInfo $info    The ResolveInfo passed down to all resolvers
          * @return array
          */
-        return static function ($input, AppContext $context, ResolveInfo $info) use ($model) {
+        return static function (array $input, AppContext $context, ResolveInfo $info) use ($model): array {
             $id = null;
             try {
                 EntityMutator::checkPermissions($model);

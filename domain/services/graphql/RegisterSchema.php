@@ -69,7 +69,7 @@ class RegisterSchema
      * @return GraphQLFieldInterface[]
      * @since $VID:$
      */
-    public function registerCoreDatetimeFields(array $fields)
+    public function registerCoreDatetimeFields(array $fields): array
     {
         $newFields = [
             // add recurrence field to datetime mutation input
@@ -95,11 +95,13 @@ class RegisterSchema
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeMutationArgs(array $args, array $input)
+    public function addDatetimeMutationArgs(array $args, array $input): array
     {
         if (! empty($input['recurrence'])) {
-            $parts = Relay::fromGlobalId(sanitize_text_field($input['recurrence']));
-            $args['RCR_ID'] = (! empty($parts['id'])) ? $parts['id'] : null;
+            $parts          = Relay::fromGlobalId(sanitize_text_field($input['recurrence']));
+            $args['RCR_ID'] = (! empty($parts['id']))
+                ? $parts['id']
+                : null;
         }
 
         return $args;
@@ -111,22 +113,28 @@ class RegisterSchema
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeConnectionArgs(array $args)
+    public function addDatetimeConnectionArgs(array $args): array
     {
         $newArgs = [
-            'recurrence'  => [
+            'recurrence'     => [
                 'type'        => 'ID',
-                'description' => esc_html__('Globally unique recurrence ID to get the datetimes for.', 'event_espresso'),
+                'description' => esc_html__(
+                    'Globally unique recurrence ID to get the datetimes for.',
+                    'event_espresso'
+                ),
             ],
-            'recurrenceIn'  => [
+            'recurrenceIn'   => [
                 'type'        => ['list_of' => 'ID'],
-                'description' => esc_html__('Globally unique recurrence IDs to get the datetimes for.', 'event_espresso'),
+                'description' => esc_html__(
+                    'Globally unique recurrence IDs to get the datetimes for.',
+                    'event_espresso'
+                ),
             ],
-            'recurrenceId'  => [
+            'recurrenceId'   => [
                 'type'        => 'Int',
                 'description' => esc_html__('Recurrence ID to get the datetimes for.', 'event_espresso'),
             ],
-            'recurrenceIdIn'  => [
+            'recurrenceIdIn' => [
                 'type'        => ['list_of' => 'Int'],
                 'description' => esc_html__('Recurrence IDs to get the datetimes for.', 'event_espresso'),
             ],
@@ -137,15 +145,15 @@ class RegisterSchema
 
 
     /**
-     * @param array $where_params  The params used to query DB models.
-     * @param mixed $source The source of the connection.
-     * @param array $args The GQL args.
+     * @param array $where_params The params used to query DB models.
+     * @param mixed $source       The source of the connection.
+     * @param array $args         The GQL args.
      * @return array
      * @since $VID:$
      */
-    public function addDatetimeConnectionWhereParams(array $where_params, $source, array $args)
+    public function addDatetimeConnectionWhereParams(array $where_params, $source, array $args): array
     {
-        $where_params = $this->utilities->sanitizeWhereArgs(
+        return $this->utilities->sanitizeWhereArgs(
             $where_params,
             [
                 'recurrence'     => 'RCR_ID',
@@ -156,6 +164,5 @@ class RegisterSchema
             ['recurrence', 'recurrenceIn'],
             ['include_all_args' => true, 'use_IN_operator' => true]
         );
-        return $where_params;
     }
 }

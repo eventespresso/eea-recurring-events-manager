@@ -2,12 +2,14 @@
 
 namespace EventEspresso\RecurringEvents\domain\services\graphql\mutators;
 
+use EE_Error;
 use EE_Recurrence;
 use EEM_Recurrence;
 use EventEspresso\RecurringEvents\domain\services\graphql\data\mutations\RecurrenceMutation;
 use EventEspresso\core\domain\services\graphql\mutators\EntityMutator;
 use Exception;
 use GraphQL\Type\Definition\ResolveInfo;
+use ReflectionException;
 use WPGraphQL\AppContext;
 
 class RecurrenceUpdate extends EntityMutator
@@ -28,8 +30,10 @@ class RecurrenceUpdate extends EntityMutator
          * @param AppContext  $context The AppContext passed down to all resolvers
          * @param ResolveInfo $info    The ResolveInfo passed down to all resolvers
          * @return array
+         * @throws EE_Error
+         * @throws ReflectionException
          */
-        return static function ($input, AppContext $context, ResolveInfo $info) use ($model) {
+        return static function (array $input, AppContext $context, ResolveInfo $info) use ($model) {
             try {
                 /** @var EE_Recurrence $entity */
                 $entity = EntityMutator::getEntityFromInputData($model, $input);

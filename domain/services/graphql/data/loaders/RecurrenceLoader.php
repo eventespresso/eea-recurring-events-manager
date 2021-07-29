@@ -9,6 +9,7 @@ use EventEspresso\core\domain\services\graphql\data\loaders\AbstractLoader;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
 use InvalidArgumentException;
+use ReflectionException;
 
 /**
  * Class RecurrenceLoader
@@ -21,11 +22,13 @@ class RecurrenceLoader extends AbstractLoader
      * @throws InvalidArgumentException
      * @throws InvalidDataTypeException
      * @throws InvalidInterfaceException
+     * @throws ReflectionException
      */
     protected function getQuery(): EEM_Base
     {
         return EEM_Recurrence::instance();
     }
+
 
     /**
      * @param array $keys

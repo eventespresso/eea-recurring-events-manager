@@ -21,11 +21,11 @@ class RemAdminRoute extends AdminRoute
     /**
      * Route constructor. RemAdminRoute
      *
-     * @param EE_Admin_Config                       $admin_config
-     * @param EE_Dependency_Map                     $dependency_map
-     * @param EventEditorDependencyHandler          $dependency_handler
-     * @param LoaderInterface                       $loader
-     * @param RequestInterface                      $request
+     * @param EE_Admin_Config              $admin_config
+     * @param EE_Dependency_Map            $dependency_map
+     * @param EventEditorDependencyHandler $dependency_handler
+     * @param LoaderInterface              $loader
+     * @param RequestInterface             $request
      */
     public function __construct(
         EE_Admin_Config $admin_config,

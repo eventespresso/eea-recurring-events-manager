@@ -10,6 +10,7 @@ use EventEspresso\core\services\graphql\fields\GraphQLOutputField;
 use EventEspresso\RecurringEvents\domain\services\graphql\mutators\RecurrenceCreate;
 use EventEspresso\RecurringEvents\domain\services\graphql\mutators\RecurrenceDelete;
 use EventEspresso\RecurringEvents\domain\services\graphql\mutators\RecurrenceUpdate;
+use Exception;
 use InvalidArgumentException;
 
 /**
@@ -30,19 +31,17 @@ class Recurrence extends TypeBase
      */
     public function __construct(EEM_Recurrence $recurrence_model)
     {
-        $this->model = $recurrence_model;
         $this->setName($this->namespace . 'Recurrence');
         $this->setDescription(__('A Recurrence', 'event_espresso'));
         $this->setIsCustomPostType(false);
-        parent::__construct();
+        parent::__construct($recurrence_model);
     }
 
 
     /**
      * @return GraphQLFieldInterface[]
-     * @since $VID:$
      */
-    public function getFields()
+    public function getFields(): array
     {
         return [
             new GraphQLField(
@@ -106,7 +105,7 @@ class Recurrence extends TypeBase
     /**
      * @param array $inputFields The mutation input fields.
      * @throws InvalidArgumentException
-     * @since $VID:$
+     * @throws Exception
      */
     public function registerMutations(array $inputFields)
     {

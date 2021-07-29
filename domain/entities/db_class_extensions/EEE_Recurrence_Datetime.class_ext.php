@@ -27,14 +27,14 @@ class EEE_Recurrence_Datetime extends EEE_Base_Class
 
     /**
      * @param array $query_params
-     * @return EE_Base_Class|EE_Recurrence|EE_Soft_Delete_Base_Class|NULL
+     * @return EE_Base_Class|EE_Recurrence|EE_Soft_Delete_Base_Class|null
      * @throws EE_Error
      * @throws InvalidArgumentException
      * @throws ReflectionException
      * @throws InvalidDataTypeException
      * @throws InvalidInterfaceException
      */
-    public function ext_recurrence($query_params = [])
+    public function ext_recurrence(array $query_params = [])
     {
         return EEM_Recurrence::instance()->get_one(
             array_replace_recursive(

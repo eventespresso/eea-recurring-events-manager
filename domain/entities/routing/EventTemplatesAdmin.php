@@ -29,10 +29,11 @@ class EventTemplatesAdmin extends RemAdminRoute
      */
     public function matchesCurrentRequest(): bool
     {
-        return parent::matchesCurrentRequest() && (
-            $this->request->getRequestParam('action') === 'template_settings'
-            || $this->request->getRequestParam('action') === 'update_template_settings'
-        );
+        return parent::matchesCurrentRequest()
+               && (
+                   $this->request->getRequestParam('action') === 'template_settings'
+                   || $this->request->getRequestParam('action') === 'update_template_settings'
+               );
     }
 
 
@@ -97,7 +98,7 @@ class EventTemplatesAdmin extends RemAdminRoute
      * @throws EE_Error
      * @throws ReflectionException
      */
-    public static function updateTemplateSettings(EE_Template_Config $template_config)
+    public static function updateTemplateSettings(EE_Template_Config $template_config): EE_Template_Config
     {
         /** @var RecurringEventsTemplateSettingsFormHandler $form_handler */
         $form_handler = LoaderFactory::getLoader()->getShared(RecurringEventsTemplateSettingsFormHandler::class);
