@@ -2,7 +2,7 @@
 /*
   Plugin Name: Event Espresso - Recurring Events Manager (EE 4.9+)
   Plugin URI: http://www.eventespresso.com
-  Description: The Event Espresso Recurring Events Manager addon...
+  Description: The Event Espresso Recurring Events Manager addon.
   Version: 1.0.0.rc.003
   Author: Event Espresso
   Author URI: http://www.eventespresso.com
