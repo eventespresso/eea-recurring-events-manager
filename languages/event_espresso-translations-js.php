@@ -47,6 +47,9 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/apollo/initialization/useCacheRehydration.ts:41
 	__( 'recurrences initialized', 'event_espresso' ),
 
+	// Reference: domains/rem/src/services/apollo/mutations/recurrences/useRecurrenceMutator.ts:41
+	__( 'recurrence', 'event_espresso' ),
+
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:36
 	__( 'Recurring series', 'event_espresso' ),
 
