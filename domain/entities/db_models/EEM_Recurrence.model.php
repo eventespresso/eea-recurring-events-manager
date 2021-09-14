@@ -46,19 +46,19 @@ class EEM_Recurrence extends EEM_Base
                     'RCR_exRule',
                     esc_html__('Exclusion Rule', 'event_espresso'),
                     true,
-                    null
+                    ''
                 ),
                 'RCR_rDates'        => new EE_Plain_Text_Field(
                     'RCR_rDates',
                     esc_html__('Recurrence Dates', 'event_espresso'),
                     true,
-                    null
+                    ''
                 ),
                 'RCR_exDates'       => new EE_Plain_Text_Field(
                     'RCR_exDates',
                     esc_html__('Exclusion Dates', 'event_espresso'),
                     true,
-                    null
+                    ''
                 ),
                 'RCR_date_duration' => new EE_Plain_Text_Field(
                     'RCR_date_duration',
