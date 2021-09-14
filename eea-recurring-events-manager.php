@@ -95,9 +95,9 @@ function eea_recurring_events_activation_error($error_message = '')
             deactivate_plugins(plugin_basename(__FILE__));
             ?>
 <div class="error">
-	<p><?php echo $error_message; ?></p>
+    <p><?php echo $error_message; ?></p>
 </div>
-<?php
+            <?php
         }
     );
 }
