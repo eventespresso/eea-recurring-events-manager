@@ -41,6 +41,10 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/constants.ts:26
 	__( 'Sunday', 'event_espresso' ),
 
+	// Reference: domains/rem/src/data/useSubmitForm.ts:127
+	// Reference: domains/rem/src/ui/bulkAddTickets/useSubmitForm.ts:96
+	__( 'Ticket quantity has been adjusted because it cannot be more than the related event date capacity.', 'event_espresso' ),
+
 	// Reference: domains/rem/src/hooks/useDatesBulkEditActions.ts:23
 	__( 'add tickets', 'event_espresso' ),
 
