@@ -183,12 +183,6 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:14
 	__( 'Price Calculator', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:16
-	__( 'relations between tickets and dates', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/Tickets/multiStep/TicketFormSteps.tsx:16
-	__( 'Assign Dates', 'event_espresso' ),
-
 	// Reference: domains/rem/src/ui/Tickets/ticketSalesEndFields.ts:15
 	// Reference: domains/rem/src/ui/Tickets/ticketSalesStartFields.ts:15
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:87
