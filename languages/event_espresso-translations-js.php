@@ -304,8 +304,16 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/generatedDates/GeneratedDates.tsx:33
 	__( 'Dates List', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:44
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:49
 	__( 'Add Extra Event Date', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:57
+	/* translators: date limit */
+	__( 'You can add a maximum of %d extra dates.', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/generatedDates/RDate.tsx:66
+	/* translators: date limit */
+	__( 'You can remove a maximum of %d from the list of generated dates.', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/generatedDates/config.ts:13
 	__( 'Generated: recurring dates that have been created via pattern editors', 'event_espresso' ),
