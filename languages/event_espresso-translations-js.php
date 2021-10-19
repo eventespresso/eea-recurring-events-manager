@@ -60,26 +60,6 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/services/datesTableFilter/registerFilters.tsx:37
 	__( 'Series', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
-	__( 'datetime', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:21
-	__( 'ticket', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:32
-	/* translators: Select an existing "date / ticket" to use as a template */
-	__( 'Select an existing %s to use as a template.', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:39
-	__( 'or', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:44
-	/* translators: Add new "date / ticket" and insert details manually */
-	__( 'Add new %s and insert details manually', 'event_espresso' ),
-
-	// Reference: domains/rem/src/ui/EntityOptionsRow/index.tsx:49
-	__( 'Add New', 'event_espresso' ),
-
 	// Reference: domains/rem/src/ui/Modal/Modal.tsx:15
 	__( 'Recurring Events Manager', 'event_espresso' ),
 
@@ -151,6 +131,9 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/Tickets/formValidation.ts:53
 	// Reference: domains/rem/src/ui/datetimeDetails/formValidation.ts:15
 	__( 'Name must be at least three characters', 'event_espresso' ),
+
+	// Reference: domains/rem/src/ui/Tickets/index.tsx:48
+	__( 'ticket', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/Tickets/multiStep/FooterButtons.tsx:26
 	__( 'Set ticket prices', 'event_espresso' ),
@@ -283,8 +266,8 @@ $generated_i18n_strings = array(
 	// Reference: domains/rem/src/ui/bulkAddTickets/Footer.tsx:17
 	__( 'Submit', 'event_espresso' ),
 
-	// Reference: domains/rem/src/ui/datetimeDetails/DateTemplate.tsx:30
-	__( 'Select', 'event_espresso' ),
+	// Reference: domains/rem/src/ui/datetimeDetails/DatetimeDetails.tsx:22
+	__( 'datetime', 'event_espresso' ),
 
 	// Reference: domains/rem/src/ui/datetimeDetails/useDateFormConfig.ts:107
 	__( 'Capacity', 'event_espresso' ),
