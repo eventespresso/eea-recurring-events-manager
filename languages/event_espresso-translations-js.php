@@ -379,7 +379,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/End/index.tsx:17
 	__( 'End', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/End/index.tsx:26
+	// Reference: packages/rrule-generator/src/components/End/index.tsx:27
 	__( 'occurrences', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/RRuleGenerator/index.tsx:27
@@ -447,7 +447,7 @@ $generated_i18n_strings = array(
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:64
 	__( 'Repeat yearly on month', 'event_espresso' ),
 
-	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:84
+	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/On.tsx:82
 	__( 'Repeat yearly on a day', 'event_espresso' ),
 
 	// Reference: packages/rrule-generator/src/components/Repeat/Yearly/OnThe.tsx:64
