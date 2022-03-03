@@ -107,6 +107,14 @@ class RecurringEventsManager extends EE_Addon
             10,
             3
         );
+        add_filter(
+            'FHEE__EventEspresso_core_domain_services_capabilities_FeatureFlags',
+            function ($capabilities) {
+                return array_merge($capabilities, [
+                    'use_bulk_edit'              => true,
+                ]);
+            }
+        );
     }
 
 
