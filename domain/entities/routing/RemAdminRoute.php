@@ -5,8 +5,12 @@ namespace EventEspresso\RecurringEvents\domain\entities\routing;
 use EE_Admin_Config;
 use EE_Dependency_Map;
 use EventEspresso\core\domain\entities\routing\handlers\admin\AdminRoute;
+use EventEspresso\core\domain\services\capabilities\CapCheck;
+use EventEspresso\core\domain\services\capabilities\CapCheckInterface;
+use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\services\loaders\LoaderInterface;
 use EventEspresso\core\services\request\RequestInterface;
+use EventEspresso\RecurringEvents\domain\Domain;
 use EventEspresso\RecurringEvents\domain\services\dependencies\EventEditorDependencyHandler;
 use EventEspresso\RecurringEvents\domain\services\graphql\RegisterResources;
 
@@ -36,6 +40,16 @@ class RemAdminRoute extends AdminRoute
     ) {
         $this->dependency_handler = $dependency_handler;
         parent::__construct($admin_config, $dependency_map, $loader, $request);
+    }
+
+
+    /**
+     * @return CapCheckInterface
+     * @throws InvalidDataTypeException
+     */
+    public function getCapCheck()
+    {
+        return new CapCheck(Domain::USER_CAP_REQUIRED, 'access REM admin');
     }
 
 
