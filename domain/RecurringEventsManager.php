@@ -8,6 +8,7 @@ use EE_Dependency_Map;
 use EE_Error;
 use EE_Register_Addon;
 use EventEspresso\core\domain\DomainInterface;
+use EventEspresso\core\domain\services\capabilities\CapabilitiesChecker;
 use EventEspresso\core\exceptions\InvalidDataTypeException;
 use EventEspresso\core\exceptions\InvalidEntityException;
 use EventEspresso\core\exceptions\InvalidInterfaceException;
@@ -151,7 +152,7 @@ class RecurringEventsManager extends EE_Addon
                 'EventEspresso\core\services\request\RequestInterface'    => EE_Dependency_Map::load_from_cache,
             ];
             $routes = [
-                'EventEspresso\RecurringEvents\domain\entities\routing\EspressoEventEditor' => $admin_dependencies,
+                'EventEspresso\RecurringEvents\domain\entities\routing\EspressoEventEditor'  => $admin_dependencies,
                 'EventEspresso\RecurringEvents\domain\entities\routing\EventTemplatesAdmin'  => $admin_dependencies,
                 'EventEspresso\RecurringEvents\domain\entities\routing\FrontendRequests'     => $frontend_dependencies,
                 'EventEspresso\RecurringEvents\domain\entities\routing\GQLRequests'          => $gql_dependencies,
