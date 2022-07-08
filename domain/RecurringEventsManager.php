@@ -82,6 +82,10 @@ class RecurringEventsManager extends EE_Addon
                 'class_extension_paths' => [
                     RecurringEventsManager::class => $plugin_path . 'domain/entities/db_class_extensions/',
                 ],
+                'capabilities' => [
+                    'administrator'           => is_multisite() ? [] : [Domain::USER_CAP_REQUIRED],
+                    'ee_events_administrator' => is_multisite() ? [] : [Domain::USER_CAP_REQUIRED],
+                ],
             ]
         );
     }
