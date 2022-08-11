@@ -8,7 +8,12 @@ add_action(
     'AHEE__EE_System__load_espresso_addons',
     static function () {
         if (
-            defined('EE_PLUGIN_DIR_PATH')
+            version_compare(
+                espresso_version(),
+                EE_REM_CORE_VERSION_REQUIRED,
+                '>='
+            )
+            && defined('EE_PLUGIN_DIR_PATH')
             && is_readable(EE_PLUGIN_DIR_PATH . 'core/third_party_libs/wp-graphql')
             && class_exists('EE_Addon')
             && class_exists('EventEspresso\core\domain\DomainBase')

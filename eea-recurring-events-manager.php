@@ -41,32 +41,29 @@
 // define versions and this file
 define('EE_REM_VERSION', '1.0.0.rc.005');
 define('EE_REM_PLUGIN_FILE', __FILE__);
-define('EE_REM_CORE_VERSION_REQUIRED', '4.9.44.rc.0000');
+define('EE_REM_CORE_VERSION_REQUIRED', '4.12.0');
 
-// check php version, if not PHP 7.1 ++ then deactivate and show notice
-if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70100) {
+
+/**
+ * get the REM ball rolling
+ */
+function eeaBootstrapRecurringEvents()
+{
+    // check php version, if not PHP 7.1 ++ then deactivate and show notice
+    if (!(defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70100)) {
+        eea_recurring_events_activation_error(
+            sprintf(
+                esc_html__(
+                    'Event Espresso Recurring Events Manager add-on could not be activated because it requires PHP version %s or greater.',
+                    'event_espresso'
+                ),
+                '7.1.0'
+            )
+        );
+    }
     require_once __DIR__ . '/eea-recurring-events-bootstrap.php';
-} else {
-    add_action(
-        'admin_notices',
-        static function () {
-            unset($_GET['activate'], $_REQUEST['activate']);
-            if (! function_exists('deactivate_plugins')) {
-                require_once ABSPATH . 'wp-admin/includes/plugin.php';
-            }
-            deactivate_plugins(plugin_basename(__FILE__));
-            eea_recurring_events_activation_error(
-                sprintf(
-                    esc_html__(
-                        'Event Espresso Recurring Events Manager add-on could not be activated because it requires PHP version %s or greater.',
-                        'event_espresso'
-                    ),
-                    '7.1.0'
-                )
-            );
-        }
-    );
 }
+eeaBootstrapRecurringEvents();
 
 
 /**
