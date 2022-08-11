@@ -47,7 +47,7 @@ class RemAdminRoute extends AdminRoute
      * @return CapCheckInterface
      * @throws InvalidDataTypeException
      */
-    public function getCapCheck()
+    public function getCapCheck(): CapCheckInterface
     {
         return new CapCheck(Domain::USER_CAP_REQUIRED, 'access REM admin');
     }
