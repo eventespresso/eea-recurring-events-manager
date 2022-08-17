@@ -41,7 +41,7 @@
 // define versions and this file
 define('EE_REM_VERSION', '1.0.0.rc.006');
 define('EE_REM_PLUGIN_FILE', __FILE__);
-define('EE_REM_CORE_VERSION_REQUIRED', '4.12.0');
+define('EE_REM_CORE_VERSION_REQUIRED', '4.12.0.rc.000');
 
 
 /**
